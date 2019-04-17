@@ -1,5 +1,5 @@
 //
-//  GenericListCellView.swift
+//  GenericListCellViewable.swift
 //  GenericKit
 //
 //  Created by Victor Marcias on 2019-04-17.
@@ -8,9 +8,11 @@
 
 import UIKit
 
-protocol GenericListCellView {
+protocol GenericListCellViewable: class {
     associatedtype ViewModel: GenericListItemModel
+    
     var view: UIView { get }
+    static var itemSize: CGSize { get }
     
     func configure(with: ViewModel)
 }

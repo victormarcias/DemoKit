@@ -17,7 +17,7 @@ protocol GenericListable {
 
 class GenericListViewController<
     M: GenericListViewable,
-    C: GenericListCellView,
+    C: GenericListCellViewable,
     L: GenericListLoadingView,
     E: GenericListErrorView
     >: UIViewController, GenericListable
@@ -61,6 +61,7 @@ class GenericListViewController<
     ///
     /// Views
     ///
+    var collectionView: UICollectionView?
     var loadingView: L
     var errorView: E
     
@@ -68,10 +69,21 @@ class GenericListViewController<
     /// Initializer
     ///
     init() {
+        viewModel = M.init()
         loadingView = L.init()
         errorView = E.init()
-        viewModel = M.init()
+        
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let cellSize = CGSize(width: view.frame.width, height: C.itemSize.height)
+        collectionView = GenericListCollectionView(frame: view.frame, itemSize: cellSize)
+        collectionView?.register(C.self, forCellWithReuseIdentifier: NSStringFromClass(C.self))
+//        collectionView?.dataSource = self
+//        collectionView?.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -106,6 +118,7 @@ class GenericListViewController<
             self.itemListOffset = self.itemList.count
             self.itemListEnded = items.count == 0
             self.isFetchingItems = false
+            self.collectionView?.reloadData()
         }
     }
     
