@@ -11,6 +11,11 @@
 		6DAF9FA42267269D006BAD6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FA32267269D006BAD6F /* ViewController.swift */; };
 		6DAF9FA9226726A0006BAD6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF9FA8226726A0006BAD6F /* Assets.xcassets */; };
 		6DAF9FAC226726A0006BAD6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF9FAA226726A0006BAD6F /* LaunchScreen.storyboard */; };
+		6DAF9FD3226739FD006BAD6F /* GenericListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD2226739FD006BAD6F /* GenericListCellView.swift */; };
+		6DAF9FD522673A75006BAD6F /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */; };
+		6DAF9FD722673AC5006BAD6F /* GenericListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD622673AC5006BAD6F /* GenericListModel.swift */; };
+		6DAF9FD922673AD2006BAD6F /* GenericListLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD822673AD2006BAD6F /* GenericListLoadingView.swift */; };
+		6DAF9FDB22673ADF006BAD6F /* GenericListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FDA22673ADF006BAD6F /* GenericListErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		6DAF9FA8226726A0006BAD6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DAF9FAB226726A0006BAD6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DAF9FAD226726A0006BAD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DAF9FD2226739FD006BAD6F /* GenericListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListCellView.swift; sourceTree = "<group>"; };
+		6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
+		6DAF9FD622673AC5006BAD6F /* GenericListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListModel.swift; sourceTree = "<group>"; };
+		6DAF9FD822673AD2006BAD6F /* GenericListLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListLoadingView.swift; sourceTree = "<group>"; };
+		6DAF9FDA22673ADF006BAD6F /* GenericListErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +75,22 @@
 		6DAF9FD022672BA6006BAD6F /* GenericKit */ = {
 			isa = PBXGroup;
 			children = (
+				6DAF9FD122673951006BAD6F /* GenericListView */,
 			);
 			name = GenericKit;
 			path = ../GenericKit;
+			sourceTree = "<group>";
+		};
+		6DAF9FD122673951006BAD6F /* GenericListView */ = {
+			isa = PBXGroup;
+			children = (
+				6DAF9FD2226739FD006BAD6F /* GenericListCellView.swift */,
+				6DAF9FDA22673ADF006BAD6F /* GenericListErrorView.swift */,
+				6DAF9FD822673AD2006BAD6F /* GenericListLoadingView.swift */,
+				6DAF9FD622673AC5006BAD6F /* GenericListModel.swift */,
+				6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */,
+			);
+			path = GenericListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAF9FDB22673ADF006BAD6F /* GenericListErrorView.swift in Sources */,
+				6DAF9FD3226739FD006BAD6F /* GenericListCellView.swift in Sources */,
+				6DAF9FD922673AD2006BAD6F /* GenericListLoadingView.swift in Sources */,
 				6DAF9FA42267269D006BAD6F /* ViewController.swift in Sources */,
+				6DAF9FD722673AC5006BAD6F /* GenericListModel.swift in Sources */,
+				6DAF9FD522673A75006BAD6F /* GenericListViewController.swift in Sources */,
 				6DAF9FA22267269D006BAD6F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
