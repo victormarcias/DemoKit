@@ -11,14 +11,14 @@ import Foundation
 ///
 /// The model for each Item
 ///
-protocol GenericListItemModel {
+public protocol GenericListItemModel {
     var identifier: String { get }
 }
 
 ///
 /// The List complete model
 ///
-protocol GenericListViewModel {
+public protocol GenericListViewModel {
     associatedtype ItemModel: GenericListItemModel
     typealias Result = (_ result: [ItemModel]?) -> Void
     

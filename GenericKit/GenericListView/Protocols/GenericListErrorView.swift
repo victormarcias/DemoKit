@@ -8,11 +8,11 @@
 
 import UIKit
 
-enum GenericListErrorType: Error {
+public enum GenericListErrorType: Error {
     case empty, unknown
 }
 
-protocol GenericListErrorView where Self: UIView {
+public protocol GenericListErrorView where Self: UIView {
     init()
     func show(_ view: GenericListErrorType)
 }

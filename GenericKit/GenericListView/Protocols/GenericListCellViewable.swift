@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GenericListCellViewable where Self: UICollectionViewCell {
+public protocol GenericListCellViewable where Self: UICollectionViewCell {
     var view: UIView { get }
     static var itemSize: CGSize { get }
     

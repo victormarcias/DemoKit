@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LoadingView where Self: UIView {
+public protocol LoadingView where Self: UIView {
     init()
     func show(on parent: UIView)
     func hide()
