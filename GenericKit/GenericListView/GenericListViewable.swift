@@ -12,7 +12,7 @@ import Foundation
 /// The Model for each Item
 ///
 public protocol GenericListItemModel {
-    var identifier: String { get }
+    //
 }
 
 ///
