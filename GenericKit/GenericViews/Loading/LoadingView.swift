@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol GenericListLoadingView {
+protocol LoadingView {
     init()
-    func startAnimating()
-    func stopAnimation()
+    func show(on parent: UIView)
+    func hide()
 }

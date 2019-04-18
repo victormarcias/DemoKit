@@ -18,7 +18,7 @@ protocol GenericListable {
 class GenericListViewController<
     M: GenericListViewable,
     C: GenericListCellViewable,
-    L: GenericListLoadingView,
+    L: LoadingView,
     E: GenericListErrorView
     >: UIViewController, GenericListable
 {
@@ -34,9 +34,6 @@ class GenericListViewController<
     
     // Shows a loading view when fetching items
     var shouldShowLoading: Bool = true
-    
-    // Loading view blocks interaction
-    var shouldLoadingBlockUserInteraction: Bool = false
     
     // Is loading
     var isFetchingItems: Bool = false
@@ -96,7 +93,7 @@ class GenericListViewController<
     func fetchItems() {
         guard !isFetchingItems && !itemListEnded else { return }
         
-        showLoading()
+        loadingView.show(on: view)
         itemListOffset = 0
         isFetchingItems = true
         
@@ -119,6 +116,7 @@ class GenericListViewController<
             self.itemListEnded = items.count == 0
             self.isFetchingItems = false
             self.collectionView?.reloadData()
+            self.loadingView.hide()
         }
     }
     
