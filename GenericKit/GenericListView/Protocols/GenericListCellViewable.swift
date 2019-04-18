@@ -8,11 +8,9 @@
 
 import UIKit
 
-protocol GenericListCellViewable: class {
-    associatedtype ViewModel: GenericListItemModel
-    
+protocol GenericListCellViewable where Self: UICollectionViewCell {
     var view: UIView { get }
     static var itemSize: CGSize { get }
     
-    func configure(with: ViewModel)
+    func configure(with: GenericListItemModel)
 }

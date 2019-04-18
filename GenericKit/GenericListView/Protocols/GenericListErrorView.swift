@@ -12,7 +12,7 @@ enum GenericListErrorType: Error {
     case empty, unknown
 }
 
-protocol GenericListErrorView {
+protocol GenericListErrorView where Self: UIView {
     init()
     func show(_ view: GenericListErrorType)
 }

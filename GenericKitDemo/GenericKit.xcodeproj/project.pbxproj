@@ -17,8 +17,10 @@
 		6DAF9FD922673AD2006BAD6F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD822673AD2006BAD6F /* LoadingView.swift */; };
 		6DAF9FDB22673ADF006BAD6F /* GenericListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FDA22673ADF006BAD6F /* GenericListErrorView.swift */; };
 		6DAF9FE222676EB6006BAD6F /* GenericListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */; };
-		6DAF9FE4226771FD006BAD6F /* GenericListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FE3226771FD006BAD6F /* GenericListCollectionViewCell.swift */; };
 		6DAF9FE7226865F7006BAD6F /* CenteredLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FE6226865F7006BAD6F /* CenteredLoadingView.swift */; };
+		6DAF9FEC22686C86006BAD6F /* GenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FEB22686C86006BAD6F /* GenericView.swift */; };
+		6DAF9FF122686E5B006BAD6F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */; };
+		6DAF9FF522687044006BAD6F /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FF322687044006BAD6F /* GenericCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +36,10 @@
 		6DAF9FD822673AD2006BAD6F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6DAF9FDA22673ADF006BAD6F /* GenericListErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListErrorView.swift; sourceTree = "<group>"; };
 		6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListCollectionView.swift; sourceTree = "<group>"; };
-		6DAF9FE3226771FD006BAD6F /* GenericListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListCollectionViewCell.swift; sourceTree = "<group>"; };
 		6DAF9FE6226865F7006BAD6F /* CenteredLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredLoadingView.swift; sourceTree = "<group>"; };
+		6DAF9FEB22686C86006BAD6F /* GenericView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
+		6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		6DAF9FF322687044006BAD6F /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +85,9 @@
 		6DAF9FD022672BA6006BAD6F /* GenericKit */ = {
 			isa = PBXGroup;
 			children = (
-				6DAF9FE5226865E5006BAD6F /* GenericViews */,
+				6DAF9FEF22686E45006BAD6F /* Extensions */,
 				6DAF9FD122673951006BAD6F /* GenericListView */,
+				6DAF9FE5226865E5006BAD6F /* GenericViews */,
 			);
 			name = GenericKit;
 			path = ../GenericKit;
@@ -112,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */,
-				6DAF9FE3226771FD006BAD6F /* GenericListCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +124,7 @@
 		6DAF9FE5226865E5006BAD6F /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				6DAF9FEA22686C70006BAD6F /* Base */,
 				6DAF9FE8226868FB006BAD6F /* Loading */,
 			);
 			path = GenericViews;
@@ -140,6 +145,23 @@
 				6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6DAF9FEA22686C70006BAD6F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6DAF9FF322687044006BAD6F /* GenericCollectionViewCell.swift */,
+				6DAF9FEB22686C86006BAD6F /* GenericView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		6DAF9FEF22686E45006BAD6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,14 +236,16 @@
 			files = (
 				6DAF9FDB22673ADF006BAD6F /* GenericListErrorView.swift in Sources */,
 				6DAF9FD3226739FD006BAD6F /* GenericListCellViewable.swift in Sources */,
+				6DAF9FF522687044006BAD6F /* GenericCollectionViewCell.swift in Sources */,
 				6DAF9FD922673AD2006BAD6F /* LoadingView.swift in Sources */,
+				6DAF9FF122686E5B006BAD6F /* UIView+Constraints.swift in Sources */,
 				6DAF9FE7226865F7006BAD6F /* CenteredLoadingView.swift in Sources */,
 				6DAF9FA42267269D006BAD6F /* ViewController.swift in Sources */,
 				6DAF9FE222676EB6006BAD6F /* GenericListCollectionView.swift in Sources */,
+				6DAF9FEC22686C86006BAD6F /* GenericView.swift in Sources */,
 				6DAF9FD722673AC5006BAD6F /* GenericListModel.swift in Sources */,
 				6DAF9FD522673A75006BAD6F /* GenericListViewController.swift in Sources */,
 				6DAF9FA22267269D006BAD6F /* AppDelegate.swift in Sources */,
-				6DAF9FE4226771FD006BAD6F /* GenericListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

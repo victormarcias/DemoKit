@@ -18,9 +18,9 @@ protocol GenericListItemModel {
 ///
 /// The List complete model
 ///
-protocol GenericListViewable {
-    associatedtype Model: GenericListItemModel
-    typealias Result = (_ result: [Model]?) -> Void
+protocol GenericListViewModel {
+    associatedtype ItemModel: GenericListItemModel
+    typealias Result = (_ result: [ItemModel]?) -> Void
     
     init()
     func getItems(_ offset: Int, _ count: Int, completion: @escaping Result)

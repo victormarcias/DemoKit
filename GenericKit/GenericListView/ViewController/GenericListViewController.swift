@@ -8,19 +8,12 @@
 
 import UIKit
 
-protocol GenericListable {
-    func fetchItems()
-    func fetchMoreItems()
-    func showLoading()
-    func showError(_ type: GenericListErrorType)
-}
-
 class GenericListViewController<
-    M: GenericListViewable,
+    M: GenericListViewModel,
     C: GenericListCellViewable,
     L: LoadingView,
     E: GenericListErrorView
-    >: UIViewController, GenericListable
+    >: UIViewController, UICollectionViewDataSource
 {
     ///
     /// Configuration properties
@@ -47,7 +40,7 @@ class GenericListViewController<
     var viewModel: M
     
     // Items
-    var itemList = [M.Model]()
+    var itemList = [M.ItemModel]()
     
     // Item offset
     var itemListOffset: Int = 0
@@ -61,6 +54,11 @@ class GenericListViewController<
     var collectionView: UICollectionView?
     var loadingView: L
     var errorView: E
+    
+    // Reuse Id
+    private var reuseId: String {
+        return NSStringFromClass(C.self)
+    }
     
     ///
     /// Initializer
@@ -78,8 +76,8 @@ class GenericListViewController<
         
         let cellSize = CGSize(width: view.frame.width, height: C.itemSize.height)
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: cellSize)
-        collectionView?.register(C.self, forCellWithReuseIdentifier: NSStringFromClass(C.self))
-//        collectionView?.dataSource = self
+        collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
+        collectionView?.dataSource = self
 //        collectionView?.delegate = self
     }
     
@@ -90,11 +88,11 @@ class GenericListViewController<
     ///
     /// Fetch items methods
     ///
-    func fetchItems() {
+    func fetchItems(offset: Int = 0) {
         guard !isFetchingItems && !itemListEnded else { return }
         
-        loadingView.show(on: view)
-        itemListOffset = 0
+        showLoading()
+        itemListOffset = offset
         isFetchingItems = true
         
         viewModel.getItems(itemListOffset, itemsPerPage) { items in
@@ -116,12 +114,12 @@ class GenericListViewController<
             self.itemListEnded = items.count == 0
             self.isFetchingItems = false
             self.collectionView?.reloadData()
-            self.loadingView.hide()
+            self.hideLoading()
         }
     }
     
     func fetchMoreItems() {
-        fetchItems()
+        fetchItems(offset: itemListOffset)
     }
     
     ///
@@ -129,6 +127,11 @@ class GenericListViewController<
     ///
     func showLoading() {
         guard shouldShowLoading else { return }
+        loadingView.show(on: view)
+    }
+    
+    func hideLoading() {
+        loadingView.hide()
     }
     
     ///
@@ -138,11 +141,27 @@ class GenericListViewController<
         //
     }
     
+    // MARK: - UICollectionViewDatasource
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return itemList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: C = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! C
+        
+        if indexPath.item < itemList.count {
+            cell.configure(with: itemList[indexPath.item])
+        }
+        return cell
+    }
+    
     // MARK: - UIScrollViewDelegate
     
-    ///
-    /// Scrolling event
-    ///
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isPaginated else { return }
         

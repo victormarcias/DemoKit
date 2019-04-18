@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericListCollectionViewCell<T: UIView>: UICollectionViewCell {
+class GenericCollectionViewCell<T: UIView>: UICollectionViewCell {
     
     private var _view: UIView?
     
@@ -49,12 +49,7 @@ class GenericListCollectionViewCell<T: UIView>: UICollectionViewCell {
             contentView.addSubview(view)
             
             let insets = type(of: self).insets
-            let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: insets.top)
-            let left = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1, constant: insets.left)
-            let bottom = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: -insets.bottom)
-            let right = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1, constant: -insets.right)
-            
-            contentView.addConstraints([top, left, bottom, right])
+            view.snapEdgesToSuperview(insets: insets)
         }
     }
     
