@@ -1,5 +1,5 @@
 //
-//  GenericView.swift
+//  BaseView.swift
 //  GenericKit
 //
 //  Created by Victor Marcias on 2019-04-18.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class GenericView: UIView {
+public class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("Instance from IB not supported.")
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("Initialization through IB is not supported.")
     }
     
     func setup() {

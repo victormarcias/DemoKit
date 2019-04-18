@@ -1,5 +1,5 @@
 //
-//  GenericListModel.swift
+//  GenericListViewable.swift
 //  GenericKit
 //
 //  Created by Victor Marcias on 2019-04-17.
@@ -9,16 +9,16 @@
 import Foundation
 
 ///
-/// The model for each Item
+/// The Model for each Item
 ///
 public protocol GenericListItemModel {
     var identifier: String { get }
 }
 
 ///
-/// The List complete model
+/// The whole view's ViewModel
 ///
-public protocol GenericListViewModel {
+public protocol GenericListViewable {
     associatedtype ItemModel: GenericListItemModel
     typealias Result = (_ result: [ItemModel]?) -> Void
     

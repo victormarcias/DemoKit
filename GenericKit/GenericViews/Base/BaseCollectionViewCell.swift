@@ -1,5 +1,5 @@
 //
-//  GenericListCollectionViewCell.swift
+//  BaseCollectionViewCell.swift
 //  GenericKit
 //
 //  Created by Victor Marcias on 2019-04-17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericCollectionViewCell<T: UIView>: UICollectionViewCell {
+public class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
     
     private var _view: UIView?
     
@@ -53,7 +53,7 @@ class GenericCollectionViewCell<T: UIView>: UICollectionViewCell {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

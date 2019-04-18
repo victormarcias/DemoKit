@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CenteredLoadingView: GenericView, LoadingView {
+public class CenteredLoadingView: BaseView, LoadingView {
     
     private let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
@@ -20,18 +20,18 @@ class CenteredLoadingView: GenericView, LoadingView {
         addSubview(loadingIndicator)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         loadingIndicator.center = CGPoint(x: bounds.width/2, y: bounds.height/2)
         loadingIndicator.layer.cornerRadius = 15
     }
     
-    func hide() {
+    public func hide() {
         loadingIndicator.stopAnimating()
         removeFromSuperview()
     }
     
-    func show(on parent: UIView) {
+    public func show(on parent: UIView) {
         frame = parent.bounds
         parent.addSubview(self)
         loadingIndicator.center = CGPoint(x: bounds.width/2, y: bounds.height/2)

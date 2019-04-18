@@ -8,12 +8,12 @@
 
 import UIKit
 
-class GenericListViewController<
-    M: GenericListViewModel,
+public class GenericListViewController<
+    M: GenericListViewable,
     C: GenericListCellViewable,
     L: LoadingView,
-    E: GenericListErrorView
-    >: UIViewController, UICollectionViewDataSource
+    E: ErrorView
+    >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
 {
     ///
     /// Configuration properties
@@ -65,23 +65,28 @@ class GenericListViewController<
     ///
     init() {
         viewModel = M.init()
-        loadingView = L.init()
-        errorView = E.init()
+        loadingView = L()
+        errorView = E()
         
         super.init(nibName: nil, bundle: nil)
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         let cellSize = CGSize(width: view.frame.width, height: C.itemSize.height)
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: cellSize)
         collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
         collectionView?.dataSource = self
-//        collectionView?.delegate = self
+        collectionView?.delegate = self
+        view.addSubview(collectionView!)
+        
+        collectionView?.snapEdgesToSuperview()
+        loadingView.snapEdgesToSuperview()
+        errorView.snapEdgesToSuperview()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("Initialization through IB is not supported.")
     }
     
@@ -137,21 +142,21 @@ class GenericListViewController<
     ///
     /// Error
     ///
-    func showError(_ type: GenericListErrorType) {
+    func showError(_ type: ErrorType) {
         //
     }
     
     // MARK: - UICollectionViewDatasource
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    private func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: C = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! C
         
         if indexPath.item < itemList.count {
@@ -160,9 +165,15 @@ class GenericListViewController<
         return cell
     }
     
+    // MARK: - UICollectionViewDelegate
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // override
+    }
+    
     // MARK: - UIScrollViewDelegate
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isPaginated else { return }
         
         let offsetY = scrollView.contentOffset.y

@@ -9,7 +9,6 @@
 import UIKit
 
 public protocol LoadingView where Self: UIView {
-    init()
     func show(on parent: UIView)
     func hide()
 }
