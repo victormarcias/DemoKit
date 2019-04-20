@@ -7,39 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041ACCE9226B162A002D434A /* CenteredLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCD8226B162A002D434A /* CenteredLoadingView.swift */; };
+		041ACCEA226B162A002D434A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCD9226B162A002D434A /* LoadingView.swift */; };
+		041ACCEB226B162A002D434A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCDB226B162A002D434A /* ErrorView.swift */; };
+		041ACCEC226B162A002D434A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCDD226B162A002D434A /* BaseCollectionViewCell.swift */; };
+		041ACCED226B162A002D434A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCDE226B162A002D434A /* BaseView.swift */; };
+		041ACCEE226B162A002D434A /* GenericListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE0226B162A002D434A /* GenericListCollectionView.swift */; };
+		041ACCEF226B162A002D434A /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE1226B162A002D434A /* GenericListViewController.swift */; };
+		041ACCF0226B162A002D434A /* GenericListViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE2226B162A002D434A /* GenericListViewable.swift */; };
+		041ACCF1226B162A002D434A /* GenericListCellViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE3226B162A002D434A /* GenericListCellViewable.swift */; };
+		041ACCF2226B162A002D434A /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE5226B162A002D434A /* UIView+Constraints.swift */; };
+		041ACCF3226B162A002D434A /* EndpointResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE7226B162A002D434A /* EndpointResponse.swift */; };
+		041ACCF4226B162A002D434A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041ACCE8226B162A002D434A /* Endpoint.swift */; };
 		6DAF9FA22267269D006BAD6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FA12267269D006BAD6F /* AppDelegate.swift */; };
 		6DAF9FA42267269D006BAD6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FA32267269D006BAD6F /* ViewController.swift */; };
 		6DAF9FA9226726A0006BAD6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF9FA8226726A0006BAD6F /* Assets.xcassets */; };
 		6DAF9FAC226726A0006BAD6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAF9FAA226726A0006BAD6F /* LaunchScreen.storyboard */; };
-		6DAF9FD3226739FD006BAD6F /* GenericListCellViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD2226739FD006BAD6F /* GenericListCellViewable.swift */; };
-		6DAF9FD522673A75006BAD6F /* GenericListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */; };
-		6DAF9FD722673AC5006BAD6F /* GenericListViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD622673AC5006BAD6F /* GenericListViewable.swift */; };
-		6DAF9FD922673AD2006BAD6F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FD822673AD2006BAD6F /* LoadingView.swift */; };
-		6DAF9FE222676EB6006BAD6F /* GenericListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */; };
-		6DAF9FE7226865F7006BAD6F /* CenteredLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FE6226865F7006BAD6F /* CenteredLoadingView.swift */; };
-		6DAF9FEC22686C86006BAD6F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FEB22686C86006BAD6F /* BaseView.swift */; };
-		6DAF9FF122686E5B006BAD6F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */; };
-		6DAFA02E2268C3DD006BAD6F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFA02D2268C3DD006BAD6F /* ErrorView.swift */; };
-		6DAFA0312268C535006BAD6F /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFA0302268C535006BAD6F /* BaseCollectionViewCell.swift */; };
+		FFA32FC1A4B3FC67484FF9B8 /* libPods-GenericKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDF144B32C779B65B5CD86E /* libPods-GenericKitDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041ACCD8226B162A002D434A /* CenteredLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredLoadingView.swift; sourceTree = "<group>"; };
+		041ACCD9226B162A002D434A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		041ACCDB226B162A002D434A /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		041ACCDD226B162A002D434A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		041ACCDE226B162A002D434A /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		041ACCE0226B162A002D434A /* GenericListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericListCollectionView.swift; sourceTree = "<group>"; };
+		041ACCE1226B162A002D434A /* GenericListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
+		041ACCE2226B162A002D434A /* GenericListViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericListViewable.swift; sourceTree = "<group>"; };
+		041ACCE3226B162A002D434A /* GenericListCellViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericListCellViewable.swift; sourceTree = "<group>"; };
+		041ACCE5226B162A002D434A /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		041ACCE7226B162A002D434A /* EndpointResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointResponse.swift; sourceTree = "<group>"; };
+		041ACCE8226B162A002D434A /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		5DDF144B32C779B65B5CD86E /* libPods-GenericKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GenericKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6821AE9968F38D6FD4E2DAB3 /* Pods-GenericKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.debug.xcconfig"; path = "../GenericKit/Pods/Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6DAF9F9E2267269D006BAD6F /* GenericKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAF9FA12267269D006BAD6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DAF9FA32267269D006BAD6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6DAF9FA8226726A0006BAD6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DAF9FAB226726A0006BAD6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DAF9FAD226726A0006BAD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DAF9FD2226739FD006BAD6F /* GenericListCellViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListCellViewable.swift; sourceTree = "<group>"; };
-		6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewController.swift; sourceTree = "<group>"; };
-		6DAF9FD622673AC5006BAD6F /* GenericListViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewable.swift; sourceTree = "<group>"; };
-		6DAF9FD822673AD2006BAD6F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListCollectionView.swift; sourceTree = "<group>"; };
-		6DAF9FE6226865F7006BAD6F /* CenteredLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredLoadingView.swift; sourceTree = "<group>"; };
-		6DAF9FEB22686C86006BAD6F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		6DAFA02D2268C3DD006BAD6F /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		6DAFA0302268C535006BAD6F /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E1C1DF79CB4BE7A3B3B680D1 /* Pods-GenericKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.release.xcconfig"; path = "../GenericKit/Pods/Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +55,105 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA32FC1A4B3FC67484FF9B8 /* libPods-GenericKitDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041ACCD5226B162A002D434A /* GenericKit */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCE6226B162A002D434A /* API */,
+				041ACCE4226B162A002D434A /* Extensions */,
+				041ACCDF226B162A002D434A /* GenericListView */,
+				041ACCD6226B162A002D434A /* GenericViews */,
+			);
+			path = GenericKit;
+			sourceTree = "<group>";
+		};
+		041ACCD6226B162A002D434A /* GenericViews */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCDC226B162A002D434A /* Base */,
+				041ACCDA226B162A002D434A /* ErrorView */,
+				041ACCD7226B162A002D434A /* Loading */,
+			);
+			path = GenericViews;
+			sourceTree = "<group>";
+		};
+		041ACCD7226B162A002D434A /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCD8226B162A002D434A /* CenteredLoadingView.swift */,
+				041ACCD9226B162A002D434A /* LoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		041ACCDA226B162A002D434A /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCDB226B162A002D434A /* ErrorView.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		041ACCDC226B162A002D434A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCDD226B162A002D434A /* BaseCollectionViewCell.swift */,
+				041ACCDE226B162A002D434A /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		041ACCDF226B162A002D434A /* GenericListView */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCE3226B162A002D434A /* GenericListCellViewable.swift */,
+				041ACCE0226B162A002D434A /* GenericListCollectionView.swift */,
+				041ACCE2226B162A002D434A /* GenericListViewable.swift */,
+				041ACCE1226B162A002D434A /* GenericListViewController.swift */,
+			);
+			path = GenericListView;
+			sourceTree = "<group>";
+		};
+		041ACCE4226B162A002D434A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCE5226B162A002D434A /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		041ACCE6226B162A002D434A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				041ACCE8226B162A002D434A /* Endpoint.swift */,
+				041ACCE7226B162A002D434A /* EndpointResponse.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		09F33A63D1DA8D6C14E4D544 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6821AE9968F38D6FD4E2DAB3 /* Pods-GenericKitDemo.debug.xcconfig */,
+				E1C1DF79CB4BE7A3B3B680D1 /* Pods-GenericKitDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		6DAF9F952267269D006BAD6F = {
 			isa = PBXGroup;
 			children = (
-				6DAF9FD022672BA6006BAD6F /* GenericKit */,
+				74C61FB22C093471461A7DC7 /* Frameworks */,
+				041ACCD5226B162A002D434A /* GenericKit */,
 				6DAF9FCF2267278E006BAD6F /* GenericKitDemo */,
+				09F33A63D1DA8D6C14E4D544 /* Pods */,
 				6DAF9F9F2267269D006BAD6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,70 +178,12 @@
 			path = GenericKitDemo;
 			sourceTree = "<group>";
 		};
-		6DAF9FD022672BA6006BAD6F /* GenericKit */ = {
+		74C61FB22C093471461A7DC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6DAF9FEF22686E45006BAD6F /* Extensions */,
-				6DAF9FD122673951006BAD6F /* GenericListView */,
-				6DAF9FE5226865E5006BAD6F /* GenericViews */,
+				5DDF144B32C779B65B5CD86E /* libPods-GenericKitDemo.a */,
 			);
-			name = GenericKit;
-			path = ../GenericKit;
-			sourceTree = "<group>";
-		};
-		6DAF9FD122673951006BAD6F /* GenericListView */ = {
-			isa = PBXGroup;
-			children = (
-				6DAF9FD2226739FD006BAD6F /* GenericListCellViewable.swift */,
-				6DAF9FE122676EB6006BAD6F /* GenericListCollectionView.swift */,
-				6DAF9FD622673AC5006BAD6F /* GenericListViewable.swift */,
-				6DAF9FD422673A75006BAD6F /* GenericListViewController.swift */,
-			);
-			path = GenericListView;
-			sourceTree = "<group>";
-		};
-		6DAF9FE5226865E5006BAD6F /* GenericViews */ = {
-			isa = PBXGroup;
-			children = (
-				6DAF9FEA22686C70006BAD6F /* Base */,
-				6DAFA02F2268C3F1006BAD6F /* ErrorView */,
-				6DAF9FE8226868FB006BAD6F /* Loading */,
-			);
-			path = GenericViews;
-			sourceTree = "<group>";
-		};
-		6DAF9FE8226868FB006BAD6F /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				6DAF9FE6226865F7006BAD6F /* CenteredLoadingView.swift */,
-				6DAF9FD822673AD2006BAD6F /* LoadingView.swift */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		6DAF9FEA22686C70006BAD6F /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				6DAFA0302268C535006BAD6F /* BaseCollectionViewCell.swift */,
-				6DAF9FEB22686C86006BAD6F /* BaseView.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		6DAF9FEF22686E45006BAD6F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6DAF9FF022686E5B006BAD6F /* UIView+Constraints.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		6DAFA02F2268C3F1006BAD6F /* ErrorView */ = {
-			isa = PBXGroup;
-			children = (
-				6DAFA02D2268C3DD006BAD6F /* ErrorView.swift */,
-			);
-			path = ErrorView;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DAF9FC6226726A0006BAD6F /* Build configuration list for PBXNativeTarget "GenericKitDemo" */;
 			buildPhases = (
+				067AC45EF7E6FAD6330E7CC5 /* [CP] Check Pods Manifest.lock */,
 				6DAF9F9A2267269D006BAD6F /* Sources */,
 				6DAF9F9B2267269D006BAD6F /* Frameworks */,
 				6DAF9F9C2267269D006BAD6F /* Resources */,
@@ -213,23 +252,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		067AC45EF7E6FAD6330E7CC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GenericKitDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6DAF9F9A2267269D006BAD6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DAFA02E2268C3DD006BAD6F /* ErrorView.swift in Sources */,
-				6DAF9FD3226739FD006BAD6F /* GenericListCellViewable.swift in Sources */,
-				6DAF9FD922673AD2006BAD6F /* LoadingView.swift in Sources */,
-				6DAF9FF122686E5B006BAD6F /* UIView+Constraints.swift in Sources */,
-				6DAF9FE7226865F7006BAD6F /* CenteredLoadingView.swift in Sources */,
+				041ACCF4226B162A002D434A /* Endpoint.swift in Sources */,
+				041ACCEB226B162A002D434A /* ErrorView.swift in Sources */,
+				041ACCF3226B162A002D434A /* EndpointResponse.swift in Sources */,
 				6DAF9FA42267269D006BAD6F /* ViewController.swift in Sources */,
-				6DAFA0312268C535006BAD6F /* BaseCollectionViewCell.swift in Sources */,
-				6DAF9FE222676EB6006BAD6F /* GenericListCollectionView.swift in Sources */,
-				6DAF9FEC22686C86006BAD6F /* BaseView.swift in Sources */,
-				6DAF9FD722673AC5006BAD6F /* GenericListViewable.swift in Sources */,
-				6DAF9FD522673A75006BAD6F /* GenericListViewController.swift in Sources */,
+				041ACCEE226B162A002D434A /* GenericListCollectionView.swift in Sources */,
+				041ACCF2226B162A002D434A /* UIView+Constraints.swift in Sources */,
+				041ACCEA226B162A002D434A /* LoadingView.swift in Sources */,
 				6DAF9FA22267269D006BAD6F /* AppDelegate.swift in Sources */,
+				041ACCF1226B162A002D434A /* GenericListCellViewable.swift in Sources */,
+				041ACCED226B162A002D434A /* BaseView.swift in Sources */,
+				041ACCF0226B162A002D434A /* GenericListViewable.swift in Sources */,
+				041ACCEF226B162A002D434A /* GenericListViewController.swift in Sources */,
+				041ACCE9226B162A002D434A /* CenteredLoadingView.swift in Sources */,
+				041ACCEC226B162A002D434A /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +431,7 @@
 		};
 		6DAF9FC7226726A0006BAD6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6821AE9968F38D6FD4E2DAB3 /* Pods-GenericKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -383,6 +450,7 @@
 		};
 		6DAF9FC8226726A0006BAD6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1C1DF79CB4BE7A3B3B680D1 /* Pods-GenericKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
