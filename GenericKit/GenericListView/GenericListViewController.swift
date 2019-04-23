@@ -9,8 +9,8 @@
 import UIKit
 
 public class GenericListViewController<
-    M: GenericListViewable,
-    C: GenericListCellViewable,
+    C: GenericListCellView,
+    D: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
     >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
@@ -37,10 +37,10 @@ public class GenericListViewController<
     ///
     /// ViewModel
     ///
-    var viewModel: M
+    var viewModel: D
     
     // Items
-    var itemList = [M.ItemModel]()
+    var itemList = [D.Model]()
     
     // Item offset
     var itemListOffset: Int = 0
@@ -64,11 +64,16 @@ public class GenericListViewController<
     /// Initializer
     ///
     init() {
-        viewModel = M.init()
+        viewModel = D.init()
         loadingView = L()
         errorView = E()
         
         super.init(nibName: nil, bundle: nil)
+        configure()
+    }
+    
+    func configure() {
+        // override
     }
     
     override open func viewDidLoad() {
@@ -84,6 +89,8 @@ public class GenericListViewController<
         collectionView?.snapEdgesToSuperview()
         loadingView.snapEdgesToSuperview()
         errorView.snapEdgesToSuperview()
+        
+        fetchItems()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -108,7 +115,7 @@ public class GenericListViewController<
             }
             
             // check there's items in the result and the list
-            guard items.count > 0 && self.itemList.count > 0 else {
+            guard items.count > 0 || self.itemList.count > 0 else {
                 self.showError(.empty)
                 return
             }
@@ -159,8 +166,8 @@ public class GenericListViewController<
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: C = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! C
         
-        if indexPath.item < itemList.count {
-            cell.configure(with: itemList[indexPath.item])
+        if indexPath.item < itemList.count, let item = itemList[indexPath.item] as? C.Model {
+            cell.configure(with: item)
         }
         return cell
     }
@@ -173,7 +180,7 @@ public class GenericListViewController<
     
     // MARK: - UIScrollViewDelegate
     
-    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isPaginated else { return }
         
         let offsetY = scrollView.contentOffset.y

@@ -6,21 +6,20 @@
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-///
-/// The Model for each Item
-///
-public protocol GenericListItemModel {
-    //
+public protocol GenericListCellView where Self: UICollectionViewCell {
+    associatedtype Model
+    
+    static var itemSize: CGSize { get }
+    
+    func configure(with model: Model)
 }
 
-///
-/// The whole view's ViewModel
-///
-public protocol GenericListViewable {
-    associatedtype ItemModel: GenericListItemModel
-    typealias Result = (_ result: [ItemModel]?) -> Void
+public protocol GenericListViewModel {
+    associatedtype Model
+    
+    typealias Result = (_ result: [Model]?) -> Void
     
     init()
     func getItems(_ offset: Int, _ count: Int, completion: @escaping Result)
