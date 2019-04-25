@@ -65,9 +65,16 @@ extension UIView {
                 .constraint(.bottom, offset: -insets.bottom)
                 .constraint(.right, offset: -insets.right)
         }
+        
+        func edges(inset: Double) {
+            let value = CGFloat(inset)
+            edges(insets: UIEdgeInsets(top: value, left: value, bottom: value, right: value))
+        }
     }
     
     public var snap: Snap {
+        // if using AutoLayout constraints, disable autoresizing masks
+        self.translatesAutoresizingMaskIntoConstraints = false
         return Snap(self)
     }
 }

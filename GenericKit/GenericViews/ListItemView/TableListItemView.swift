@@ -15,7 +15,6 @@ public class TableListItemView: BaseView {
     
     override func setup() {
         [imageView, titleLabel, textLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
         

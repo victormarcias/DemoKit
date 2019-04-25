@@ -13,6 +13,6 @@ public enum ErrorType: Error {
 }
 
 public protocol ErrorView where Self: UIView {
-    func show(_ type: ErrorType)
+    func show(_ type: ErrorType, on parent: UIView)
     func hide()
 }

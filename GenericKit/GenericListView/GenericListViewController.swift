@@ -105,6 +105,9 @@ public class GenericListViewController<
         isFetchingItems = true
         
         viewModel.getItems(itemListOffset, itemsPerPage) { items in
+            // loading off
+            self.hideLoading()
+            
             // check returned object is valid
             guard let items = items else {
                 self.showError(.unknown)
@@ -123,7 +126,6 @@ public class GenericListViewController<
             self.itemListEnded = items.count == 0
             self.isFetchingItems = false
             self.collectionView?.reloadData()
-            self.hideLoading()
         }
     }
     
@@ -138,7 +140,6 @@ public class GenericListViewController<
         guard shouldShowLoading else { return }
         
         loadingView.show(on: view)
-        loadingView.snap.edges()
     }
     
     func hideLoading() {
@@ -149,9 +150,11 @@ public class GenericListViewController<
     /// Error
     ///
     func showError(_ type: ErrorType) {
-        view.addSubview(errorView)
-        errorView.snap.edges()
-        errorView.show(type)
+        errorView.show(type, on: view)
+    }
+    
+    func hideError() {
+        errorView.hide()
     }
     
     // MARK: - UICollectionViewDatasource

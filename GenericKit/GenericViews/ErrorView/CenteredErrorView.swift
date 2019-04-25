@@ -14,21 +14,24 @@ public class CenteredErrorview: BaseView, ErrorView {
     
     override func setup() {
         addSubview(errorLabel)
-        errorLabel.snap.edges()
-        isHidden = true
+        errorLabel.numberOfLines = 0
+        errorLabel.textAlignment = .center
+        errorLabel.snap.edges(inset: 15)
     }
     
     public func hide() {
-        isHidden = true
+        removeFromSuperview()
     }
     
-    public func show(_ type: ErrorType) {
+    public func show(_ type: ErrorType, on parent: UIView) {
         switch type {
         case .empty:
             errorLabel.text = NSLocalizedString("No elements to show.", comment: "")
         case .unknown:
             errorLabel.text = NSLocalizedString("Oops, something went wrong.", comment: "")
         }
-        isHidden = false
+        
+        frame = parent.bounds
+        parent.addSubview(self)
     }
 }

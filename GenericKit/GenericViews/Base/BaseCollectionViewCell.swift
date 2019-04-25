@@ -45,7 +45,6 @@ public class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
         _view = T()
         
         if let view = _view {
-            view.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(view)
             
             let insets = type(of: self).insets
