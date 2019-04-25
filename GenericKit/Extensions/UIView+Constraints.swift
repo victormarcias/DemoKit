@@ -32,7 +32,12 @@ extension UIView {
                         multiplier: CGFloat = 1.0,
                         priority: UILayoutPriority = .required) -> UIView.Snap {
             
-            let secondView = secondView ?? self.view.superview
+            guard let superView = self.view.superview else {
+                fatalError("\(self.view) is not in the view hierarchy.")
+            }
+            
+            // assumed to anchor to superview by default if no second view is specified
+            let secondView = secondView ?? superView
             let constraint = NSLayoutConstraint(item: self.view,
                                                 attribute: attribute,
                                                 relatedBy: relation,
@@ -41,7 +46,9 @@ extension UIView {
                                                 multiplier: multiplier,
                                                 constant: offset)
             constraint.priority = priority
-            self.view.superview?.addConstraint(constraint)
+            superView.addConstraint(constraint)
+            
+            // return itself to concatenate constraints
             return self
         }
         
@@ -49,7 +56,9 @@ extension UIView {
         /// Snaps view to its superview's edges
         ///
         func edges(insets: UIEdgeInsets = .zero) {
-            guard let _ = self.view.superview else { return }
+            guard let _ = self.view.superview else {
+                fatalError("\(self.view) is not in the view hierarchy.")
+            }
             
             constraint(.top, offset: insets.top)
                 .constraint(.left, offset: insets.left)

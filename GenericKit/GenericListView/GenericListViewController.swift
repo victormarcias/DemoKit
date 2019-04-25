@@ -85,10 +85,7 @@ public class GenericListViewController<
         collectionView?.dataSource = self
         collectionView?.delegate = self
         view.addSubview(collectionView!)
-        
         collectionView?.snap.edges()
-        loadingView.snap.edges()
-        errorView.snap.edges()
         
         fetchItems()
     }
@@ -139,7 +136,9 @@ public class GenericListViewController<
     ///
     func showLoading() {
         guard shouldShowLoading else { return }
+        
         loadingView.show(on: view)
+        loadingView.snap.edges()
     }
     
     func hideLoading() {
@@ -150,7 +149,9 @@ public class GenericListViewController<
     /// Error
     ///
     func showError(_ type: ErrorType) {
-        //
+        view.addSubview(errorView)
+        errorView.snap.edges()
+        errorView.show(type)
     }
     
     // MARK: - UICollectionViewDatasource
@@ -175,6 +176,12 @@ public class GenericListViewController<
     // MARK: - UICollectionViewDelegate
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item < itemList.count, let item = itemList[indexPath.item] as? C.Model {
+            didSelect(item: item, at: indexPath)
+        }
+    }
+    
+    public func didSelect(item: C.Model, at indexPath: IndexPath) {
         // override
     }
     

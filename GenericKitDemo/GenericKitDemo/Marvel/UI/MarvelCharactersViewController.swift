@@ -15,6 +15,7 @@ class MarvelCharactersViewController: GenericListViewController<
     CenteredErrorview>
 {
     override func configure() {
+        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
         isPaginated = true
     }
 }
