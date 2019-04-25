@@ -27,18 +27,19 @@ extension UIView {
         func constraint(_ attribute: NSLayoutConstraint.Attribute,
                         to: NSLayoutConstraint.Attribute? = nil,
                         of secondView: UIView? = nil,
-                        constant: CGFloat = 0.0,
+                        relation: NSLayoutConstraint.Relation = .equal,
+                        offset: CGFloat = 0.0,
                         multiplier: CGFloat = 1.0,
                         priority: UILayoutPriority = .required) -> UIView.Snap {
             
             let secondView = secondView ?? self.view.superview
             let constraint = NSLayoutConstraint(item: self.view,
                                                 attribute: attribute,
-                                                relatedBy: .equal,
+                                                relatedBy: relation,
                                                 toItem: secondView,
                                                 attribute: to ?? attribute,
                                                 multiplier: multiplier,
-                                                constant: constant)
+                                                constant: offset)
             constraint.priority = priority
             self.view.superview?.addConstraint(constraint)
             return self
@@ -50,10 +51,10 @@ extension UIView {
         func edges(insets: UIEdgeInsets = .zero) {
             guard let _ = self.view.superview else { return }
             
-            constraint(.top, constant: insets.top)
-                .constraint(.left, constant: insets.left)
-                .constraint(.bottom, constant: -insets.bottom)
-                .constraint(.right, constant: -insets.right)
+            constraint(.top, offset: insets.top)
+                .constraint(.left, offset: insets.left)
+                .constraint(.bottom, offset: -insets.bottom)
+                .constraint(.right, offset: -insets.right)
         }
     }
     

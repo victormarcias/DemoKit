@@ -27,19 +27,19 @@ public class TableListItemView: BaseView {
         let spacing = CGFloat(10.0)
         let margin = CGFloat(4.0)
         
-        imageView.snap.constraint(.top, constant: margin)
-            .constraint(.left, constant: spacing)
-            .constraint(.bottom, constant: -margin)
-            .constraint(.width, to: .height, of: imageView, constant: -margin * 2)
+        imageView.snap.constraint(.top, offset: margin)
+            .constraint(.left, offset: spacing)
+            .constraint(.bottom, offset: -margin)
+            .constraint(.width, to: .height, of: imageView, offset: -margin * 2)
         
-        titleLabel.snap.constraint(.top, constant: margin)
-            .constraint(.left, to: .right, of: imageView, constant: spacing)
+        titleLabel.snap.constraint(.top, offset: margin)
+            .constraint(.left, to: .right, of: imageView, offset: spacing)
             .constraint(.bottom, to: .centerY)
-            .constraint(.right, constant: -spacing)
+            .constraint(.right, offset: -spacing)
         
         textLabel.snap.constraint(.top, to: .centerY)
             .constraint(.left, to: .left, of: titleLabel)
             .constraint(.right, to: .right, of: titleLabel)
-            .constraint(.bottom, constant: -margin)
+            .constraint(.bottom, offset: -margin)
     }
 }
