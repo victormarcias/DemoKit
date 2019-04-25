@@ -14,7 +14,7 @@ public class CenteredErrorview: BaseView, ErrorView {
     
     override func setup() {
         addSubview(errorLabel)
-        errorLabel.snapEdgesToSuperview()
+        errorLabel.snap.edges()
         isHidden = true
     }
     

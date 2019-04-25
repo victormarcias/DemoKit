@@ -12,7 +12,7 @@ class MarvelCharacterListViewCell: BaseCollectionViewCell<TableListItemView>, Ge
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
-        return CGSize(width: 320, height: 80)
+        return CGSize(width: 320, height: 100)
     }
     
     func configure(with model: Model) {
@@ -28,6 +28,8 @@ class MarvelCharacterListViewCell: BaseCollectionViewCell<TableListItemView>, Ge
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         view?.imageView.image = nil
         view?.titleLabel.text = nil
         view?.textLabel.text = nil

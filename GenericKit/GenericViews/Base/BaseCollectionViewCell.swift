@@ -49,7 +49,7 @@ public class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
             contentView.addSubview(view)
             
             let insets = type(of: self).insets
-            view.snapEdgesToSuperview(insets: insets)
+            view.snap.edges(insets: insets)
         }
     }
     

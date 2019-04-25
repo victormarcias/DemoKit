@@ -8,16 +8,56 @@
 
 import UIKit
 
+///
+/// Extension that mimics SnapKit to a minimal extent
+///
 extension UIView {
     
-    func snapEdgesToSuperview(insets: UIEdgeInsets = .zero) {
-        guard let superView = superview else { return }
+    public struct Snap {
+        private var view: UIView
         
-        let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1, constant: insets.top)
-        let left = NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: superView, attribute: .left, multiplier: 1, constant: insets.left)
-        let bottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superView, attribute: .bottom, multiplier: 1, constant: -insets.bottom)
-        let right = NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: superView, attribute: .right, multiplier: 1, constant: -insets.right)
+        init(_ view: UIView) {
+            self.view = view
+        }
         
-        superView.addConstraints([top, left, bottom, right])
+        ///
+        /// Main constraint snapping method
+        ///
+        @discardableResult
+        func constraint(_ attribute: NSLayoutConstraint.Attribute,
+                        to: NSLayoutConstraint.Attribute? = nil,
+                        of secondView: UIView? = nil,
+                        constant: CGFloat = 0.0,
+                        multiplier: CGFloat = 1.0,
+                        priority: UILayoutPriority = .required) -> UIView.Snap {
+            
+            let secondView = secondView ?? self.view.superview
+            let constraint = NSLayoutConstraint(item: self.view,
+                                                attribute: attribute,
+                                                relatedBy: .equal,
+                                                toItem: secondView,
+                                                attribute: to ?? attribute,
+                                                multiplier: multiplier,
+                                                constant: constant)
+            constraint.priority = priority
+            self.view.superview?.addConstraint(constraint)
+            return self
+        }
+        
+        ///
+        /// Snaps view to its superview's edges
+        ///
+        func edges(insets: UIEdgeInsets = .zero) {
+            guard let _ = self.view.superview else { return }
+            
+            constraint(.top, constant: insets.top)
+                .constraint(.left, constant: insets.left)
+                .constraint(.bottom, constant: -insets.bottom)
+                .constraint(.right, constant: -insets.right)
+        }
+    }
+    
+    public var snap: Snap {
+        return Snap(self)
     }
 }

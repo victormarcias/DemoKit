@@ -86,9 +86,9 @@ public class GenericListViewController<
         collectionView?.delegate = self
         view.addSubview(collectionView!)
         
-        collectionView?.snapEdgesToSuperview()
-        loadingView.snapEdgesToSuperview()
-        errorView.snapEdgesToSuperview()
+        collectionView?.snap.edges()
+        loadingView.snap.edges()
+        errorView.snap.edges()
         
         fetchItems()
     }
