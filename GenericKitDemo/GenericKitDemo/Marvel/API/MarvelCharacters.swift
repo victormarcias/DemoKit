@@ -64,7 +64,7 @@ class MarvelCharactersViewModel: GenericListViewModel {
         MarvelAPI.characters.getData(parameters: ["offset": offset], success: { response in
             completion(response.items)
         }, failure: { _ in
-            //
+            completion(nil)
         })
     }
 }
