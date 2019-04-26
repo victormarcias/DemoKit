@@ -16,12 +16,8 @@ class MarvelCharacterListViewCell: BaseCollectionViewCell<TableListItemView>, Ge
     }
     
     func configure(with model: Model) {
-        if let image = model.imageUrl, let url = URL(string: image) {
-            do {
-                self.view?.imageView.image = UIImage(data: try Data(contentsOf: url))
-            } catch {
-                //
-            }
+        if let url = model.thumbnail?.imageUrl {
+            view?.imageView.loadFrom(url: url)
         }
         view?.titleLabel.text = model.name
         view?.textLabel.text = model.description

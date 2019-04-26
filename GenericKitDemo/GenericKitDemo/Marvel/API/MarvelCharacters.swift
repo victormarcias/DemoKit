@@ -15,28 +15,35 @@ class MarvelCharacter: Mappable {
     private(set) var id: String?
     private(set) var name: String?
     private(set) var description: String?
-    private var imagePath: String?
-    private var imageExtention: String?
+    private(set) var thumbnail: Thumbnail?
     
-    var imageUrl: String? {
-        if let path = imagePath, let extention = imageExtention {
-            return "\(path).\(extention)"
+    class Thumbnail: Mappable {
+        private var imagePath: String?
+        private var imageExtention: String?
+        
+        var imageUrl: String? {
+            if let path = imagePath, let extention = imageExtention {
+                return "\(path).\(extention)"
+            }
+            return nil
         }
-        return nil
+        
+        required init?(map: Map) {
+            imagePath <- map["path"]
+            imageExtention <- map["extension"]
+        }
+        
+        func mapping(map: Map) {}
     }
     
     required init?(map: Map) {
         id <- map["id"]
         name <- map["name"]
         description <- map["description"]
-        
-        imagePath <- map["thumbnail"]["path"]
-        imageExtention <- map["thumbnail"]["extension"]
+        thumbnail <- map["thumbnail"]
     }
     
-    func mapping(map: Map) {
-        //
-    }
+    func mapping(map: Map) {}
 }
 
 // MARK: - Response
