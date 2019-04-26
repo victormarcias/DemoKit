@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6DCA727A226F06C800B9424F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA7279226F06C800B9424F /* AppDelegate.swift */; };
-		6DCA727C226F06C800B9424F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA727B226F06C800B9424F /* ViewController.swift */; };
 		6DCA7281226F06C900B9424F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA7280226F06C900B9424F /* Assets.xcassets */; };
 		6DCA7284226F06C900B9424F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA7282226F06C900B9424F /* LaunchScreen.storyboard */; };
 		6DCA72A2226F07A600B9424F /* CenteredLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA728E226F07A600B9424F /* CenteredLoadingView.swift */; };
@@ -29,6 +28,9 @@
 		6DCA72BE226F32B800B9424F /* TableListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72BD226F32B800B9424F /* TableListItemView.swift */; };
 		6DCA72C0226F395900B9424F /* MarvelCharacterListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72BF226F395900B9424F /* MarvelCharacterListViewCell.swift */; };
 		6DCA72C2226F519B00B9424F /* MarvelCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72C1226F519B00B9424F /* MarvelCharactersViewController.swift */; };
+		6DCA72C52272F09D00B9424F /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72C42272F09D00B9424F /* SimpleTableViewController.swift */; };
+		6DCA72C82272F46D00B9424F /* DemoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72C72272F46D00B9424F /* DemoSelectionViewController.swift */; };
+		6DCA72CA2272F48700B9424F /* MarvelDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */; };
 		737818F55E0533393E971F1C /* libPods-GenericKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70534F2AD88DB585DF51F876 /* libPods-GenericKitDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +38,6 @@
 		1086E4C41A401AA42AA22821 /* Pods-GenericKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.release.xcconfig"; path = "Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6DCA7276226F06C800B9424F /* GenericKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DCA7279226F06C800B9424F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6DCA727B226F06C800B9424F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6DCA7280226F06C900B9424F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DCA7283226F06C900B9424F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DCA7285226F06C900B9424F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +59,9 @@
 		6DCA72BD226F32B800B9424F /* TableListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListItemView.swift; sourceTree = "<group>"; };
 		6DCA72BF226F395900B9424F /* MarvelCharacterListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharacterListViewCell.swift; sourceTree = "<group>"; };
 		6DCA72C1226F519B00B9424F /* MarvelCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersViewController.swift; sourceTree = "<group>"; };
+		6DCA72C42272F09D00B9424F /* SimpleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
+		6DCA72C72272F46D00B9424F /* DemoSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionViewController.swift; sourceTree = "<group>"; };
+		6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDemoViewController.swift; sourceTree = "<group>"; };
 		70534F2AD88DB585DF51F876 /* libPods-GenericKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GenericKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76C3F2F377A4B6F00E28538 /* Pods-GenericKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,12 +117,10 @@
 		6DCA7278226F06C800B9424F /* GenericKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				6DCA72AF226F0A8C00B9424F /* Marvel */,
 				6DCA7279226F06C800B9424F /* AppDelegate.swift */,
-				6DCA7280226F06C900B9424F /* Assets.xcassets */,
-				6DCA7285226F06C900B9424F /* Info.plist */,
-				6DCA7282226F06C900B9424F /* LaunchScreen.storyboard */,
-				6DCA727B226F06C800B9424F /* ViewController.swift */,
+				6DCA72C62272F45200B9424F /* Main */,
+				6DCA72AF226F0A8C00B9424F /* Marvel */,
+				6DCA72CB2272F60E00B9424F /* Resources */,
 			);
 			path = GenericKitDemo;
 			sourceTree = "<group>";
@@ -130,6 +132,7 @@
 				6DCA729D226F07A600B9424F /* Extensions */,
 				6DCA7295226F07A600B9424F /* GenericListView */,
 				6DCA728C226F07A600B9424F /* GenericViews */,
+				6DCA72C32272F09D00B9424F /* TableListView */,
 			);
 			name = GenericKit;
 			path = ../GenericKit;
@@ -236,6 +239,33 @@
 			path = ListItemView;
 			sourceTree = "<group>";
 		};
+		6DCA72C32272F09D00B9424F /* TableListView */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA72C42272F09D00B9424F /* SimpleTableViewController.swift */,
+			);
+			path = TableListView;
+			sourceTree = "<group>";
+		};
+		6DCA72C62272F45200B9424F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA72C72272F46D00B9424F /* DemoSelectionViewController.swift */,
+				6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6DCA72CB2272F60E00B9424F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA7280226F06C900B9424F /* Assets.xcassets */,
+				6DCA7285226F06C900B9424F /* Info.plist */,
+				6DCA7282226F06C900B9424F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,13 +364,15 @@
 			files = (
 				6DCA72B2226F0AE200B9424F /* MarvelAPI.swift in Sources */,
 				6DCA72AD226F07A600B9424F /* Endpoint.swift in Sources */,
+				6DCA72C82272F46D00B9424F /* DemoSelectionViewController.swift in Sources */,
 				6DCA72A4226F07A600B9424F /* ErrorView.swift in Sources */,
 				6DCA72AC226F07A600B9424F /* EndpointResponse.swift in Sources */,
 				6DCA72B5226F0BBB00B9424F /* MarvelCharacters.swift in Sources */,
 				6DCA72C2226F519B00B9424F /* MarvelCharactersViewController.swift in Sources */,
 				6DCA72BE226F32B800B9424F /* TableListItemView.swift in Sources */,
 				6DCA72B7226F0C4200B9424F /* String+md5.swift in Sources */,
-				6DCA727C226F06C800B9424F /* ViewController.swift in Sources */,
+				6DCA72CA2272F48700B9424F /* MarvelDemoViewController.swift in Sources */,
+				6DCA72C52272F09D00B9424F /* SimpleTableViewController.swift in Sources */,
 				6DCA72BA226F2F0D00B9424F /* CenteredErrorView.swift in Sources */,
 				6DCA72A7226F07A600B9424F /* GenericListCollectionView.swift in Sources */,
 				6DCA72AB226F07A600B9424F /* UIView+Constraints.swift in Sources */,
@@ -492,7 +524,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = GenericKitDemo/Info.plist;
+				INFOPLIST_FILE = GenericKitDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -513,7 +545,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = GenericKitDemo/Info.plist;
+				INFOPLIST_FILE = GenericKitDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
