@@ -17,14 +17,14 @@ Pod::Spec.new do |spec|
 
   spec.name         = "GenericKit"
   spec.version      = "0.0.1"
-  spec.summary      = "Generic oriented tools for iOS."
+  spec.summary      = "Generic oriented classes for iOS."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "A compilation of helpers for iOS frameworks written in Swift."
+  spec.description  = "Generic classes to build Code Tests / Demos faster."
 
   spec.homepage     = "http://github.com/victormarcias/GenericKit"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
