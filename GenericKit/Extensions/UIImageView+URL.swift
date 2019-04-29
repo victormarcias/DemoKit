@@ -52,6 +52,9 @@ extension UIImageView {
         }.resume()
     }
     
+    ///
+    /// Sets the UIImage with fade animation
+    ///
     func setImage(_ image: UIImage, animated: Bool = true) {
         self.alpha = animated ? 0.0 : 1.0
         
