@@ -18,13 +18,17 @@ public class TableListItemView: BaseView {
             addSubview($0)
         }
         
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 4
+        
         titleLabel.numberOfLines = 0
         textLabel.numberOfLines = 0
         textLabel.font = UIFont.systemFont(ofSize: 12)
         textLabel.textColor = .darkGray
         
         let spacing = CGFloat(10.0)
-        let margin = CGFloat(4.0)
+        let margin = CGFloat(5.0)
         
         imageView.snap.constraint(.top, offset: margin)
             .constraint(.left, offset: spacing)

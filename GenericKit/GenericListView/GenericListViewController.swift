@@ -55,6 +55,10 @@ public class GenericListViewController<
     var loadingView: L
     var errorView: E
     
+    var collectionViewLayout: UICollectionViewFlowLayout? {
+        return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+    }
+    
     // Reuse Id
     private var reuseId: String {
         return NSStringFromClass(C.self)
