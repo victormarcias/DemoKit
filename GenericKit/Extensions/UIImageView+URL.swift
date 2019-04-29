@@ -55,7 +55,7 @@ extension UIImageView {
     func setImage(_ image: UIImage, animated: Bool = true) {
         self.alpha = animated ? 0.0 : 1.0
         
-        UIView.animate(withDuration: animated ? 0.5 : 0.0) {
+        UIView.animate(withDuration: animated ? 0.7 : 0.0) {
             self.image = image
             self.alpha = 1.0
         }

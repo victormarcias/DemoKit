@@ -10,7 +10,7 @@ import UIKit
 
 public class TableItemView: BaseView {
     
-    let imageView = UIImageView()
+    let imageView = ImageView()
     let titleLabel = UILabel()
     let textLabel = UILabel()
     
@@ -18,10 +18,6 @@ public class TableItemView: BaseView {
         [imageView, titleLabel, textLabel].forEach {
             addSubview($0)
         }
-        
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
         
         titleLabel.numberOfLines = 0
         textLabel.numberOfLines = 0

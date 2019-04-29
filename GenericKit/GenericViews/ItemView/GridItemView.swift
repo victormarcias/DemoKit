@@ -10,17 +10,13 @@ import UIKit
 
 public class GridItemView: BaseView {
     
-    let imageView = UIImageView()
+    let imageView = ImageView()
     let titleLabel = UILabel()
     
     override func setup() {
         [imageView, titleLabel].forEach {
             addSubview($0)
         }
-        
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
         
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 12)

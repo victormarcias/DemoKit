@@ -9,7 +9,7 @@
 import UIKit
 
 class MarvelCharactersListViewController: GenericListViewController<
-    MarvelCharacterListViewCell,
+    MarvelCharacterTableViewCell,
     MarvelCharactersViewModel,
     CenteredLoadingView,
     CenteredErrorView>

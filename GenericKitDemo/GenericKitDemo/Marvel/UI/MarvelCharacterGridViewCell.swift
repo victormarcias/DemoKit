@@ -20,14 +20,14 @@ class MarvelCharacterGridViewCell: BaseCollectionViewCell<GridItemView>, Generic
     }
     
     func configure(with model: MarvelCharacter) {
-        view?.imageView.loadFrom(url: model.thumbnail?.imageUrl ?? "")
+        view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        view?.imageView.image = nil
+        view?.imageView.image = UIImage(named: "no-image")
         view?.titleLabel.text = nil
     }
 }

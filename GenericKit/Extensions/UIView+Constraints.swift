@@ -55,15 +55,18 @@ extension UIView {
         ///
         /// Snaps view to its superview's edges
         ///
-        func edges(insets: UIEdgeInsets = .zero) {
-            guard let _ = self.view.superview else {
+        func edges(to secondView: UIView? = nil, insets: UIEdgeInsets = .zero) {
+            guard let superView = self.view.superview else {
                 fatalError("\(self.view) is not in the view hierarchy.")
             }
             
-            constraint(.top, offset: insets.top)
-                .constraint(.left, offset: insets.left)
-                .constraint(.bottom, offset: -insets.bottom)
-                .constraint(.right, offset: -insets.right)
+            // assumed to anchor to superview by default if no second view is specified
+            let secondView = secondView ?? superView
+            
+            constraint(.top, of: secondView, offset: insets.top)
+                .constraint(.left, of: secondView, offset: insets.left)
+                .constraint(.bottom, of: secondView, offset: -insets.bottom)
+                .constraint(.right, of: secondView, offset: -insets.right)
         }
         
         func edges(inset: Double) {

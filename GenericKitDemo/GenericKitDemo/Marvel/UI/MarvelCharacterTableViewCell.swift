@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MarvelCharacterListViewCell: BaseCollectionViewCell<TableItemView>, GenericListCellView {
+class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, GenericListCellView {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
@@ -16,7 +16,7 @@ class MarvelCharacterListViewCell: BaseCollectionViewCell<TableItemView>, Generi
     }
     
     func configure(with model: Model) {
-        view?.imageView.loadFrom(url: model.thumbnail?.imageUrl ?? "")
+        view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
         view?.textLabel.text = model.description
     }
