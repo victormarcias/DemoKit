@@ -63,6 +63,9 @@ public class GenericListViewController<
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
     
+    // Pull down refresh control
+    var refreshControl = UIRefreshControl()
+    
     // Reuse Id
     private var reuseId: String {
         return NSStringFromClass(C.self)
@@ -96,6 +99,9 @@ public class GenericListViewController<
         collectionView?.delegate = self
         view.addSubview(collectionView!)
         collectionView?.snap.edges()
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView?.addSubview(refreshControl)
         
         fetchItems()
     }
@@ -147,16 +153,22 @@ public class GenericListViewController<
         fetchItems(offset: itemListOffset)
     }
     
+    @objc func refresh() {
+        fetchItems()
+    }
+    
     ///
     /// Loading
     ///
     func showLoading() {
         guard shouldShowLoading else { return }
+        guard !refreshControl.isRefreshing else { return }
         
         loadingView.show(on: view)
     }
     
     func hideLoading() {
+        refreshControl.endRefreshing()
         loadingView.hide()
     }
     
