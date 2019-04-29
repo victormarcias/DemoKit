@@ -100,6 +100,10 @@ public class GenericListViewController<
         fetchItems()
     }
     
+    deinit {
+        UIImageView.ImageCache.clear()
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("Initialization through IB is not supported.")
     }

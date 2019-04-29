@@ -9,6 +9,7 @@
 import UIKit
 
 public class TableItemView: BaseView {
+    
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let textLabel = UILabel()

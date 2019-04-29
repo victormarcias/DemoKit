@@ -1,6 +1,6 @@
 //
 //  UIImageView+URL.swift
-//  GenericKitDemo
+//  GenericKit
 //
 //  Created by Victor Marcias on 2019-04-26.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
@@ -14,7 +14,7 @@ extension UIImageView {
     /// Cache
     ///
     struct ImageCache {
-        static private let cache = NSCache<AnyObject, AnyObject>()
+        static private var cache = NSCache<AnyObject, AnyObject>()
         
         static func image(forURL url: String) -> UIImage? {
             return cache.object(forKey: url as AnyObject) as? UIImage ?? nil
@@ -22,6 +22,10 @@ extension UIImageView {
         
         static func cacheImage(_ image: UIImage, forURL url: String) {
             cache.setObject(image, forKey: url as AnyObject)
+        }
+        
+        static func clear() {
+            cache.removeAllObjects()
         }
     }
     
