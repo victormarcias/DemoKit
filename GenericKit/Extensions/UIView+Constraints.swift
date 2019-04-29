@@ -78,6 +78,7 @@ extension UIView {
     public var snap: Snap {
         // if using AutoLayout constraints, disable autoresizing masks
         self.translatesAutoresizingMaskIntoConstraints = false
+        
         return Snap(self)
     }
 }

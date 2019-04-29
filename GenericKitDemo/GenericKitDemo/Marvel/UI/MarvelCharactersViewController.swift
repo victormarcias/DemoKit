@@ -17,6 +17,7 @@ class MarvelCharactersListViewController: GenericListViewController<
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
         isPaginated = true
+        itemsPerPage = 20
     }
 }
 
@@ -28,7 +29,8 @@ class MarvelCharactersGridViewController: GenericListViewController<
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
-        itemsPerRow = 3
         isPaginated = true
+        itemsPerRow = 3
+        itemsPerPage = 40
     }
 }

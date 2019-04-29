@@ -106,6 +106,11 @@ public class GenericListViewController<
         fetchItems()
     }
     
+    public override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        UIImageView.ImageCache.clear()
+    }
+    
     deinit {
         UIImageView.ImageCache.clear()
     }

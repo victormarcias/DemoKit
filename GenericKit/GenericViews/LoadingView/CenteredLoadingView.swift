@@ -14,7 +14,7 @@ public class CenteredLoadingView: BaseView, LoadingView {
     
     override func setup() {
         isUserInteractionEnabled = false
-        loadingIndicator.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.6)
+        loadingIndicator.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.70)
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = .whiteLarge
         addSubview(loadingIndicator)
