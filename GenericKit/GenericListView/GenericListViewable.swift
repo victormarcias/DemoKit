@@ -11,6 +11,7 @@ import UIKit
 public protocol GenericListCellView where Self: UICollectionViewCell {
     associatedtype Model
     
+    // if width or height is zero, will be adjusted dynamically
     static var itemSize: CGSize { get }
     
     func configure(with model: Model)

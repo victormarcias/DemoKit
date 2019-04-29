@@ -8,14 +8,27 @@
 
 import UIKit
 
-class MarvelCharactersViewController: GenericListViewController<
+class MarvelCharactersListViewController: GenericListViewController<
     MarvelCharacterListViewCell,
     MarvelCharactersViewModel,
     CenteredLoadingView,
-    CenteredErrorview>
+    CenteredErrorView>
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
+        isPaginated = true
+    }
+}
+
+class MarvelCharactersGridViewController: GenericListViewController<
+    MarvelCharacterGridViewCell,
+    MarvelCharactersViewModel,
+    CenteredLoadingView,
+    CenteredErrorView>
+{
+    override func configure() {
+        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
+        itemsPerRow = 3
         isPaginated = true
     }
 }

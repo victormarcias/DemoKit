@@ -25,6 +25,9 @@ public class GenericListViewController<
     // Items per page
     var itemsPerPage: Int = 0
     
+    // Items per row (2+ for Grid style)
+    var itemsPerRow: Int = 1
+    
     // Shows a loading view when fetching items
     var shouldShowLoading: Bool = true
     
@@ -55,6 +58,7 @@ public class GenericListViewController<
     var loadingView: L
     var errorView: E
     
+    // CollectionViewLayout getter
     var collectionViewLayout: UICollectionViewFlowLayout? {
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
@@ -83,8 +87,10 @@ public class GenericListViewController<
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let cellSize = CGSize(width: view.frame.width, height: C.itemSize.height)
-        collectionView = GenericListCollectionView(frame: view.frame, itemSize: cellSize)
+        let width = max(C.itemSize.width, view.frame.width / CGFloat(itemsPerRow))
+        let height = C.itemSize.height.isZero ? width : C.itemSize.height
+        let itemSize = CGSize(width: width, height: height)
+        collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
         collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
         collectionView?.dataSource = self
         collectionView?.delegate = self
