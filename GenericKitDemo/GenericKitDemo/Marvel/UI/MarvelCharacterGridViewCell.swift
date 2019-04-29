@@ -27,7 +27,7 @@ class MarvelCharacterGridViewCell: BaseCollectionViewCell<GridItemView>, Generic
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        view?.imageView.image = UIImage(named: "no-image")
+        view?.imageView.image = nil
         view?.titleLabel.text = nil
     }
 }
