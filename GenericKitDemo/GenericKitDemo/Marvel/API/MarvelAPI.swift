@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 // MARK: - Endpoint list
 
@@ -29,22 +28,16 @@ private struct MarvelParameters {
 
 class MarvelEndpoint<T: EndpointResponse>: Endpoint<T> {
     
-    override init(url: String, method: HTTPMethod = .get, headers: HTTPHeaders = [:]) {
-        super.init(url: url, method: method, headers: MarvelParameters.headers)
-    }
-    
-    override func getData(parameters: [String : Any]?,
-                          success: @escaping Endpoint<T>.EndpointResult,
-                          failure: @escaping Endpoint<T>.EndpointError) {
-        var params = parameters ?? [String: Any]()
+    override init(url: String,
+                  method: Method = .get,
+                  headers: Headers = [:],
+                  parameters: Parameters = [:]) {
+        
+        var params = Parameters()
         params["apikey"] = MarvelParameters.publicKey
         params["ts"] = MarvelParameters.ts
         params["hash"] = MarvelParameters.hash
         
-        super.getData(parameters: params,
-                      success: { result in
-                        success(T(data: result.data))
-                      },
-                      failure: failure)
+        super.init(url: url, method: method, headers: MarvelParameters.headers, parameters: params)
     }
 }
