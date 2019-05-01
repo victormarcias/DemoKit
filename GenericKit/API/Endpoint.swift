@@ -80,25 +80,25 @@ public class Endpoint<T: EndpointResponse> {
     ///
     /// Request method
     ///
-    func request(parameters: Parameters = [:],
+    func request(path: Path? = nil,
+                 parameters: Parameters = [:],
                  success: @escaping ResponseResult,
                  failure: @escaping ResponseError)
     {
-        // not the best interface for path but can't change the protocol now
-        let path = Path(parameters["path"] as? [Any])
-        let finalUrl = "\(self.url)\(path.stringValue ?? "")"
+        // add a path to the URL if any
+        let path = path ?? Path([])
         
         // add more parameters if any
         let allParams = baseParameters + parameters
         
-        // check the URL is valid
-        guard let _ = URL(string: finalUrl) else {
+        // create the request
+        let request = requestObject(with: url, path: path, parameters: allParams, headers: headers)
+        
+        // check the final URL is valid
+        guard let _ = URL(string: request.url?.absoluteString ?? "") else {
             failure(ErrorType.invalidUrl)
             return
         }
-        
-        // create the request
-        let request = requestObject(with: finalUrl, parameters: allParams, headers: headers)
         
         // perform the request
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -119,11 +119,18 @@ public class Endpoint<T: EndpointResponse> {
     ///
     /// URLRequest composition
     ///
-    func requestObject(with url: String, parameters: Parameters, headers: Headers) -> URLRequest {
+    func requestObject(with url: String,
+                       path: Path,
+                       parameters: Parameters,
+                       headers: Headers) -> URLRequest
+    {
         // parameters
         var components = URLComponents(string: url)!
         components.queryItems = parameters.map {
             URLQueryItem(name: $0.key, value: String(describing: $0.value))
+        }
+        if let path = path.stringValue {
+            components.path = path
         }
         
         // request
