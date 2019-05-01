@@ -77,8 +77,7 @@ class MarvelCharactersViewModel: GenericListViewModel {
     func getItems(_ offset: Int, _ count: Int, completion: @escaping ([MarvelCharacter]?) -> Void) {
         let params = ["offset": offset, "limit": count]
         
-        MarvelAPI.characters.request(path: Endpoint.Path([1011334]),
-            parameters: params, success: { response in
+        MarvelAPI.characters.request(parameters: params, success: { response in
             completion(response.items)
         }, failure: { _ in
             completion(nil)
