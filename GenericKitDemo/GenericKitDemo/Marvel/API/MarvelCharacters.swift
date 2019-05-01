@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import SwiftyJSON
 
 // MARK: - Item Model
 
@@ -49,13 +50,19 @@ class MarvelCharacter: Mappable {
 // MARK: - Response
 
 class MarvelCharactersResponse: EndpointResponse {
-    private(set) var items = [MarvelCharacter]()
+    typealias Model = MarvelCharacter
     
-    required init(data: ResponseData) {
-        super.init(data: data)
-        
-        if let root = data["data"]["results"].arrayObject as? [[String: Any]] {
-            items = Mapper<MarvelCharacter>().mapArray(JSONArray: root)
+    var items: [MarvelCharacter] = []
+    
+    required init(data: Data) {
+        do {
+            let result = try JSON(data: data)
+            
+            if let root = result["data"]["results"].arrayObject as? [[String: Any]] {
+                items = Mapper<MarvelCharacter>().mapArray(JSONArray: root)
+            }
+        } catch {
+            items = []
         }
     }
 }

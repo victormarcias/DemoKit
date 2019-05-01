@@ -10,16 +10,22 @@ import Foundation
 import Alamofire
 import Alamofire_SwiftyJSON
 
-enum EndpointErrorType: Error {
-    case unknown
-}
-
+///
+/// Endpoint base class
+///
 public class Endpoint<T: EndpointResponse> {
     
     typealias ResponseResult = ((T) -> Void)
     typealias ResponseError = ((Error) -> Void)
     typealias Headers = [String: String]
     typealias Parameters = [String: Any]
+    
+    ///
+    /// Error types
+    ///
+    enum ErrorType: Error {
+        case invalidUrl, unknown
+    }
     
     ///
     /// Method
@@ -63,6 +69,8 @@ public class Endpoint<T: EndpointResponse> {
          headers: Headers = [:],
          parameters: Parameters = [:])
     {
+        guard let _ = URL(string: url) else { fatalError("Invalid URL.") }
+        
         self.url = url
         self.method = method
         self.headers = headers
@@ -83,25 +91,56 @@ public class Endpoint<T: EndpointResponse> {
         // add more parameters if any
         let allParams = baseParameters + parameters
         
-        Alamofire.request(finalUrl, parameters: allParams, headers: headers).responseSwiftyJSON(completionHandler: { response in
-            
-            if let data = response.result.value {
-                success(T(data: data))
-                return
+        // check the URL is valid
+        guard let _ = URL(string: finalUrl) else {
+            failure(ErrorType.invalidUrl)
+            return
+        }
+        
+        // create the request
+        let request = requestObject(with: finalUrl, parameters: allParams, headers: headers)
+        
+        // perform the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let data = data {
+                    success(T(data: data))
+                    return
+                }
+                if let error = error {
+                    failure(error)
+                    return
+                }
+                failure(ErrorType.unknown)
             }
-            if let error = response.error {
-                failure(error)
-                return
-            }
-            
-            failure(EndpointErrorType.unknown)
-        })
+        }.resume()
+    }
+    
+    ///
+    /// URLRequest composition
+    ///
+    func requestObject(with url: String, parameters: Parameters, headers: Headers) -> URLRequest {
+        // parameters
+        var components = URLComponents(string: url)!
+        components.queryItems = parameters.map {
+            URLQueryItem(name: $0.key, value: String(describing: $0.value))
+        }
+        
+        // request
+        var request = URLRequest(url: components.url!)
+        
+        // headers
+        for header in headers {
+            request.setValue(header.value, forHTTPHeaderField: header.key)
+        }
+        
+        return request
     }
 }
 
 // MARK: - Parameters Merge Helper
 
-private extension Dictionary where Dictionary == Endpoint<EndpointResponse>.Parameters {
+public extension Dictionary where Key == String, Value == Any {
     
     static func + <K, V> (left: [K: V], right: [K: V]) -> [K: V] {
         var all = [K: V]()

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6D648B4F2276F1500098EBB9 /* MarvelCharacterGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D648B4E2276F1500098EBB9 /* MarvelCharacterGridViewCell.swift */; };
 		6D648B52227721930098EBB9 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D648B51227721930098EBB9 /* ImageView.swift */; };
-		6D648B54227992290098EBB9 /* GenericAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D648B53227992290098EBB9 /* GenericAPI.swift */; };
 		6DCA727A226F06C800B9424F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCA7279226F06C800B9424F /* AppDelegate.swift */; };
 		6DCA7281226F06C900B9424F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA7280226F06C900B9424F /* Assets.xcassets */; };
 		6DCA7284226F06C900B9424F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA7282226F06C900B9424F /* LaunchScreen.storyboard */; };
@@ -43,7 +42,6 @@
 		1086E4C41A401AA42AA22821 /* Pods-GenericKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.release.xcconfig"; path = "Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6D648B4E2276F1500098EBB9 /* MarvelCharacterGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharacterGridViewCell.swift; sourceTree = "<group>"; };
 		6D648B51227721930098EBB9 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		6D648B53227992290098EBB9 /* GenericAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPI.swift; sourceTree = "<group>"; };
 		6DCA7276226F06C800B9424F /* GenericKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DCA7279226F06C800B9424F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DCA7280226F06C900B9424F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 			children = (
 				6DCA72A1226F07A600B9424F /* Endpoint.swift */,
 				6DCA72A0226F07A600B9424F /* EndpointResponse.swift */,
-				6D648B53227992290098EBB9 /* GenericAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -402,7 +399,6 @@
 				6DCA72D12276EA3B00B9424F /* GridItemView.swift in Sources */,
 				6DCA72A7226F07A600B9424F /* GenericListCollectionView.swift in Sources */,
 				6DCA72AB226F07A600B9424F /* UIView+Constraints.swift in Sources */,
-				6D648B54227992290098EBB9 /* GenericAPI.swift in Sources */,
 				6D648B4F2276F1500098EBB9 /* MarvelCharacterGridViewCell.swift in Sources */,
 				6DCA72A3226F07A600B9424F /* LoadingView.swift in Sources */,
 				6DCA727A226F06C800B9424F /* AppDelegate.swift in Sources */,
