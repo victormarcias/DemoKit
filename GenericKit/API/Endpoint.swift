@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Alamofire
-import Alamofire_SwiftyJSON
 
 ///
 /// Endpoint base class
