@@ -97,7 +97,7 @@ public class Endpoint<T: EndpointResponse> {
         let allParams = baseParameters + parameters
         
         // create the request
-        let request = requestObject(with: finalUrl, parameters: allParams, headers: headers)
+        let request = requestObject(with: finalUrl, headers: headers, parameters: allParams)
         
         // perform the request
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -119,8 +119,8 @@ public class Endpoint<T: EndpointResponse> {
     /// URLRequest composition
     ///
     func requestObject(with url: String,
-                       parameters: Parameters,
-                       headers: Headers) -> URLRequest
+                       headers: Headers,
+                       parameters: Parameters) -> URLRequest
     {
         // parameters
         var components = URLComponents(string: url)!
