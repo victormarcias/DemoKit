@@ -4,9 +4,7 @@ platform :ios, '9.0'
 project 'GenericKitDemo.xcodeproj'
 
 def install_pods
-    pod 'Alamofire', '~> 4.8'
-    pod 'Alamofire-SwiftyJSON', '~> 3'
-    pod 'ObjectMapper', '~> 3.4'
+    pod 'SwiftyJSON', '4.0'
 end
 
 target 'GenericKitDemo' do
