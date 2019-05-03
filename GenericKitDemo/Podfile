@@ -5,7 +5,6 @@ project 'GenericKitDemo.xcodeproj'
 
 def install_pods
     pod 'SwiftyJSON', '4.0'
-    pod 'ObjectMapper', '~> 3.4'
 end
 
 target 'GenericKitDemo' do

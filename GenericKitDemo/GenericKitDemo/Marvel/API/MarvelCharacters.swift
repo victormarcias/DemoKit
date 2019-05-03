@@ -7,44 +7,27 @@
 //
 
 import Foundation
-import ObjectMapper
 import SwiftyJSON
 
 // MARK: - Item Model
 
-class MarvelCharacter: Mappable {
-    private(set) var id: Int?
-    private(set) var name: String?
-    private(set) var description: String?
-    private(set) var thumbnail: Thumbnail?
+struct MarvelCharacter: Decodable {
+    let id: Int
+    let name: String?
+    let description: String?
+    let thumbnail: Thumbnail?
     
-    class Thumbnail: Mappable {
-        private var imagePath: String?
-        private var imageExtention: String?
+    struct Thumbnail: Decodable {
+        let path: String?
+        let `extension`: String?
         
         var imageUrl: String? {
-            if let path = imagePath, let extention = imageExtention {
-                return "\(path).\(extention)"
+            if let img = path, let ext = `extension` {
+                return "\(img).\(ext)"
             }
             return nil
         }
-        
-        required init?(map: Map) {
-            imagePath <- map["path"]
-            imageExtention <- map["extension"]
-        }
-        
-        func mapping(map: Map) {}
     }
-    
-    required init?(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
-        description <- map["description"]
-        thumbnail <- map["thumbnail"]
-    }
-    
-    func mapping(map: Map) {}
 }
 
 // MARK: - Response
@@ -57,12 +40,11 @@ class MarvelCharactersResponse: EndpointResponse {
     required init(data: Data) {
         do {
             let result = try JSON(data: data)
-            
-            if let root = result["data"]["results"].arrayObject as? [[String: Any]] {
-                items = Mapper<MarvelCharacter>().mapArray(JSONArray: root)
+            if let list = result["data"]["results"].rawString() {
+                items = try JSONDecoder().decode([MarvelCharacter].self, from: list.data(using: .utf8)!)
             }
         } catch {
-            items = []
+            // Log error
         }
     }
 }
