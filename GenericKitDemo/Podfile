@@ -4,6 +4,7 @@ platform :ios, '9.0'
 project 'GenericKitDemo.xcodeproj'
 
 def install_pods
+    pod 'GenericKit', :path => '../GenericKit.podspec'
     pod 'SwiftyJSON', '4.0'
 end
 

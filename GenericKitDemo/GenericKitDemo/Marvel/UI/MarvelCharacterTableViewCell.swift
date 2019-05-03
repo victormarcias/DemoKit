@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GenericKit
 
 class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, GenericListCellView {
     typealias Model = MarvelCharacter

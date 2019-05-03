@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GenericKit
 
 // MARK: - Endpoint list
 

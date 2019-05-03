@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GenericKit
 
 class MarvelCharactersListViewController: GenericListViewController<
     MarvelCharacterTableViewCell,

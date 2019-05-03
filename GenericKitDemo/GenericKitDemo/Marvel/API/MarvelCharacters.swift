@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import GenericKit
 
 // MARK: - Item Model
 
