@@ -35,3 +35,16 @@ class MarvelCharactersGridViewController: GenericListViewController<
         itemsPerPage = 40
     }
 }
+
+class MarvelCharactersMockedViewController: GenericListViewController<
+    MarvelCharacterTableViewCell,
+    MarvelCharactersMockedViewModel,
+    CenteredLoadingView,
+    CenteredErrorView>
+{
+    override func configure() {
+        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
+        isPaginated = true
+        itemsPerPage = 20
+    }
+}

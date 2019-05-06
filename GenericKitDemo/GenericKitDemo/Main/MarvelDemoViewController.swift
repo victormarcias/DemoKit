@@ -20,14 +20,20 @@ class MarvelDemoViewController: SimpleTableViewController {
                 type: .disclosure,
                 title: "Character List (Table)",
                 subtitle: "/v1/public/characters",
-                action: { _ in self.navigateTo(MarvelCharactersListViewController())
-            }),
+                action: { _ in self.navigateTo(MarvelCharactersListViewController()) }
+            ),
             SimpleTableOption(
                 type: .disclosure,
                 title: "Character List (Grid)",
                 subtitle: "/v1/public/characters",
-                action: { _ in self.navigateTo(MarvelCharactersGridViewController())
-            })
+                action: { _ in self.navigateTo(MarvelCharactersGridViewController()) }
+            ),
+            SimpleTableOption(
+                type: .disclosure,
+                title: "Mocked List (Table)",
+                subtitle: "Resources/MarvelCharacters.json",
+                action: { _ in self.navigateTo(MarvelCharactersMockedViewController()) }
+            )
         ]]
     }
 }

@@ -67,3 +67,22 @@ class MarvelCharactersViewModel: GenericListViewModel {
         })
     }
 }
+
+// MARK: - Mocked View Model
+
+class MarvelCharactersMockedViewModel: GenericListViewModel {
+    typealias Model = MarvelCharacter
+    
+    required init() {}
+    
+    func getItems(_ offset: Int, _ count: Int, completion: @escaping ([MarvelCharacter]?) -> Void) {
+        // read file
+        MockResponse<MarvelCharacter>.readFile(
+            "MarvelCharacters",
+            type: .json,
+            offset: offset,
+            count: count,
+            completion: completion
+        )
+    }
+}

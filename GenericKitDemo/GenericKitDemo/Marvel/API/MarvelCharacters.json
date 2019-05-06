@@ -1,0 +1,497 @@
+[
+    {
+        "id": 1009368,
+        "name": "Iron Man",
+        "description": "Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.",
+        "modified": "2016-09-28T12:08:19-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+    },
+    {
+        "id": 1017320,
+        "name": "Iron Man (Iron Man 3 - The Official Game)",
+        "description": "",
+        "modified": "2013-09-18T11:05:44-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239c1408c936",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017320",
+    },
+    {
+        "id": 1017294,
+        "name": "Iron Man (LEGO Marvel Super Heroes)",
+        "description": "",
+        "modified": "2013-09-18T17:03:08-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/90/5239c3cc8a259",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017294",
+    },
+    {
+        "id": 1017310,
+        "name": "Iron Man (Marvel Heroes)",
+        "description": "",
+        "modified": "2013-09-18T10:53:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/40/5239be60a67da",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017310",
+    },
+    {
+        "id": 1017326,
+        "name": "Iron Man (Marvel War of Heroes)",
+        "description": "",
+        "modified": "2013-09-18T10:59:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/f0/5239bfbfeea88",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017326",
+    },
+    {
+        "id": 1010935,
+        "name": "Iron Man (Ultimate)",
+        "description": "",
+        "modified": "2014-03-05T13:37:05-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/1/90/53176e7785d95",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1010935",
+    },
+    {
+        "id": 1017104,
+        "name": "Iron Man/Tony Stark (MAA)",
+        "description": "Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his super high-tech Iron Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to choose from - but it's Tony's quick thinking and ability to adapt and improvise that make him an effective leader of the Avengers.        ",
+        "modified": "2013-09-18T15:49:18-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/2/d0/5232190d42df2",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017104",
+    },
+    {
+        "id": 1009610,
+        "name": "Spider-Man",
+        "description": "Bitten by a radioactive spider, high school student Peter Parker gained the speed, strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers to help people.",
+        "modified": "2019-02-06T18:06:19-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+    },
+    {
+        "id": 1011054,
+        "name": "Spider-Man (1602)",
+        "description": "",
+        "modified": "2014-03-05T13:47:38-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/e/03/5317713c9e746",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011054",
+    },
+    {
+        "id": 1014873,
+        "name": "Spider-Man (2099)",
+        "description": "",
+        "modified": "2013-08-15T14:16:16-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/8/c0/520d1ad3e543f",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1014873",
+    },
+    {
+        "id": 1016452,
+        "name": "Spider-Man (Ai Apaec)",
+        "description": "",
+        "modified": "2012-08-06T16:22:54-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/60/4fce7a4d900f4",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1016452",
+    },
+    {
+        "id": 1014858,
+        "name": "Spider-Man (Ben Reilly)",
+        "description": "",
+        "modified": "2014-03-05T13:48:42-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/5317717bed6fe",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1014858",
+    },
+    {
+        "id": 1012200,
+        "name": "Spider-Man (House of M)",
+        "description": "In the House of M universe, surrounded by his family, including his young son Richard and close friends, Peter Parker is the envy of the world and its most popular mutant; but lately, Peter has felt like something is wrong in his world.",
+        "modified": "2014-03-05T13:49:00-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/60/5317718f0a2e7",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1012200",
+    },
+    {
+        "id": 1017332,
+        "name": "Spider-Man (LEGO Marvel Super Heroes)",
+        "description": "",
+        "modified": "2013-09-18T11:21:05-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/5/03/5239c4d095611",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017332",
+    },
+    {
+        "id": 1011114,
+        "name": "Spider-Man (Marvel Zombies)",
+        "description": "Zombie Spider-Man ate his own wife and aunt, the only two people left in the world who truly loved him.",
+        "modified": "2014-03-05T13:53:01-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/00/531772716d0ac",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011114",
+    },
+    {
+        "id": 1017305,
+        "name": "Spider-Man (Marvel: Avengers Alliance)",
+        "description": "",
+        "modified": "2013-09-18T10:16:10-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017305",
+    },
+    {
+        "id": 1016181,
+        "name": "Spider-Man (Miles Morales)",
+        "description": "Teenager Miles Morales grew up in Brooklyn, New York. Recently, Miles took on the controversial and pressured role of Spider-Man shortly after the death of the original. Morales made his debut against The Kangaroo, much to the surprise and disapproval of many present at the confrontation.",
+        "modified": "2016-02-11T10:01:29-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/50/537bcfa1eed73",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1016181",
+    },
+    {
+        "id": 1012295,
+        "name": "Spider-Man (Noir)",
+        "description": "",
+        "modified": "2014-03-05T13:50:50-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/40/531771a14fcf6",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1012295",
+    },
+    {
+        "id": 1011377,
+        "name": "Spider-Man (Takuya Yamashiro)",
+        "description": "",
+        "modified": "2012-08-06T16:27:55-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/50/4be86ad8ada17",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011377",
+    },
+    {
+        "id": 1011010,
+        "name": "Spider-Man (Ultimate)",
+        "description": "Peter’s relatively normal life changed abruptly during a school trip to Osborn Industries, Inc, where the company had been working on a super soldier serum, the Oz Compound; a spider exposed to it escaped and bit Peter before it was destroyed.",
+        "modified": "2014-03-05T13:50:46-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/531771b4e8c60",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011010",
+    },
+    {
+        "id": 1009368,
+        "name": "Iron Man",
+        "description": "Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.",
+        "modified": "2016-09-28T12:08:19-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+    },
+    {
+        "id": 1017320,
+        "name": "Iron Man (Iron Man 3 - The Official Game)",
+        "description": "",
+        "modified": "2013-09-18T11:05:44-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239c1408c936",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017320",
+    },
+    {
+        "id": 1017294,
+        "name": "Iron Man (LEGO Marvel Super Heroes)",
+        "description": "",
+        "modified": "2013-09-18T17:03:08-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/90/5239c3cc8a259",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017294",
+    },
+    {
+        "id": 1017310,
+        "name": "Iron Man (Marvel Heroes)",
+        "description": "",
+        "modified": "2013-09-18T10:53:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/40/5239be60a67da",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017310",
+    },
+    {
+        "id": 1017326,
+        "name": "Iron Man (Marvel War of Heroes)",
+        "description": "",
+        "modified": "2013-09-18T10:59:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/f0/5239bfbfeea88",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017326",
+    },
+    {
+        "id": 1010935,
+        "name": "Iron Man (Ultimate)",
+        "description": "",
+        "modified": "2014-03-05T13:37:05-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/1/90/53176e7785d95",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1010935",
+    },
+    {
+        "id": 1017104,
+        "name": "Iron Man/Tony Stark (MAA)",
+        "description": "Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his super high-tech Iron Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to choose from - but it's Tony's quick thinking and ability to adapt and improvise that make him an effective leader of the Avengers.        ",
+        "modified": "2013-09-18T15:49:18-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/2/d0/5232190d42df2",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017104",
+    },
+    {
+        "id": 1009610,
+        "name": "Spider-Man",
+        "description": "Bitten by a radioactive spider, high school student Peter Parker gained the speed, strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers to help people.",
+        "modified": "2019-02-06T18:06:19-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+    },
+    {
+        "id": 1011054,
+        "name": "Spider-Man (1602)",
+        "description": "",
+        "modified": "2014-03-05T13:47:38-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/e/03/5317713c9e746",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011054",
+    },
+    {
+        "id": 1014873,
+        "name": "Spider-Man (2099)",
+        "description": "",
+        "modified": "2013-08-15T14:16:16-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/8/c0/520d1ad3e543f",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1014873",
+    },
+    {
+        "id": 1016452,
+        "name": "Spider-Man (Ai Apaec)",
+        "description": "",
+        "modified": "2012-08-06T16:22:54-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/60/4fce7a4d900f4",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1016452",
+    },
+    {
+        "id": 1014858,
+        "name": "Spider-Man (Ben Reilly)",
+        "description": "",
+        "modified": "2014-03-05T13:48:42-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/5317717bed6fe",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1014858",
+    },
+    {
+        "id": 1012200,
+        "name": "Spider-Man (House of M)",
+        "description": "In the House of M universe, surrounded by his family, including his young son Richard and close friends, Peter Parker is the envy of the world and its most popular mutant; but lately, Peter has felt like something is wrong in his world.",
+        "modified": "2014-03-05T13:49:00-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/60/5317718f0a2e7",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1012200",
+    },
+    {
+        "id": 1017332,
+        "name": "Spider-Man (LEGO Marvel Super Heroes)",
+        "description": "",
+        "modified": "2013-09-18T11:21:05-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/5/03/5239c4d095611",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017332",
+    },
+    {
+        "id": 1011114,
+        "name": "Spider-Man (Marvel Zombies)",
+        "description": "Zombie Spider-Man ate his own wife and aunt, the only two people left in the world who truly loved him.",
+        "modified": "2014-03-05T13:53:01-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/00/531772716d0ac",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011114",
+    },
+    {
+        "id": 1017305,
+        "name": "Spider-Man (Marvel: Avengers Alliance)",
+        "description": "",
+        "modified": "2013-09-18T10:16:10-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239b59f49020",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017305",
+    },
+    {
+        "id": 1016181,
+        "name": "Spider-Man (Miles Morales)",
+        "description": "Teenager Miles Morales grew up in Brooklyn, New York. Recently, Miles took on the controversial and pressured role of Spider-Man shortly after the death of the original. Morales made his debut against The Kangaroo, much to the surprise and disapproval of many present at the confrontation.",
+        "modified": "2016-02-11T10:01:29-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/50/537bcfa1eed73",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1016181",
+    },
+    {
+        "id": 1012295,
+        "name": "Spider-Man (Noir)",
+        "description": "",
+        "modified": "2014-03-05T13:50:50-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/40/531771a14fcf6",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1012295",
+    },
+    {
+        "id": 1011377,
+        "name": "Spider-Man (Takuya Yamashiro)",
+        "description": "",
+        "modified": "2012-08-06T16:27:55-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/50/4be86ad8ada17",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011377",
+    },
+    {
+        "id": 1011010,
+        "name": "Spider-Man (Ultimate)",
+        "description": "Peter’s relatively normal life changed abruptly during a school trip to Osborn Industries, Inc, where the company had been working on a super soldier serum, the Oz Compound; a spider exposed to it escaped and bit Peter before it was destroyed.",
+        "modified": "2014-03-05T13:50:46-0500",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/531771b4e8c60",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011010",
+    },
+    {
+        "id": 1009368,
+        "name": "Iron Man",
+        "description": "Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.",
+        "modified": "2016-09-28T12:08:19-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+    },
+    {
+        "id": 1017320,
+        "name": "Iron Man (Iron Man 3 - The Official Game)",
+        "description": "",
+        "modified": "2013-09-18T11:05:44-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/03/5239c1408c936",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017320",
+    },
+    {
+        "id": 1017294,
+        "name": "Iron Man (LEGO Marvel Super Heroes)",
+        "description": "",
+        "modified": "2013-09-18T17:03:08-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/90/5239c3cc8a259",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017294",
+    },
+    {
+        "id": 1017310,
+        "name": "Iron Man (Marvel Heroes)",
+        "description": "",
+        "modified": "2013-09-18T10:53:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/40/5239be60a67da",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017310",
+    },
+    {
+        "id": 1017326,
+        "name": "Iron Man (Marvel War of Heroes)",
+        "description": "Last item of the list. 👍🏼",
+        "modified": "2013-09-18T10:59:29-0400",
+        "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/f0/5239bfbfeea88",
+            "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017326",
+    }
+]
