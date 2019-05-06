@@ -15,21 +15,12 @@
 
 import UIKit
 
-// MARK: - Protocol
-
-protocol SimpleTable: class {
-    var sections: [String] { get }
-    var options: [[SimpleTableOption]] { get }
-}
-
-// MARK: - Main class
-
-public class SimpleTableViewController: UITableViewController, SimpleTable {
+open class SimpleTableViewController: UITableViewController {
     
-    var sections = [String]()
-    var options = [[SimpleTableOption]]()
+    public var sections = [String]()
+    public var options = [[SimpleTableOption]]()
     
-    convenience init() {
+    public convenience init() {
         self.init(style: .plain)
         
         // basic configuration
@@ -46,19 +37,19 @@ public class SimpleTableViewController: UITableViewController, SimpleTable {
         setup()
     }
     
-    func setup() {
+    open func setup() {
         // override: set sections/options here
     }
     
-    func isIndexPathValid(_ indexPath: IndexPath) -> Bool {
+    public func isIndexPathValid(_ indexPath: IndexPath) -> Bool {
         return options.count > indexPath.section && options[indexPath.section].count > indexPath.item
     }
     
-    func optionAtIndexPath(_ indexPath: IndexPath) -> SimpleTableOption {
+    public func optionAtIndexPath(_ indexPath: IndexPath) -> SimpleTableOption {
         return options[indexPath.section][indexPath.item]
     }
     
-    func navigateTo(_ viewController: UIViewController) {
+    public func navigateTo(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -67,19 +58,19 @@ public class SimpleTableViewController: UITableViewController, SimpleTable {
 
 extension SimpleTableViewController {
     
-    override public func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return options.count
     }
     
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options[section].count
     }
     
-    override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section < sections.count ? sections[section] : nil
     }
     
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard isIndexPathValid(indexPath),
             let cell = tableView.dequeueReusableCell(withIdentifier: SimpleTableViewCell.reuseId, for: indexPath) as? SimpleTableViewCell else {
             fatalError("Unable to dequeue cell with id \(SimpleTableViewCell.reuseId).")
@@ -96,7 +87,7 @@ extension SimpleTableViewController {
 
 extension SimpleTableViewController {
 
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard isIndexPathValid(indexPath) else { return }
@@ -131,9 +122,9 @@ extension SimpleTableViewController {
 
 // MARK: - Table Option
 
-class SimpleTableOption {
+public class SimpleTableOption {
     
-    enum OptionType: Int {
+    public enum OptionType: Int {
         case text           // informative text
         case disclosure     // continues to another ">"
         case selectable     // unselects the rest "✓"
@@ -143,15 +134,15 @@ class SimpleTableOption {
     var type: OptionType = .text
     var title: String? = ""
     var subtitle: String? = ""
-    var isOn: Bool = false
+    fileprivate(set) var isOn: Bool = false
     
-    typealias SimpleTableAction = (_ option: SimpleTableOption) -> Void
-    var action: SimpleTableAction? // either this or tableView.didSelectRowAt
+    public typealias SimpleTableAction = (_ option: SimpleTableOption) -> Void
+    public var action: SimpleTableAction? // either this or tableView.didSelectRowAt
     
-    convenience init(type: OptionType,
-                     title: String = "",
-                     subtitle: String = "",
-                     action: SimpleTableAction? = nil) {
+    public convenience init(type: OptionType,
+                            title: String = "",
+                            subtitle: String = "",
+                            action: SimpleTableAction? = nil) {
         self.init()
         self.type = type
         self.title = title
@@ -265,6 +256,6 @@ private class SimpleTableViewCell: UITableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("Initialization through IB is not supported.")
     }
 }

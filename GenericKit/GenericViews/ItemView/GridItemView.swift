@@ -10,10 +10,10 @@ import UIKit
 
 public class GridItemView: BaseView {
     
-    let imageView = ImageView()
-    let titleLabel = UILabel()
+    public let imageView = ImageView()
+    public let titleLabel = UILabel()
     
-    override func setup() {
+    override public func setup() {
         [imageView, titleLabel].forEach {
             addSubview($0)
         }

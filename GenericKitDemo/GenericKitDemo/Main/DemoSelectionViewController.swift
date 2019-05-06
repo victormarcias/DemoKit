@@ -15,7 +15,10 @@ class DemoSelectionViewController: SimpleTableViewController {
         navigationItem.title = "Generic Kit Demo"
         
         options = [[
-            SimpleTableOption(type: .disclosure, title: "Marvel API", subtitle: "", action: { _ in self.navigateTo(MarvelDemoViewController())})
+            SimpleTableOption(
+                type: .disclosure,
+                title: "Marvel API",
+                action: { _ in self.navigateTo(MarvelDemoViewController())})
         ]]
     }
 }

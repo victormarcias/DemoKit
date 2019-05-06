@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
+open class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
     
     private var _view: UIView?
     
-    var view: T? {
+    public var view: T? {
         return _view as? T
     }
     
-    class var insets: UIEdgeInsets {
+    open class var insets: UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     
     private var widthConstraint = NSLayoutConstraint()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -53,6 +53,6 @@ public class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("Initialization through IB is not supported.")
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GenericKit
 
 class MarvelDemoViewController: SimpleTableViewController {
     
@@ -15,9 +16,17 @@ class MarvelDemoViewController: SimpleTableViewController {
         tableView.rowHeight = 70
         
         options = [[
-            SimpleTableOption(type: .disclosure, title: "Character List (Table)", subtitle: "/v1/public/characters", action: { _ in self.navigateTo(MarvelCharactersListViewController())
+            SimpleTableOption(
+                type: .disclosure,
+                title: "Character List (Table)",
+                subtitle: "/v1/public/characters",
+                action: { _ in self.navigateTo(MarvelCharactersListViewController())
             }),
-            SimpleTableOption(type: .disclosure, title: "Character List (Grid)", subtitle: "/v1/public/characters", action: { _ in self.navigateTo(MarvelCharactersGridViewController())
+            SimpleTableOption(
+                type: .disclosure,
+                title: "Character List (Grid)",
+                subtitle: "/v1/public/characters",
+                action: { _ in self.navigateTo(MarvelCharactersGridViewController())
             })
         ]]
     }

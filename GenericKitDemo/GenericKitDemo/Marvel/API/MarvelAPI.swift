@@ -30,9 +30,9 @@ private struct MarvelParameters {
 class MarvelEndpoint<T: EndpointResponse>: Endpoint<T> {
     
     override init(url: String,
-                  method: Method = .get,
-                  headers: Headers = [:],
-                  parameters: Parameters = [:]) {
+                  method: Endpoint<T>.Method = .get,
+                  headers: Endpoint<T>.Headers = [:],
+                  parameters: Endpoint<T>.Parameters = [:]) {
         
         var params = Parameters()
         params["apikey"] = MarvelParameters.publicKey

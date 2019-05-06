@@ -12,7 +12,7 @@ public class CenteredErrorView: BaseView, ErrorView {
     
     private let errorLabel = UILabel()
     
-    override func setup() {
+    override public func setup() {
         addSubview(errorLabel)
         errorLabel.numberOfLines = 0
         errorLabel.textAlignment = .center

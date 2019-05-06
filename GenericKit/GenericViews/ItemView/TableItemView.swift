@@ -10,11 +10,11 @@ import UIKit
 
 public class TableItemView: BaseView {
     
-    let imageView = ImageView()
-    let titleLabel = UILabel()
-    let textLabel = UILabel()
+    public let imageView = ImageView()
+    public let titleLabel = UILabel()
+    public let textLabel = UILabel()
     
-    override func setup() {
+    override public func setup() {
         [imageView, titleLabel, textLabel].forEach {
             addSubview($0)
         }

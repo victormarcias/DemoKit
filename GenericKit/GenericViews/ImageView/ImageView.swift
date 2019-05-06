@@ -10,8 +10,8 @@ import UIKit
 
 public class ImageView: BaseView {
     
-    let placeholderImageView = UIImageView()
-    let imageView = UIImageView()
+    public let placeholderImageView = UIImageView()
+    public let imageView = UIImageView()
     
     var placeholderImage: UIImage? {
         didSet {
@@ -19,13 +19,13 @@ public class ImageView: BaseView {
         }
     }
     
-    var image: UIImage? {
+    public var image: UIImage? {
         didSet {
             imageView.image = image
         }
     }
     
-    var url: String? {
+    public var url: String? {
         didSet {
             if let urlString = url {
                 imageView.loadFrom(url: urlString)
@@ -33,7 +33,7 @@ public class ImageView: BaseView {
         }
     }
     
-    override func setup() {
+    override public func setup() {
         [placeholderImageView, imageView].forEach {
             addSubview($0)
         }

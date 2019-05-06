@@ -19,7 +19,7 @@ public class BaseView: UIView {
         fatalError("Initialization through IB is not supported.")
     }
     
-    func setup() {
+    public func setup() {
         // override
     }
 }

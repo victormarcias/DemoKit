@@ -11,31 +11,31 @@ import Foundation
 ///
 /// Endpoint base class
 ///
-public class Endpoint<T: EndpointResponse> {
+open class Endpoint<T: EndpointResponse> {
     
-    typealias ResponseResult = ((T) -> Void)
-    typealias ResponseError = ((Error) -> Void)
-    typealias Headers = [String: String]
-    typealias Parameters = [String: Any]
+    public typealias ResponseResult = ((T) -> Void)
+    public typealias ResponseError = ((Error) -> Void)
+    public typealias Headers = [String: String]
+    public typealias Parameters = [String: Any]
     
     ///
     /// Error types
     ///
-    enum ErrorType: Error {
+    public enum ErrorType: Error {
         case invalidUrl, unknown
     }
     
     ///
     /// Method
     ///
-    enum Method {
+    public enum Method {
         case get, post, put, delete
     }
     
     ///
     /// Path: dynamic urls (caller changes them)
     ///
-    class Path {
+    public class Path {
         private var values: [Any]
         
         init(_ values: [Any]?) {
@@ -62,10 +62,10 @@ public class Endpoint<T: EndpointResponse> {
     ///
     /// Initializer
     ///
-    init(url: String,
-         method: Method = .get,
-         headers: Headers = [:],
-         parameters: Parameters = [:])
+    public init(url: String,
+                method: Method = .get,
+                headers: Headers = [:],
+                parameters: Parameters = [:])
     {
         guard let _ = URL(string: url) else { fatalError("Invalid URL.") }
         
@@ -78,10 +78,10 @@ public class Endpoint<T: EndpointResponse> {
     ///
     /// Request method
     ///
-    func request(path: Path? = nil,
-                 parameters: Parameters = [:],
-                 success: @escaping ResponseResult,
-                 failure: @escaping ResponseError)
+    public func request(path: Path? = nil,
+                        parameters: Parameters = [:],
+                        success: @escaping ResponseResult,
+                        failure: @escaping ResponseError)
     {
         // add a path to the URL if any
         let path = path ?? Path([])
@@ -142,7 +142,7 @@ public class Endpoint<T: EndpointResponse> {
 
 // MARK: - Parameters Merge Helper
 
-public extension Dictionary where Key == String, Value == Any {
+extension Dictionary where Key == String, Value == Any {
     
     static func + <K, V> (left: [K: V], right: [K: V]) -> [K: V] {
         var all = [K: V]()

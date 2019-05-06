@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class GenericListViewController<
+open class GenericListViewController<
     C: GenericListCellView,
     D: GenericListViewModel,
     L: LoadingView,
@@ -20,22 +20,22 @@ public class GenericListViewController<
     ///
     
     // Loads more items at the bottom
-    var isPaginated: Bool = false
+    public var isPaginated: Bool = false
     
     // Items per page
-    var itemsPerPage: Int = 0
+    public var itemsPerPage: Int = 0
     
     // Items per row (2+ for Grid style)
-    var itemsPerRow: Int = 1
+    public var itemsPerRow: Int = 1
     
     // Shows a loading view when fetching items
-    var shouldShowLoading: Bool = true
+    public var shouldShowLoading: Bool = true
     
     // Is loading
     var isFetchingItems: Bool = false
     
     // Distance to bottom to fetch more items
-    var contentLoadOffset: CGFloat = 0
+    public var contentLoadOffset: CGFloat = 0
     
     ///
     /// ViewModel
@@ -59,7 +59,7 @@ public class GenericListViewController<
     var errorView: E
     
     // CollectionViewLayout getter
-    var collectionViewLayout: UICollectionViewFlowLayout? {
+    public var collectionViewLayout: UICollectionViewFlowLayout? {
         return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
     }
     
@@ -67,14 +67,14 @@ public class GenericListViewController<
     var refreshControl = UIRefreshControl()
     
     // Reuse Id
-    private var reuseId: String {
+    var reuseId: String {
         return NSStringFromClass(C.self)
     }
     
     ///
     /// Initializer
     ///
-    init() {
+    public init() {
         viewModel = D.init()
         loadingView = L()
         errorView = E()
@@ -83,7 +83,7 @@ public class GenericListViewController<
         configure()
     }
     
-    func configure() {
+    open func configure() {
         // override
     }
     
@@ -106,7 +106,7 @@ public class GenericListViewController<
         fetchItems()
     }
     
-    public override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         UIImageView.ImageCache.clear()
     }
@@ -165,14 +165,14 @@ public class GenericListViewController<
     ///
     /// Loading
     ///
-    func showLoading() {
+    open func showLoading() {
         guard shouldShowLoading else { return }
         guard !refreshControl.isRefreshing else { return }
         
         loadingView.show(on: view)
     }
     
-    func hideLoading() {
+    open func hideLoading() {
         refreshControl.endRefreshing()
         loadingView.hide()
     }
@@ -180,11 +180,11 @@ public class GenericListViewController<
     ///
     /// Error
     ///
-    func showError(_ type: ErrorType) {
+    open func showError(_ type: ErrorType) {
         errorView.show(type, on: view)
     }
     
-    func hideError() {
+    open func hideError() {
         errorView.hide()
     }
     
