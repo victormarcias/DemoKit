@@ -225,10 +225,13 @@ open class GenericListViewController<
         guard isPaginated else { return }
         
         let offsetY = scrollView.contentOffset.y
-        let contentHeight = max(contentLoadOffset, scrollView.contentSize.height)
+        let contentHeight = scrollView.contentSize.height
+        let scrollHeight = scrollView.frame.height
+        
+        guard contentHeight > 0 else { return }
         
         // retrieve more items when we scroll to the bottom
-        if offsetY > contentHeight - scrollView.frame.size.height {
+        if offsetY + contentLoadOffset > contentHeight - scrollHeight {
             fetchMoreItems()
         }
     }
