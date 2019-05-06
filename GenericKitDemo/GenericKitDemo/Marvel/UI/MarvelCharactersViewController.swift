@@ -9,6 +9,8 @@
 import UIKit
 import GenericKit
 
+// MARK: - List
+
 class MarvelCharactersListViewController: GenericListViewController<
     MarvelCharacterTableViewCell,
     MarvelCharactersViewModel,
@@ -21,6 +23,8 @@ class MarvelCharactersListViewController: GenericListViewController<
         itemsPerPage = 20
     }
 }
+
+// MARK: - Grid
 
 class MarvelCharactersGridViewController: GenericListViewController<
     MarvelCharacterGridViewCell,
@@ -35,6 +39,8 @@ class MarvelCharactersGridViewController: GenericListViewController<
         itemsPerPage = 40
     }
 }
+
+// MARK: - Mocked
 
 class MarvelCharactersMockedViewController: GenericListViewController<
     MarvelCharacterTableViewCell,

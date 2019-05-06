@@ -37,7 +37,7 @@
 		6DCA72BF226F395900B9424F /* MarvelCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharacterTableViewCell.swift; sourceTree = "<group>"; };
 		6DCA72C1226F519B00B9424F /* MarvelCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersViewController.swift; sourceTree = "<group>"; };
 		6DCA72C72272F46D00B9424F /* DemoSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionViewController.swift; sourceTree = "<group>"; };
-		6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDemoViewController.swift; sourceTree = "<group>"; };
+		6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MarvelDemoViewController.swift; path = ../../Main/MarvelDemoViewController.swift; sourceTree = "<group>"; };
 		7A90BBD9BB7AFCFD2FA346C5 /* Pods-GenericKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenericKitDemo.release.xcconfig"; path = "Target Support Files/Pods-GenericKitDemo/Pods-GenericKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		888C960C45370545556E48A4 /* libPods-GenericKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GenericKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +118,7 @@
 				6D648B4E2276F1500098EBB9 /* MarvelCharacterGridViewCell.swift */,
 				6DCA72C1226F519B00B9424F /* MarvelCharactersViewController.swift */,
 				6DCA72BF226F395900B9424F /* MarvelCharacterTableViewCell.swift */,
+				6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -126,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				6DCA72C72272F46D00B9424F /* DemoSelectionViewController.swift */,
-				6DCA72C92272F48700B9424F /* MarvelDemoViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
