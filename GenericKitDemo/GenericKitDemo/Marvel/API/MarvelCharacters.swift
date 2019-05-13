@@ -57,7 +57,11 @@ class MarvelCharactersViewModel: GenericListViewModel {
     
     required init() {}
     
-    func getItems(_ offset: Int, _ count: Int, completion: @escaping ([MarvelCharacter]?) -> Void) {
+    func getItems(from offset: Int,
+                  to count: Int,
+                  filter: String,
+                  completion: @escaping ([MarvelCharacter]?) -> Void)
+    {
         let params = ["offset": offset, "limit": count]
         
         MarvelAPI.characters.request(parameters: params, success: { response in
@@ -75,14 +79,36 @@ class MarvelCharactersMockedViewModel: GenericListViewModel {
     
     required init() {}
     
-    func getItems(_ offset: Int, _ count: Int, completion: @escaping ([MarvelCharacter]?) -> Void) {
-        // read file
-        MockResponse<MarvelCharacter>.readFile(
-            "MarvelCharacters",
-            type: .json,
-            offset: offset,
-            count: count,
-            completion: completion
-        )
+    func getItems(from offset: Int,
+                  to count: Int,
+                  filter: String,
+                  completion: @escaping ([MarvelCharacter]?) -> Void)
+    {
+        // Search filter
+        if !filter.isEmpty {
+            MockResponse<MarvelCharacter>.readFile(
+                "MarvelCharacters",
+                type: .json,
+                count: Int.max, // fetch all
+                completion: { result in
+                    let filtered = result?.filter {
+                        return $0.name?.lowercased().contains(filter.lowercased()) ?? false
+                    }
+                    
+                    // check out of bounds (no more items)
+                    let outOfBounds = offset >= filtered?.count ?? 0
+                    completion(!outOfBounds ? filtered : [])
+                }
+            )
+        } else {
+            // Paginated
+            MockResponse<MarvelCharacter>.readFile(
+                "MarvelCharacters",
+                type: .json,
+                offset: offset,
+                count: count,
+                completion: completion
+            )
+        }
     }
 }

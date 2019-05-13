@@ -13,7 +13,11 @@ open class GenericListViewController<
     D: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
-    >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating
+    >: UIViewController,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate,
+    UISearchResultsUpdating,
+    UISearchBarDelegate
 {
     ///
     /// Configuration properties
@@ -57,6 +61,9 @@ open class GenericListViewController<
     
     // Is loading
     var isFetchingItems: Bool = false
+    
+    // Search filter
+    var searchText: String = ""
     
     ///
     /// Views
@@ -146,12 +153,21 @@ open class GenericListViewController<
         
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
+        search.searchBar.delegate = self
+        definesPresentationContext = true
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = search
+            search.obscuresBackgroundDuringPresentation = false
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    func reset() {
+        itemList.removeAll()
+        itemListEnded = false
+        itemListOffset = 0
     }
     
     ///
@@ -169,16 +185,18 @@ open class GenericListViewController<
     ///
     /// Fetch items methods
     ///
-    func fetchItems(offset: Int = 0) {
+    func fetchItems(offset: Int = 0, filter: String = "") {
         guard !isFetchingItems && !itemListEnded else { return }
         
         showLoading()
         itemListOffset = offset
         isFetchingItems = true
         
-        viewModel.getItems(itemListOffset, configuration.itemsPerPage) { items in
-            // loading off
+        viewModel.getItems(from: itemListOffset, to: configuration.itemsPerPage, filter: filter) { items in
+            // remove overlay views
             self.hideLoading()
+            self.hideError()
+            self.isFetchingItems = false
             
             // check returned object is valid
             guard let items = items else {
@@ -196,16 +214,16 @@ open class GenericListViewController<
             self.itemList += items
             self.itemListOffset = self.itemList.count
             self.itemListEnded = items.count == 0
-            self.isFetchingItems = false
             self.collectionView?.reloadData()
         }
     }
     
     func fetchMoreItems() {
-        fetchItems(offset: itemListOffset)
+        fetchItems(offset: itemListOffset, filter: searchText)
     }
     
     @objc func refresh() {
+        reset()
         fetchItems()
     }
     
@@ -229,10 +247,12 @@ open class GenericListViewController<
     ///
     open func showError(_ type: ErrorType) {
         errorView.show(type, on: view)
+        collectionView?.isHidden = true
     }
     
     open func hideError() {
         errorView.hide()
+        collectionView?.isHidden = false
     }
     
     // MARK: - UICollectionViewDatasource
@@ -287,7 +307,19 @@ open class GenericListViewController<
     
     public func updateSearchResults(for searchController: UISearchController) {
         guard configuration.isSearchable else { return }
-
         
+        reset()
+        searchText = searchController.searchBar.text ?? ""
+        fetchItems(offset: 0, filter: searchText)
+    }
+    
+    // MARK: - UISearchBarDelegate
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        guard configuration.isSearchable else { return }
+        
+        reset()
+        searchText = ""
+        fetchItems(offset: 0, filter: searchText)
     }
 }

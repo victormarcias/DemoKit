@@ -39,7 +39,7 @@ public class MockResponse<T: Decodable> {
             case .json:
                 let items = try JSONDecoder().decode([T].self, from: fileText.data(using: .utf8)!)
                 
-                // check out of bounds
+                // check out of bounds (ie. last items)
                 let maxItem = min(offset + count, items.count)
                 
                 // return paginated subset or empty if we went beyond the max
