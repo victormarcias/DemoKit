@@ -13,29 +13,33 @@ open class GenericListViewController<
     D: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
-    >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
+    >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating
 {
     ///
     /// Configuration properties
     ///
+    public struct Configuration {
+        
+        // Loads more items at the bottom
+        public var isPaginated: Bool = false
+        
+        // Can filter/search items
+        public var isSearchable: Bool = false
+        
+        // Items per page
+        public var itemsPerPage: Int = 0
+        
+        // Items per row (2+ for Grid style)
+        public var itemsPerRow: Int = 1
+        
+        // Shows a loading view when fetching items
+        public var shouldShowLoading: Bool = true
+        
+        // Distance to bottom to fetch more items
+        public var contentLoadOffset: CGFloat = 0
+    }
     
-    // Loads more items at the bottom
-    public var isPaginated: Bool = false
-    
-    // Items per page
-    public var itemsPerPage: Int = 0
-    
-    // Items per row (2+ for Grid style)
-    public var itemsPerRow: Int = 1
-    
-    // Shows a loading view when fetching items
-    public var shouldShowLoading: Bool = true
-    
-    // Is loading
-    var isFetchingItems: Bool = false
-    
-    // Distance to bottom to fetch more items
-    public var contentLoadOffset: CGFloat = 0
+    public var configuration = Configuration()
     
     ///
     /// ViewModel
@@ -50,6 +54,9 @@ open class GenericListViewController<
     
     // Stop loading items after last fetch
     var itemListEnded: Bool = false
+    
+    // Is loading
+    var isFetchingItems: Bool = false
     
     ///
     /// Views
@@ -83,6 +90,10 @@ open class GenericListViewController<
         configure()
     }
     
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("Initialization through IB is not supported.")
+    }
+    
     open func configure() {
         // override
     }
@@ -90,22 +101,62 @@ open class GenericListViewController<
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let width = max(C.itemSize.width, view.frame.width / CGFloat(itemsPerRow))
-        let height = C.itemSize.height.isZero ? width : C.itemSize.height
+        setupCollectionView()
+        setupRefreshControl()
+        setupSearchFilter()
+        
+        fetchItems()
+    }
+    
+    ///
+    /// CollectionView
+    ///
+    func setupCollectionView() {
+        // calculate final sizes of the cells
+        let width = !C.itemSize.width.isZero ? C.itemSize.width : (view.frame.width / CGFloat(configuration.itemsPerRow))
+        let height = !C.itemSize.height.isZero ? C.itemSize.height : width
         let itemSize = CGSize(width: width, height: height)
+        
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
         collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
         collectionView?.dataSource = self
         collectionView?.delegate = self
         view.addSubview(collectionView!)
         collectionView?.snap.edges()
-        
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        collectionView?.addSubview(refreshControl)
-        
-        fetchItems()
     }
     
+    ///
+    /// Pull-down refresh control
+    ///
+    func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
+        }
+    }
+    
+    ///
+    /// Search filter
+    ///
+    func setupSearchFilter() {
+        guard configuration.isSearchable else { return }
+        
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = search
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    ///
+    /// Memory clearing
+    ///
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         UIImageView.ImageCache.clear()
@@ -113,10 +164,6 @@ open class GenericListViewController<
     
     deinit {
         UIImageView.ImageCache.clear()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("Initialization through IB is not supported.")
     }
     
     ///
@@ -129,7 +176,7 @@ open class GenericListViewController<
         itemListOffset = offset
         isFetchingItems = true
         
-        viewModel.getItems(itemListOffset, itemsPerPage) { items in
+        viewModel.getItems(itemListOffset, configuration.itemsPerPage) { items in
             // loading off
             self.hideLoading()
             
@@ -166,7 +213,7 @@ open class GenericListViewController<
     /// Loading
     ///
     open func showLoading() {
-        guard shouldShowLoading else { return }
+        guard configuration.shouldShowLoading else { return }
         guard !refreshControl.isRefreshing else { return }
         
         loadingView.show(on: view)
@@ -222,7 +269,7 @@ open class GenericListViewController<
     // MARK: - UIScrollViewDelegate
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard isPaginated else { return }
+        guard configuration.isPaginated else { return }
         
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -231,8 +278,16 @@ open class GenericListViewController<
         guard contentHeight > 0 else { return }
         
         // retrieve more items when we scroll to the bottom
-        if offsetY + contentLoadOffset > contentHeight - scrollHeight {
+        if offsetY + configuration.contentLoadOffset > contentHeight - scrollHeight {
             fetchMoreItems()
         }
+    }
+    
+    // MARK: - UISearchResultsUpdating
+    
+    public func updateSearchResults(for searchController: UISearchController) {
+        guard configuration.isSearchable else { return }
+
+        
     }
 }
