@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol GenericListCellView where Self: UICollectionViewCell {
+public protocol GenericListViewCell where Self: UICollectionViewCell {
     associatedtype Model
     
     // if width or height is zero, will be adjusted dynamically

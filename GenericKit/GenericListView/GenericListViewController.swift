@@ -9,7 +9,7 @@
 import UIKit
 
 open class GenericListViewController<
-    C: GenericListCellView,
+    C: GenericListViewCell,
     D: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
