@@ -18,7 +18,17 @@ class DemoSelectionViewController: SimpleTableViewController {
             SimpleTableOption(
                 type: .disclosure,
                 title: "Marvel API",
-                action: { _ in self.navigateTo(MarvelDemoViewController())})
+                action: { _ in self.navigateTo(MarvelDemoViewController()) }
+            )
         ]]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationItem.largeTitleDisplayMode = .always
+        }
     }
 }
