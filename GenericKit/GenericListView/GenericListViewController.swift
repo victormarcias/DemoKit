@@ -28,7 +28,12 @@ open class GenericListViewController<
         public var isPaginated: Bool = false
         
         // Can filter/search items
-        public var isSearchable: Bool = false
+        @available(iOS 11, *)
+        public var isSearchable: Bool {
+            get { return _isSearchable }
+            set { _isSearchable = newValue }
+        }
+        fileprivate var _isSearchable: Bool = false
         
         // Items per page
         public var itemsPerPage: Int = 0
@@ -43,6 +48,9 @@ open class GenericListViewController<
         public var contentLoadOffset: CGFloat = 0
     }
     
+    ///
+    /// Configuration
+    ///
     public var configuration = Configuration()
     
     ///
@@ -149,18 +157,14 @@ open class GenericListViewController<
     /// Search filter
     ///
     func setupSearchFilter() {
-        guard configuration.isSearchable else { return }
-        
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        search.searchBar.delegate = self
-        definesPresentationContext = true
+        guard configuration._isSearchable else { return }
         
         if #available(iOS 11.0, *) {
-            navigationItem.searchController = search
+            let search = UISearchController(searchResultsController: nil)
+            search.searchResultsUpdater = self
+            search.searchBar.delegate = self
             search.obscuresBackgroundDuringPresentation = false
-        } else {
-            // Fallback on earlier versions
+            navigationItem.searchController = search
         }
     }
     
@@ -306,7 +310,7 @@ open class GenericListViewController<
     // MARK: - UISearchResultsUpdating
     
     public func updateSearchResults(for searchController: UISearchController) {
-        guard configuration.isSearchable else { return }
+        guard configuration._isSearchable else { return }
         
         reset()
         searchText = searchController.searchBar.text ?? ""
@@ -316,7 +320,7 @@ open class GenericListViewController<
     // MARK: - UISearchBarDelegate
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        guard configuration.isSearchable else { return }
+        guard configuration._isSearchable else { return }
         
         reset()
         searchText = ""
