@@ -9,33 +9,49 @@
 import UIKit
 
 open class GenericListViewController<
-    C: GenericListCellView,
+    C: GenericListViewCell,
     D: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
-    >: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
+    >: UIViewController,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate,
+    UISearchResultsUpdating,
+    UISearchBarDelegate
 {
     ///
     /// Configuration properties
     ///
+    public struct Configuration {
+        
+        // Loads more items at the bottom
+        public var isPaginated: Bool = false
+        
+        // Can filter/search items
+        @available(iOS 11, *)
+        public var isSearchable: Bool {
+            get { return _isSearchable }
+            set { _isSearchable = newValue }
+        }
+        fileprivate var _isSearchable: Bool = false
+        
+        // Items per page
+        public var itemsPerPage: Int = 0
+        
+        // Items per row (2+ for Grid style)
+        public var itemsPerRow: Int = 1
+        
+        // Shows a loading view when fetching items
+        public var shouldShowLoading: Bool = true
+        
+        // Distance to bottom to fetch more items
+        public var contentLoadOffset: CGFloat = 0
+    }
     
-    // Loads more items at the bottom
-    public var isPaginated: Bool = false
-    
-    // Items per page
-    public var itemsPerPage: Int = 0
-    
-    // Items per row (2+ for Grid style)
-    public var itemsPerRow: Int = 1
-    
-    // Shows a loading view when fetching items
-    public var shouldShowLoading: Bool = true
-    
-    // Is loading
-    var isFetchingItems: Bool = false
-    
-    // Distance to bottom to fetch more items
-    public var contentLoadOffset: CGFloat = 0
+    ///
+    /// Configuration
+    ///
+    public var configuration = Configuration()
     
     ///
     /// ViewModel
@@ -50,6 +66,12 @@ open class GenericListViewController<
     
     // Stop loading items after last fetch
     var itemListEnded: Bool = false
+    
+    // Is loading
+    var isFetchingItems: Bool = false
+    
+    // Search filter
+    var searchText: String = ""
     
     ///
     /// Views
@@ -83,6 +105,10 @@ open class GenericListViewController<
         configure()
     }
     
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("Initialization through IB is not supported.")
+    }
+    
     open func configure() {
         // override
     }
@@ -90,22 +116,67 @@ open class GenericListViewController<
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let width = max(C.itemSize.width, view.frame.width / CGFloat(itemsPerRow))
-        let height = C.itemSize.height.isZero ? width : C.itemSize.height
+        setupCollectionView()
+        setupRefreshControl()
+        setupSearchFilter()
+        
+        fetchItems()
+    }
+    
+    ///
+    /// CollectionView
+    ///
+    func setupCollectionView() {
+        // calculate final sizes of the cells
+        let width = !C.itemSize.width.isZero ? C.itemSize.width : (view.frame.width / CGFloat(configuration.itemsPerRow))
+        let height = !C.itemSize.height.isZero ? C.itemSize.height : width
         let itemSize = CGSize(width: width, height: height)
+        
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
         collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
         collectionView?.dataSource = self
         collectionView?.delegate = self
         view.addSubview(collectionView!)
         collectionView?.snap.edges()
-        
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        collectionView?.addSubview(refreshControl)
-        
-        fetchItems()
     }
     
+    ///
+    /// Pull-down refresh control
+    ///
+    func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
+        }
+    }
+    
+    ///
+    /// Search filter
+    ///
+    func setupSearchFilter() {
+        guard configuration._isSearchable else { return }
+        
+        if #available(iOS 11.0, *) {
+            let search = UISearchController(searchResultsController: nil)
+            search.searchResultsUpdater = self
+            search.searchBar.delegate = self
+            search.obscuresBackgroundDuringPresentation = false
+            navigationItem.searchController = search
+        }
+    }
+    
+    func reset() {
+        itemList.removeAll()
+        itemListEnded = false
+        itemListOffset = 0
+    }
+    
+    ///
+    /// Memory clearing
+    ///
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         UIImageView.ImageCache.clear()
@@ -115,23 +186,21 @@ open class GenericListViewController<
         UIImageView.ImageCache.clear()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("Initialization through IB is not supported.")
-    }
-    
     ///
     /// Fetch items methods
     ///
-    func fetchItems(offset: Int = 0) {
+    func fetchItems(offset: Int = 0, filter: String = "") {
         guard !isFetchingItems && !itemListEnded else { return }
         
         showLoading()
         itemListOffset = offset
         isFetchingItems = true
         
-        viewModel.getItems(itemListOffset, itemsPerPage) { items in
-            // loading off
+        viewModel.getItems(from: itemListOffset, to: configuration.itemsPerPage, filter: filter) { items in
+            // remove overlay views
             self.hideLoading()
+            self.hideError()
+            self.isFetchingItems = false
             
             // check returned object is valid
             guard let items = items else {
@@ -149,16 +218,16 @@ open class GenericListViewController<
             self.itemList += items
             self.itemListOffset = self.itemList.count
             self.itemListEnded = items.count == 0
-            self.isFetchingItems = false
             self.collectionView?.reloadData()
         }
     }
     
     func fetchMoreItems() {
-        fetchItems(offset: itemListOffset)
+        fetchItems(offset: itemListOffset, filter: searchText)
     }
     
     @objc func refresh() {
+        reset()
         fetchItems()
     }
     
@@ -166,7 +235,7 @@ open class GenericListViewController<
     /// Loading
     ///
     open func showLoading() {
-        guard shouldShowLoading else { return }
+        guard configuration.shouldShowLoading else { return }
         guard !refreshControl.isRefreshing else { return }
         
         loadingView.show(on: view)
@@ -182,10 +251,12 @@ open class GenericListViewController<
     ///
     open func showError(_ type: ErrorType) {
         errorView.show(type, on: view)
+        collectionView?.isHidden = true
     }
     
     open func hideError() {
         errorView.hide()
+        collectionView?.isHidden = false
     }
     
     // MARK: - UICollectionViewDatasource
@@ -222,7 +293,7 @@ open class GenericListViewController<
     // MARK: - UIScrollViewDelegate
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard isPaginated else { return }
+        guard configuration.isPaginated else { return }
         
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -231,8 +302,28 @@ open class GenericListViewController<
         guard contentHeight > 0 else { return }
         
         // retrieve more items when we scroll to the bottom
-        if offsetY + contentLoadOffset > contentHeight - scrollHeight {
+        if offsetY + configuration.contentLoadOffset > contentHeight - scrollHeight {
             fetchMoreItems()
         }
+    }
+    
+    // MARK: - UISearchResultsUpdating
+    
+    public func updateSearchResults(for searchController: UISearchController) {
+        guard configuration._isSearchable else { return }
+        
+        reset()
+        searchText = searchController.searchBar.text ?? ""
+        fetchItems(offset: 0, filter: searchText)
+    }
+    
+    // MARK: - UISearchBarDelegate
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        guard configuration._isSearchable else { return }
+        
+        reset()
+        searchText = ""
+        fetchItems(offset: 0, filter: searchText)
     }
 }

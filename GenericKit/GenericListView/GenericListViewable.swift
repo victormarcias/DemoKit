@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol GenericListCellView where Self: UICollectionViewCell {
+public protocol GenericListViewCell where Self: UICollectionViewCell {
     associatedtype Model
     
     // if width or height is zero, will be adjusted dynamically
@@ -23,5 +23,5 @@ public protocol GenericListViewModel {
     typealias Result = (_ result: [Model]?) -> Void
     
     init()
-    func getItems(_ offset: Int, _ count: Int, completion: @escaping Result)
+    func getItems(from offset: Int, to count: Int, filter: String, completion: @escaping Result)
 }

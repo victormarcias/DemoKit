@@ -19,8 +19,12 @@ class MarvelCharactersListViewController: GenericListViewController<
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
-        isPaginated = true
-        itemsPerPage = 20
+        configuration.isPaginated = true
+        configuration.itemsPerPage = 20
+        
+        if #available(iOS 11, *) {
+            configuration.isSearchable = true
+        }
     }
 }
 
@@ -34,9 +38,13 @@ class MarvelCharactersGridViewController: GenericListViewController<
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
-        isPaginated = true
-        itemsPerRow = 3
-        itemsPerPage = 40
+        configuration.isPaginated = true
+        configuration.itemsPerRow = 3
+        configuration.itemsPerPage = 40
+        
+        if #available(iOS 11, *) {
+            configuration.isSearchable = true
+        }
     }
 }
 
@@ -50,7 +58,11 @@ class MarvelCharactersMockedViewController: GenericListViewController<
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
-        isPaginated = true
-        itemsPerPage = 20
+        configuration.isPaginated = true
+        configuration.itemsPerPage = 20
+        
+        if #available(iOS 11, *) {
+            configuration.isSearchable = true
+        }
     }
 }

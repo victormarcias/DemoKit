@@ -9,7 +9,7 @@
 import UIKit
 import GenericKit
 
-class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, GenericListCellView {
+class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, GenericListViewCell {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
