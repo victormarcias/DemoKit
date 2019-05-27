@@ -14,7 +14,7 @@ open class TableItemView: BaseView {
     public let titleLabel = UILabel()
     public let textLabel = UILabel()
     
-    override public func setup() {
+    override open func setup() {
         [imageView, titleLabel, textLabel].forEach {
             addSubview($0)
         }

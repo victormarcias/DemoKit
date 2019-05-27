@@ -12,7 +12,7 @@ open class CenteredLoadingView: BaseView, LoadingView {
     
     private let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
-    override public func setup() {
+    override open func setup() {
         isUserInteractionEnabled = false
         loadingIndicator.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.70)
         loadingIndicator.hidesWhenStopped = true

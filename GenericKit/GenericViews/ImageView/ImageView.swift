@@ -33,7 +33,7 @@ open class ImageView: BaseView {
         }
     }
     
-    override public func setup() {
+    override open func setup() {
         [placeholderImageView, imageView].forEach {
             addSubview($0)
         }

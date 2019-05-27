@@ -13,7 +13,7 @@ open class GridItemView: BaseView {
     public let imageView = ImageView()
     public let titleLabel = UILabel()
     
-    override public func setup() {
+    override open func setup() {
         [imageView, titleLabel].forEach {
             addSubview($0)
         }
