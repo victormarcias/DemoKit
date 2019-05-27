@@ -56,7 +56,7 @@ open class GenericListViewController<
     ///
     /// ViewModel
     ///
-    var viewModel: D
+    public var viewModel: D
     
     // Items
     var itemList = [D.Model]()
