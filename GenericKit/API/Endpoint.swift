@@ -38,11 +38,11 @@ open class Endpoint<T: EndpointResponse> {
     public class Path {
         private var values: [Any]
         
-        init(_ values: [Any]?) {
+        public init(_ values: [Any]?) {
             self.values = values ?? []
         }
         
-        var stringValue: String? {
+        public var stringValue: String? {
             if values.count > 0 {
                 let stringValues = values.map { String(describing: $0) }
                 return "/" + stringValues.joined(separator: "/")
