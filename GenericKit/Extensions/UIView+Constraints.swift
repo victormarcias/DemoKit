@@ -24,13 +24,13 @@ extension UIView {
         /// Main constraint snapping method
         ///
         @discardableResult
-        func constraint(_ attribute: NSLayoutConstraint.Attribute,
-                        to: NSLayoutConstraint.Attribute? = nil,
-                        of secondView: UIView? = nil,
-                        relation: NSLayoutConstraint.Relation = .equal,
-                        offset: CGFloat = 0.0,
-                        multiplier: CGFloat = 1.0,
-                        priority: UILayoutPriority = .required) -> UIView.Snap {
+        public func constraint(_ attribute: NSLayoutConstraint.Attribute,
+                               to: NSLayoutConstraint.Attribute? = nil,
+                               of secondView: UIView? = nil,
+                               relation: NSLayoutConstraint.Relation = .equal,
+                               offset: CGFloat = 0.0,
+                               multiplier: CGFloat = 1.0,
+                               priority: UILayoutPriority = .required) -> UIView.Snap {
             
             guard let superView = self.view.superview else {
                 fatalError("\(self.view) is not in the view hierarchy.")
@@ -55,7 +55,7 @@ extension UIView {
         ///
         /// Snaps view to its superview's edges
         ///
-        func edges(to secondView: UIView? = nil, insets: UIEdgeInsets = .zero) {
+        public func edges(to secondView: UIView? = nil, insets: UIEdgeInsets = .zero) {
             guard let superView = self.view.superview else {
                 fatalError("\(self.view) is not in the view hierarchy.")
             }
@@ -69,7 +69,7 @@ extension UIView {
                 .constraint(.right, of: secondView, offset: -insets.right)
         }
         
-        func edges(inset: Double) {
+        public func edges(inset: Double) {
             let value = CGFloat(inset)
             edges(insets: UIEdgeInsets(top: value, left: value, bottom: value, right: value))
         }
