@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class GridItemView: BaseView {
+open class GridItemView: BaseView {
     
     public let imageView = ImageView()
     public let titleLabel = UILabel()

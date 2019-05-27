@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CenteredLoadingView: BaseView, LoadingView {
+open class CenteredLoadingView: BaseView, LoadingView {
     
     private let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
@@ -20,7 +20,7 @@ public class CenteredLoadingView: BaseView, LoadingView {
         addSubview(loadingIndicator)
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         loadingIndicator.center = CGPoint(x: bounds.width/2, y: bounds.height/2)
         loadingIndicator.layer.cornerRadius = 15

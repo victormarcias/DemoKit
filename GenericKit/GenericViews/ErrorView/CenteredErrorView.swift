@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CenteredErrorView: BaseView, ErrorView {
+open class CenteredErrorView: BaseView, ErrorView {
     
     private let errorLabel = UILabel()
     

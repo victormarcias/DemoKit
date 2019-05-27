@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ImageView: BaseView {
+open class ImageView: BaseView {
     
     public let placeholderImageView = UIImageView()
     public let imageView = UIImageView()

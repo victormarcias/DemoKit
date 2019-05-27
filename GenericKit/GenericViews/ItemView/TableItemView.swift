@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TableItemView: BaseView {
+open class TableItemView: BaseView {
     
     public let imageView = ImageView()
     public let titleLabel = UILabel()
