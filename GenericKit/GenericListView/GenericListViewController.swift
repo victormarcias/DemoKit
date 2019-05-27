@@ -286,7 +286,7 @@ open class GenericListViewController<
         }
     }
     
-    public func didSelect(item: C.Model, at indexPath: IndexPath) {
+    open func didSelect(item: C.Model, at indexPath: IndexPath) {
         // override
     }
     
