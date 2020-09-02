@@ -59,7 +59,7 @@ open class GenericListViewController<
     public var viewModel: D
     
     // Items
-    var itemList = [D.Model]()
+    public var itemList = [D.Model]()
     
     // Item offset
     var itemListOffset: Int = 0
@@ -86,10 +86,10 @@ open class GenericListViewController<
     }
     
     // Pull down refresh control
-    var refreshControl = UIRefreshControl()
+    public var refreshControl = UIRefreshControl()
     
     // Reuse Id
-    var reuseId: String {
+    public var reuseId: String {
         return NSStringFromClass(C.self)
     }
     
@@ -218,11 +218,15 @@ open class GenericListViewController<
             self.itemList += items
             self.itemListOffset = self.itemList.count
             self.itemListEnded = items.count == 0
-            self.collectionView?.reloadData()
+            self.fetchComplete()
         }
     }
     
-    func fetchMoreItems() {
+    open func fetchComplete() {
+        self.collectionView?.reloadData()
+    }
+    
+    open func fetchMoreItems() {
         fetchItems(offset: itemListOffset, filter: searchText)
     }
     
@@ -261,15 +265,15 @@ open class GenericListViewController<
     
     // MARK: - UICollectionViewDatasource
     
-    private func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemList.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: C = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! C
         
         if indexPath.item < itemList.count, let item = itemList[indexPath.item] as? C.Model {
