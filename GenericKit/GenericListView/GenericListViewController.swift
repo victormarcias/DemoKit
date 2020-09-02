@@ -16,6 +16,7 @@ open class GenericListViewController<
     >: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout,
     UISearchResultsUpdating,
     UISearchBarDelegate
 {
@@ -76,9 +77,9 @@ open class GenericListViewController<
     ///
     /// Views
     ///
-    var collectionView: UICollectionView?
-    var loadingView: L
-    var errorView: E
+    public var collectionView: UICollectionView?
+    public var loadingView: L
+    public var errorView: E
     
     // CollectionViewLayout getter
     public var collectionViewLayout: UICollectionViewFlowLayout? {
@@ -102,7 +103,6 @@ open class GenericListViewController<
         errorView = E()
         
         super.init(nibName: nil, bundle: nil)
-        configure()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -117,6 +117,7 @@ open class GenericListViewController<
         super.viewDidLoad()
         
         setupCollectionView()
+        configure()
         setupRefreshControl()
         setupSearchFilter()
         
@@ -271,6 +272,14 @@ open class GenericListViewController<
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemList.count
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return UICollectionReusableView()
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize.zero
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
