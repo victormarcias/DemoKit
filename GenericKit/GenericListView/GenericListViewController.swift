@@ -62,6 +62,9 @@ open class GenericListViewController<
     // Items
     public var itemList = [D.Model]()
     
+    // Item Size
+    var itemSize = CGSize.zero
+    
     // Item offset
     var itemListOffset: Int = 0
     
@@ -131,7 +134,7 @@ open class GenericListViewController<
         // calculate final sizes of the cells
         let width = !C.itemSize.width.isZero ? C.itemSize.width : (view.frame.width / CGFloat(configuration.itemsPerRow))
         let height = !C.itemSize.height.isZero ? C.itemSize.height : width
-        let itemSize = CGSize(width: width, height: height)
+        itemSize = CGSize(width: width, height: height)
         
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
         collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
@@ -279,7 +282,11 @@ open class GenericListViewController<
     }
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize.zero
+        return .zero
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return itemSize
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
