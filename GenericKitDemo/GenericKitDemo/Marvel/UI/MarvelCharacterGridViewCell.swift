@@ -21,6 +21,7 @@ class MarvelCharacterGridViewCell: BaseCollectionViewCell<GridItemView>, Generic
     }
     
     func configure(with model: MarvelCharacter) {
+        view?.imageView.backgroundColor = .black
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
     }

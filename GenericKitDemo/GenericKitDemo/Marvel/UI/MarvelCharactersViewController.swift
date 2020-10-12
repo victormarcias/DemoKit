@@ -38,7 +38,7 @@ class MarvelCharactersGridViewController: GenericListViewController<
         navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 3
-        configuration.itemsPerPage = 21
+        configuration.itemsPerPage = 33
         configuration.isSearchable = true
     }
 }

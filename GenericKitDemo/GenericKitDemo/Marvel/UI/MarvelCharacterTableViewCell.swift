@@ -17,6 +17,7 @@ class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, Gener
     }
     
     func configure(with model: Model) {
+        view?.imageView.backgroundColor = .black
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
         view?.textLabel.text = model.description

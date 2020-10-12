@@ -40,10 +40,8 @@ open class ImageView: BaseView {
         
         placeholderImageView.contentMode = .center
         placeholderImageView.image = UIImage(named: "no-image")
-        
         imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 4
+        clipsToBounds = true
         
         placeholderImageView.snap.edges()
         imageView.snap.edges()
