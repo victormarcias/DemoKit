@@ -15,6 +15,9 @@ class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, Gener
     static var itemSize: CGSize {
         return CGSize(width: 0, height: 100)
     }
+    override static var lineInsets: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
     
     func configure(with model: Model) {
         view?.imageView.backgroundColor = .black
