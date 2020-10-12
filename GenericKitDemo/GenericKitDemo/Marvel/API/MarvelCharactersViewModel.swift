@@ -9,69 +9,71 @@
 import Foundation
 import GenericKit
 
-// MARK: - View Model
-
+///
+/// MARK: - View Model
+///
 class MarvelCharactersViewModel: GenericListViewModel {
     typealias Model = MarvelCharacter
     
     required init() {}
     
-    func getItems(from offset: Int,
-                  to count: Int,
-                  filter: String,
-                  completion: @escaping ([MarvelCharacter]?) -> Void)
+    func getItems(filter: GenericListFilter,
+                  success: @escaping GenericListResult,
+                  failure: @escaping GenericListError)
     {
-        var params = ["offset": String(describing: offset),
-                      "limit": String(describing: count)]
+        var params = ["offset": String(describing: filter.offset),
+                      "limit": String(describing: filter.count)]
         
-        if !filter.isEmpty {
-            params["nameStartsWith"] = filter
+        if let search = filter.search, !search.isEmpty {
+            params["nameStartsWith"] = search
         }
         
-        MarvelAPI.characters.request(parameters: params, success: { response in
-            completion(response.items)
-        }, failure: { _ in
-            completion(nil)
-        })
+        MarvelAPI.characters.request(
+            parameters: params,
+            success: { response in
+                success([response.items])
+            }, failure: { _ in
+                failure(nil)
+            })
     }
 }
 
-// MARK: - Mocked View Model
-
+///
+/// MARK: - Mocked View Model
+///
 class MarvelCharactersMockedViewModel: GenericListViewModel {
     typealias Model = MarvelCharacter
     
     required init() {}
     
-    func getItems(from offset: Int,
-                  to count: Int,
-                  filter: String,
-                  completion: @escaping ([MarvelCharacter]?) -> Void)
+    func getItems(filter: GenericListFilter,
+                  success: @escaping GenericListResult,
+                  failure: @escaping GenericListError)
     {
         // Search filter
-        if !filter.isEmpty {
+        if let search = filter.search, !search.isEmpty {
             MockResponse<MarvelCharacter>.readFile(
                 "MarvelCharacters",
                 type: .json,
-                count: Int.max, // fetch all
-                completion: { result in
-                    let filtered = result?.filter {
-                        return $0.name?.lowercased().contains(filter.lowercased()) ?? false
+                success: { result in
+                    let filtered = result.flatMap{ $0 }.filter {
+                        let name = $0.name?.lowercased() ?? ""
+                        return name.contains(search.lowercased())
                     }
                     
                     // check out of bounds (no more items)
-                    let outOfBounds = offset >= filtered?.count ?? 0
-                    completion(!outOfBounds ? filtered : [])
-                }
-            )
+                    success([filtered])
+                    
+                }, failure: { _ in
+                    failure(nil)
+                })
         } else {
             // Paginated
             MockResponse<MarvelCharacter>.readFile(
                 "MarvelCharacters",
                 type: .json,
-                offset: offset,
-                count: count,
-                completion: completion
+                success: success,
+                failure: { _ in }
             )
         }
     }

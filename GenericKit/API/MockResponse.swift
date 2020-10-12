@@ -8,6 +8,12 @@
 import Foundation
 
 public class MockResponse<T: Decodable> {
+    public enum Error {
+        case invalidPath, unknown
+    }
+    
+    public typealias MockResult = ([[T]]) -> Void
+    public typealias MockError = (_ error: Error?) -> Void
     
     ///
     /// Mock file types
@@ -21,13 +27,12 @@ public class MockResponse<T: Decodable> {
     ///
     public class func readFile(_ path: String,
                                type: FileType = .json,
-                               offset: Int = 0,
-                               count: Int = 0,
-                               completion: @escaping (([T]?) -> Void))
+                               success: @escaping MockResult,
+                               failure: @escaping MockError)
     {
         // json file path
         guard let mockPath = Bundle.main.path(forResource: path, ofType: type.rawValue) else {
-            completion(nil)
+            failure(.invalidPath)
             return
         }
         
@@ -38,20 +43,14 @@ public class MockResponse<T: Decodable> {
             switch type {
             case .json:
                 let items = try JSONDecoder().decode([T].self, from: fileText.data(using: .utf8)!)
-                
-                // check out of bounds (ie. last items)
-                let maxItem = min(offset + count, items.count)
-                
-                // return paginated subset or empty if we went beyond the max
-                let subset = Array(items[offset ..< maxItem])
-                completion(subset)
+                success([items])
             
             case .xml:
                 // some day... (not)
                 break
             }
         } catch {
-            completion(nil)
+            failure(.unknown)
         }
     }
 }

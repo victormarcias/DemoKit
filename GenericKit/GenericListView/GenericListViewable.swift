@@ -6,6 +6,7 @@
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 public protocol GenericListViewCell where Self: UICollectionViewCell {
@@ -20,8 +21,13 @@ public protocol GenericListViewCell where Self: UICollectionViewCell {
 public protocol GenericListViewModel {
     associatedtype Model
     
-    typealias Result = (_ result: [Model]?) -> Void
+    typealias GenericListFilter = (search: String?, offset: Int, count: Int)
+    typealias GenericListResult = (_ result: [[Model]]) -> Void
+    typealias GenericListError = (_ error: Error?) -> Void
     
     init()
-    func getItems(from offset: Int, to count: Int, filter: String, completion: @escaping Result)
+    
+    func getItems(filter: GenericListFilter,
+                  success: @escaping GenericListResult,
+                  failure: @escaping GenericListError)
 }
