@@ -33,11 +33,17 @@ class CharactersMockViewModel: GenericListViewModel {
                     }
                 }
                 
-                // split into each hero group
-                let ironMan = filtered.filter { $0.name?.contains("Iron Man") == true }
-                let spiderMan = filtered.filter { $0.name?.contains("Spider-Man") == true }
+                var grouped = [[MarvelCharacter]]()
+                let alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z"
+                let letters = alphabet.components(separatedBy: ",")
                 
-                success([ironMan, spiderMan])
+                // group the characters by letter
+                for letter in letters {
+                    let group = filtered.filter { $0.name?.hasPrefix(letter) == true }
+                    grouped.append(group)
+                }
+                
+                success(grouped)
                 
             }, failure: { _ in
                 failure(nil)

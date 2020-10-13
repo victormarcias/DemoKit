@@ -30,7 +30,7 @@ class MarvelDemoViewController: SimpleTableViewController {
             ),
             SimpleTableOption(
                 type: .disclosure,
-                title: "Mock List",
+                title: "Grouped List",
                 subtitle: "Resources/MarvelCharacters.json",
                 action: { _ in self.navigateTo(CharactersMockViewController()) }
             )

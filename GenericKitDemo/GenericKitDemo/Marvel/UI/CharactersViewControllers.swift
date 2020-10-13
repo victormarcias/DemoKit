@@ -21,9 +21,8 @@ class CharactersListViewController: GenericListViewController<
         navigationItem.title = NSLocalizedString("List View", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 1
-        configuration.itemsPerPage = 20
+        configuration.itemsPerPage = 100
         configuration.isSearchable = true
-        configuration.isGrouped = true
     }
 }
 
@@ -52,18 +51,17 @@ class CharactersMockViewController: GenericListViewController<
     CenteredLoadingView,
     CenteredErrorView>
 {
-    let titles = ["Iron Man", "Spider-Man"]
-    
     override func configure() {
-        navigationItem.title = NSLocalizedString("Mock List", comment: "")
+        navigationItem.title = NSLocalizedString("Grouped List", comment: "")
         configuration.isPaginated = false
         configuration.itemsPerRow = 1
-        configuration.itemsPerPage = 20
         configuration.isSearchable = true
         configuration.isGrouped = true
     }
     
+    let alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z".components(separatedBy: ",")
+    
     override func title(for section: Int) -> String {
-        return titles[section]
+        return alphabet[section]
     }
 }

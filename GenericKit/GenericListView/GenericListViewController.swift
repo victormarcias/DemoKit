@@ -25,13 +25,28 @@ open class GenericListViewController<
     //
     public struct Configuration {
         
-        // Loads more items at the bottom
-        public var isPaginated: Bool = false
+        // Grouped list of items
+        private var _isGrouped: Bool = false
+        public var isGrouped: Bool {
+            get { return _isGrouped }
+            set {
+                _isGrouped = newValue
+                _isPaginated = !newValue
+            }
+        }
         
-        // Same functionality but will show headers to see the groups if exist
-        public var isGrouped: Bool = false
+        // Loads more items at the bottom
+        private var _isPaginated: Bool = false
+        public var isPaginated: Bool {
+            get { return _isPaginated }
+            set {
+                _isPaginated = newValue
+                _isGrouped = !newValue
+            }
+        }
         
         // Can filter/search items
+        private var _isSearchable: Bool = false
         public var isSearchable: Bool {
             get { return _isSearchable }
             set {
@@ -42,7 +57,6 @@ open class GenericListViewController<
                 }
             }
         }
-        fileprivate var _isSearchable: Bool = false
         
         // Items per page (fetch)
         public var itemsPerPage: Int = 0
@@ -79,7 +93,6 @@ open class GenericListViewController<
         viewModel = M.init()
         loadingView = L()
         errorView = E()
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -151,7 +164,7 @@ open class GenericListViewController<
     public var refreshControl = UIRefreshControl()
     
     func setupSearchFilter() {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController: nil)
@@ -187,26 +200,33 @@ open class GenericListViewController<
         viewModel.getItems(
             filter: (search, itemListOffset, configuration.itemsPerPage),
             success: { items in
-                // remove overlay views
-                self.hideLoading()
-                self.hideError()
-                self.isFetchingItems = false
-                
-                // check there's items in the result and the list
-                guard items.count > 0 || self.itemList.count > 0 else {
-                    self.showError(.empty)
-                    return
-                }
-                
-                // all succeeded
-                self.itemList.append(contentsOf: items)
-                self.itemListOffset = self.itemList.flatMap{ $0 }.count
-                self.itemListEnded = items.last?.count == 0
+                self.addItems(items)
                 self.fetchComplete()
-                
             }, failure: { _ in
                 self.showError(.unknown)
             })
+    }
+    
+    func addItems(_ items: [[M.Model]]) {
+        // remove overlay views
+        hideLoading()
+        hideError()
+        isFetchingItems = false
+        
+        // check there's items in the result and the list
+        guard items.count > 0 || itemList.count > 0 else {
+            showError(.empty)
+            return
+        }
+        
+        // all succeeded
+        if configuration.isGrouped {
+            itemList = items
+        } else {
+            itemList += items
+        }
+        itemListOffset = itemList.flatMap{ $0 }.count
+        itemListEnded = items.flatMap{ $0 }.count == 0
     }
     
     open func fetchComplete() {
@@ -358,7 +378,7 @@ open class GenericListViewController<
     // MARK: - UISearchResultsUpdating
     //
     public func updateSearchResults(for searchController: UISearchController) {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         reset()
         searchText = searchController.searchBar.text
@@ -369,7 +389,7 @@ open class GenericListViewController<
     // MARK: - UISearchBarDelegate
     //
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         reset()
         searchText = nil
