@@ -25,7 +25,7 @@ class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, GenericListV
     }
     
     func configure(with model: Model) {
-        view?.imageView.backgroundColor = .black
+        view?.imageView.backgroundColor = UIColor.marvel.black
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
         view?.textLabel.text = model.description

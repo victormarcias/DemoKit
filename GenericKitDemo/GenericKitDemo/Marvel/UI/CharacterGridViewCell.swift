@@ -13,7 +13,7 @@ class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListVi
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
-        return .zero
+        return CGSize(width: 0, height: 130)
     }
     
     override class var insets: UIEdgeInsets {
@@ -21,7 +21,7 @@ class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListVi
     }
     
     func configure(with model: MarvelCharacter) {
-        view?.imageView.backgroundColor = .black
+        view?.imageView.backgroundColor = UIColor.marvel.red
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
     }

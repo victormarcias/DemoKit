@@ -24,3 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
+extension UIColor {
+    struct marvel {
+        static let red = UIColor(red: 0.77, green: 0.21, blue: 0.20, alpha: 1.0)
+        static let black = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        static let gray = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+    }
+}

@@ -130,8 +130,9 @@ open class GenericListViewController<
     
     func setupCollectionView() {
         // calculate final sizes of the cells
+        let cellSize = C.itemSize
         let width = view.frame.width / CGFloat(configuration.itemsPerRow)
-        let height = !C.itemSize.height.isZero ? C.itemSize.height : width
+        let height = cellSize.height > 0 ? cellSize.height : width
         itemSize = CGSize(width: width, height: height)
         
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
