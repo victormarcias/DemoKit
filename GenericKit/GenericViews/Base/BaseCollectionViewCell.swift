@@ -62,7 +62,6 @@ open class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
         let lineInsets = type(of: self).lineInsets
         if lineInsets.left > 0 {
             let line = UIView()
-            line.frame = CGRect(x: 0, y: -1, width: 1, height: 1/UIScreen.main.scale)
             contentView.addSubview(line)
             
             line.isHidden = false

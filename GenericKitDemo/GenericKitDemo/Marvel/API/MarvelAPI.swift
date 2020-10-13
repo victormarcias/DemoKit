@@ -14,7 +14,7 @@ import GenericKit
 struct MarvelAPI {
     static let baseUrl = "https://gateway.marvel.com"
     
-    static let characters = MarvelEndpoint<MarvelCharactersResponse>(url: baseUrl + "/v1/public/characters")
+    static let characters = MarvelEndpoint<CharactersResponse>(url: baseUrl + "/v1/public/characters")
 }
 
 // MARK: - Endpoint subclass

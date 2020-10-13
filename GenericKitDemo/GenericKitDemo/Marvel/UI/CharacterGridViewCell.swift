@@ -1,29 +1,29 @@
 //
-//  MarvelCharacterListViewCell.swift
+//  MarvelCharacterGridViewCell.swift
 //  GenericKitDemo
 //
-//  Created by Victor Marcias on 2019-04-23.
+//  Created by Victor Marcias on 2019-04-29.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import UIKit
 import GenericKit
 
-class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, GenericListViewCell {
+class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListViewCell {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
-        return CGSize(width: 0, height: 100)
-    }
-    override static var lineInsets: UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return .zero
     }
     
-    func configure(with model: Model) {
+    override class var insets: UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+    
+    func configure(with model: MarvelCharacter) {
         view?.imageView.backgroundColor = .black
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
-        view?.textLabel.text = model.description
     }
     
     override func prepareForReuse() {
@@ -31,6 +31,5 @@ class MarvelCharacterTableViewCell: BaseCollectionViewCell<TableItemView>, Gener
         
         view?.imageView.image = nil
         view?.titleLabel.text = nil
-        view?.textLabel.text = nil
     }
 }

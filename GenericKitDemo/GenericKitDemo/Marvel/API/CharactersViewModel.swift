@@ -9,7 +9,7 @@
 import Foundation
 import GenericKit
 
-class MarvelCharactersViewModel: GenericListViewModel {
+class CharactersViewModel: GenericListViewModel {
     typealias Model = MarvelCharacter
     
     required init() {}

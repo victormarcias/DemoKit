@@ -11,31 +11,32 @@ import GenericKit
 
 // MARK: - List
 
-class MarvelCharactersListViewController: GenericListViewController<
-    MarvelCharacterTableViewCell,
-    MarvelCharactersViewModel,
+class CharactersListViewController: GenericListViewController<
+    CharacterListViewCell,
+    CharactersViewModel,
     CenteredLoadingView,
     CenteredErrorView>
 {
     override func configure() {
-        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
+        navigationItem.title = NSLocalizedString("List View", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 1
         configuration.itemsPerPage = 20
         configuration.isSearchable = true
+        configuration.isGrouped = true
     }
 }
 
 // MARK: - Grid
 
-class MarvelCharactersGridViewController: GenericListViewController<
-    MarvelCharacterGridViewCell,
-    MarvelCharactersViewModel,
+class CharactersGridViewController: GenericListViewController<
+    CharacterGridViewCell,
+    CharactersViewModel,
     CenteredLoadingView,
     CenteredErrorView>
 {
     override func configure() {
-        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
+        navigationItem.title = NSLocalizedString("Grid View", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 3
         configuration.itemsPerPage = 33
@@ -45,17 +46,24 @@ class MarvelCharactersGridViewController: GenericListViewController<
 
 // MARK: - Mocked
 
-class MarvelCharactersMockedViewController: GenericListViewController<
-    MarvelCharacterTableViewCell,
-    MarvelCharactersMockedViewModel,
+class CharactersMockViewController: GenericListViewController<
+    CharacterListViewCell,
+    CharactersMockViewModel,
     CenteredLoadingView,
     CenteredErrorView>
 {
+    let titles = ["Iron Man", "Spider-Man"]
+    
     override func configure() {
-        navigationItem.title = NSLocalizedString("Marvel Characters", comment: "")
-        configuration.isPaginated = true
+        navigationItem.title = NSLocalizedString("Mock List", comment: "")
+        configuration.isPaginated = false
         configuration.itemsPerRow = 1
         configuration.itemsPerPage = 20
         configuration.isSearchable = true
+        configuration.isGrouped = true
+    }
+    
+    override func title(for section: Int) -> String {
+        return titles[section]
     }
 }

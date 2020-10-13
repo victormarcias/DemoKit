@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
-        let rootVC = DemoSelectionViewController()
+        let rootVC = MarvelDemoViewController()
         window?.rootViewController = UINavigationController(rootViewController: rootVC)
         
         return true
