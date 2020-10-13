@@ -20,26 +20,28 @@ open class TableItemView: BaseView {
         }
         
         titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         textLabel.numberOfLines = 0
-        textLabel.font = UIFont.systemFont(ofSize: 12)
+        textLabel.font = UIFont.systemFont(ofSize: 13)
         textLabel.textColor = .darkGray
+        imageView.layer.cornerRadius = 4
         
         let spacing = CGFloat(10.0)
-        let margin = CGFloat(5.0)
+        let margin = CGFloat(6.0)
         
         imageView.snap.constraint(.top, offset: margin)
             .constraint(.left, offset: spacing)
             .constraint(.bottom, offset: -margin)
-            .constraint(.width, to: .height, of: imageView, offset: -margin * 2)
+            .constraint(.width, to: .height, of: imageView, offset: -spacing)
         
-        titleLabel.snap.constraint(.top, offset: margin)
+        titleLabel.snap.constraint(.top, relation: .greaterThanOrEqual, offset: margin)
+            .constraint(.centerY, to: .centerY, relation: .lessThanOrEqual)
             .constraint(.left, to: .right, of: imageView, offset: spacing)
-            .constraint(.bottom, to: .centerY)
             .constraint(.right, offset: -spacing)
         
-        textLabel.snap.constraint(.top, to: .centerY)
+        textLabel.snap.constraint(.top, to: .bottom, of: titleLabel, relation: .greaterThanOrEqual)
             .constraint(.left, to: .left, of: titleLabel)
             .constraint(.right, to: .right, of: titleLabel)
-            .constraint(.bottom, offset: -margin)
+            .constraint(.bottom, relation: .lessThanOrEqual, offset: -margin)
     }
 }

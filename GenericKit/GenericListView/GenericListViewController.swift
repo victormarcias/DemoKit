@@ -10,7 +10,7 @@ import UIKit
 
 open class GenericListViewController<
     C: GenericListViewCell,
-    D: GenericListViewModel,
+    M: GenericListViewModel,
     L: LoadingView,
     E: ErrorView
     >: UIViewController,
@@ -20,27 +20,49 @@ open class GenericListViewController<
     UISearchResultsUpdating,
     UISearchBarDelegate
 {
-    ///
-    /// Configuration properties
-    ///
+    //
+    // MARK: - Configuration
+    //
     public struct Configuration {
         
+        // Grouped list of items
+        private var _isGrouped: Bool = false
+        public var isGrouped: Bool {
+            get { return _isGrouped }
+            set {
+                _isGrouped = newValue
+                _isPaginated = !newValue
+            }
+        }
+        
         // Loads more items at the bottom
-        public var isPaginated: Bool = false
+        private var _isPaginated: Bool = false
+        public var isPaginated: Bool {
+            get { return _isPaginated }
+            set {
+                _isPaginated = newValue
+                _isGrouped = !newValue
+            }
+        }
         
         // Can filter/search items
-        @available(iOS 11, *)
+        private var _isSearchable: Bool = false
         public var isSearchable: Bool {
             get { return _isSearchable }
-            set { _isSearchable = newValue }
+            set {
+                if #available(iOS 11, *) {
+                    _isSearchable = newValue
+                } else {
+                    _isSearchable = false
+                }
+            }
         }
-        fileprivate var _isSearchable: Bool = false
         
-        // Items per page
+        // Items per page (fetch)
         public var itemsPerPage: Int = 0
         
         // Items per row (2+ for Grid style)
-        public var itemsPerRow: Int = 1
+        public var itemsPerRow: Int = 3
         
         // Shows a loading view when fetching items
         public var shouldShowLoading: Bool = true
@@ -49,62 +71,28 @@ open class GenericListViewController<
         public var contentLoadOffset: CGFloat = 0
     }
     
-    ///
-    /// Configuration
-    ///
     public var configuration = Configuration()
-    
-    ///
-    /// ViewModel
-    ///
-    public var viewModel: D
-    
-    // Items
-    public var itemList = [D.Model]()
-    
-    // Item Size
-    var itemSize = CGSize.zero
-    
-    // Item offset
-    var itemListOffset: Int = 0
-    
-    // Stop loading items after last fetch
-    var itemListEnded: Bool = false
-    
-    // Is loading
-    var isFetchingItems: Bool = false
-    
-    // Search filter
-    var searchText: String = ""
-    
-    ///
-    /// Views
-    ///
-    public var collectionView: UICollectionView?
     public var loadingView: L
     public var errorView: E
     
-    // CollectionViewLayout getter
-    public var collectionViewLayout: UICollectionViewFlowLayout? {
-        return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
-    }
+    //
+    // MARK: - ViewModel
+    //
+    public var viewModel: M
+    public var itemList = [[M.Model]]()
+    var itemSize = CGSize.zero
+    var itemListOffset: Int = 0
+    var itemListEnded: Bool = false
+    var isFetchingItems: Bool = false
+    var searchText: String?
     
-    // Pull down refresh control
-    public var refreshControl = UIRefreshControl()
-    
-    // Reuse Id
-    public var reuseId: String {
-        return NSStringFromClass(C.self)
-    }
-    
-    ///
-    /// Initializer
-    ///
+    //
+    // MARK: - Life cycle
+    //
     public init() {
-        viewModel = D.init()
+        viewModel = M.init()
         loadingView = L()
         errorView = E()
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -119,34 +107,48 @@ open class GenericListViewController<
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCollectionView()
         configure()
+        setupCollectionView()
         setupRefreshControl()
         setupSearchFilter()
         
         fetchItems()
     }
     
-    ///
-    /// CollectionView
-    ///
+    //
+    // MARK: - CollectionView
+    //
+    public var collectionView: UICollectionView?
+    
+    public var collectionViewLayout: UICollectionViewFlowLayout? {
+        return collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+    }
+    
+    public var cellReuseId: String {
+        return NSStringFromClass(C.self)
+    }
+    
     func setupCollectionView() {
         // calculate final sizes of the cells
-        let width = !C.itemSize.width.isZero ? C.itemSize.width : (view.frame.width / CGFloat(configuration.itemsPerRow))
-        let height = !C.itemSize.height.isZero ? C.itemSize.height : width
+        let cellSize = C.itemSize
+        let width = view.frame.width / CGFloat(configuration.itemsPerRow)
+        let height = cellSize.height > 0 ? cellSize.height : width
         itemSize = CGSize(width: width, height: height)
         
         collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
-        collectionView?.register(C.self, forCellWithReuseIdentifier: reuseId)
+        collectionView?.register(HeaderView.self,
+                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                 withReuseIdentifier: HeaderView.reuseId)
+        collectionView?.register(C.self, forCellWithReuseIdentifier: cellReuseId)
         collectionView?.dataSource = self
         collectionView?.delegate = self
         view.addSubview(collectionView!)
         collectionView?.snap.edges()
     }
     
-    ///
-    /// Pull-down refresh control
-    ///
+    //
+    // MARK: - Refresh control
+    //
     func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
@@ -157,11 +159,13 @@ open class GenericListViewController<
         }
     }
     
-    ///
-    /// Search filter
-    ///
+    //
+    // MARK: - Search filter
+    //
+    public var refreshControl = UIRefreshControl()
+    
     func setupSearchFilter() {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController: nil)
@@ -172,15 +176,9 @@ open class GenericListViewController<
         }
     }
     
-    func reset() {
-        itemList.removeAll()
-        itemListEnded = false
-        itemListOffset = 0
-    }
-    
-    ///
-    /// Memory clearing
-    ///
+    //
+    // MARK: - Memory
+    //
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         UIImageView.ImageCache.clear()
@@ -190,40 +188,46 @@ open class GenericListViewController<
         UIImageView.ImageCache.clear()
     }
     
-    ///
-    /// Fetch items methods
-    ///
-    func fetchItems(offset: Int = 0, filter: String = "") {
+    //
+    // MARK: - Fetch
+    //
+    func fetchItems(offset: Int = 0, search: String? = nil) {
         guard !isFetchingItems && !itemListEnded else { return }
         
         showLoading()
         itemListOffset = offset
         isFetchingItems = true
         
-        viewModel.getItems(from: itemListOffset, to: configuration.itemsPerPage, filter: filter) { items in
-            // remove overlay views
-            self.hideLoading()
-            self.hideError()
-            self.isFetchingItems = false
-            
-            // check returned object is valid
-            guard let items = items else {
+        viewModel.getItems(
+            filter: (search, itemListOffset, configuration.itemsPerPage),
+            success: { items in
+                self.addItems(items)
+                self.fetchComplete()
+            }, failure: { _ in
                 self.showError(.unknown)
-                return
-            }
-            
-            // check there's items in the result and the list
-            guard items.count > 0 || self.itemList.count > 0 else {
-                self.showError(.empty)
-                return
-            }
-            
-            // all succeeded
-            self.itemList += items
-            self.itemListOffset = self.itemList.count
-            self.itemListEnded = items.count == 0
-            self.fetchComplete()
+            })
+    }
+    
+    func addItems(_ items: [[M.Model]]) {
+        // remove overlay views
+        hideLoading()
+        hideError()
+        isFetchingItems = false
+        
+        // check there's items in the result and the list
+        guard items.count > 0 || itemList.count > 0 else {
+            showError(.empty)
+            return
         }
+        
+        // all succeeded
+        if configuration.isGrouped {
+            itemList = items
+        } else {
+            itemList += items
+        }
+        itemListOffset = itemList.flatMap{ $0 }.count
+        itemListEnded = items.flatMap{ $0 }.count == 0
     }
     
     open func fetchComplete() {
@@ -231,7 +235,7 @@ open class GenericListViewController<
     }
     
     open func fetchMoreItems() {
-        fetchItems(offset: itemListOffset, filter: searchText)
+        fetchItems(offset: itemListOffset, search: searchText)
     }
     
     @objc func refresh() {
@@ -239,9 +243,16 @@ open class GenericListViewController<
         fetchItems()
     }
     
-    ///
-    /// Loading
-    ///
+    func reset() {
+        itemList.removeAll()
+        itemList = [[M.Model]]()
+        itemListEnded = false
+        itemListOffset = 0
+    }
+    
+    //
+    // MARK: - Loading
+    //
     open func showLoading() {
         guard configuration.shouldShowLoading else { return }
         guard !refreshControl.isRefreshing else { return }
@@ -254,9 +265,9 @@ open class GenericListViewController<
         loadingView.hide()
     }
     
-    ///
-    /// Error
-    ///
+    //
+    // MARK: - Error
+    //
     open func showError(_ type: ErrorType) {
         errorView.show(type, on: view)
         collectionView?.isHidden = true
@@ -267,41 +278,73 @@ open class GenericListViewController<
         collectionView?.isHidden = false
     }
     
-    // MARK: - UICollectionViewDatasource
-    
+    //
+    // MARK: - Sections
+    //
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemList.count
     }
     
-    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    open func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // headerSize
+        let headerSize = CGSize(width: collectionView.frame.width, height: 30.0)
+        return configuration.isGrouped ? headerSize : .zero
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView,
+                             viewForSupplementaryElementOfKind kind: String,
+                             at indexPath: IndexPath) -> UICollectionReusableView {
+        // header
+        if kind == UICollectionView.elementKindSectionHeader,
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HeaderView.reuseId,
+                for: indexPath) as? HeaderView {
+                    header.titleLabel.text = title(for: indexPath.section)
+                    return header
+            }
         return UICollectionReusableView()
     }
     
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .zero
+    open func title(for section: Int) -> String {
+        return ""
     }
     
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //
+    // MARK: - Items
+    //
+    open func collectionView(_ collectionView: UICollectionView,
+                             numberOfItemsInSection section: Int) -> Int {
+        return itemList[section].count
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize
     }
     
-    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: C = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! C
+    open func collectionView(_ collectionView: UICollectionView,
+                             cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // dequeue Cell view
+        let cell: C = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseId,
+            for: indexPath) as! C
         
-        if indexPath.item < itemList.count, let item = itemList[indexPath.item] as? C.Model {
+        // configure Cell
+        if let item = item(at: indexPath) {
             cell.configure(with: item)
+            cell.showLineSeparator(!isLastItem(at: indexPath))
         }
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate
-    
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item < itemList.count, let item = itemList[indexPath.item] as? C.Model {
+    open func collectionView(_ collectionView: UICollectionView,
+                             didSelectItemAt indexPath: IndexPath) {
+        // Cell selection
+        if let item = item(at: indexPath) {
             didSelect(item: item, at: indexPath)
         }
     }
@@ -310,8 +353,23 @@ open class GenericListViewController<
         // override
     }
     
-    // MARK: - UIScrollViewDelegate
+    open func item(at indexPath: IndexPath) -> C.Model? {
+        let section = indexPath.section
+        let item = indexPath.item
+        
+        if section >= itemList.count || item >= itemList[section].count {
+            return nil
+        }
+        return itemList[section][item] as? C.Model
+    }
     
+    func isLastItem(at path: IndexPath) -> Bool {
+        return path.item >= itemList[path.section].count
+    }
+    
+    //
+    // MARK: - UIScrollViewDelegate
+    //
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard configuration.isPaginated else { return }
         
@@ -327,23 +385,25 @@ open class GenericListViewController<
         }
     }
     
+    //
     // MARK: - UISearchResultsUpdating
-    
+    //
     public func updateSearchResults(for searchController: UISearchController) {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         reset()
-        searchText = searchController.searchBar.text ?? ""
-        fetchItems(offset: 0, filter: searchText)
+        searchText = searchController.searchBar.text
+        fetchItems(offset: 0, search: searchText)
     }
     
+    //
     // MARK: - UISearchBarDelegate
-    
+    //
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        guard configuration._isSearchable else { return }
+        guard configuration.isSearchable else { return }
         
         reset()
-        searchText = ""
-        fetchItems(offset: 0, filter: searchText)
+        searchText = nil
+        fetchItems(offset: 0, search: searchText)
     }
 }

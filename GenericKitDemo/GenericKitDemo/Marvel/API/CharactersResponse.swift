@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import GenericKit
 
-class MarvelCharactersResponse: EndpointResponse {
+class CharactersResponse: EndpointResponse {
     typealias Model = MarvelCharacter
     
     var items: [MarvelCharacter] = []

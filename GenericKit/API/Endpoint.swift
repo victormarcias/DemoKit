@@ -14,7 +14,7 @@ import Foundation
 open class Endpoint<T: EndpointResponse> {
     
     public typealias ResponseResult = ((T) -> Void)
-    public typealias ResponseError = ((Error) -> Void)
+    public typealias ResponseError = ((_ error: ErrorType?) -> Void)
     public typealias Headers = [String: String]
     public typealias Parameters = [String: Any]
     
@@ -89,7 +89,7 @@ open class Endpoint<T: EndpointResponse> {
         
         // check the URL is valid
         guard let _ = URL(string: finalUrl) else {
-            failure(ErrorType.invalidUrl)
+            failure(.invalidUrl)
             return
         }
         
@@ -106,11 +106,7 @@ open class Endpoint<T: EndpointResponse> {
                     success(T(data: data))
                     return
                 }
-                if let error = error {
-                    failure(error)
-                    return
-                }
-                failure(ErrorType.unknown)
+                failure(.unknown)
             }
         }.resume()
     }

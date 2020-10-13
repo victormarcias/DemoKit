@@ -19,9 +19,15 @@ open class GridItemView: BaseView {
         }
         
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 12)
         titleLabel.textColor = .white
-        titleLabel.layer.shadowColor = UIColor.darkGray.cgColor
+        titleLabel.layer.shadowColor = UIColor.black.cgColor
+        titleLabel.layer.shadowRadius = 2.0
+        titleLabel.layer.shadowOpacity = 1.0
+        titleLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
+        
+        clipsToBounds = true
+        layer.cornerRadius = 6
         
         let margin = CGFloat(5.0)
         

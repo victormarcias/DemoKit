@@ -9,11 +9,11 @@
 import UIKit
 import GenericKit
 
-class MarvelCharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListViewCell {
+class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListViewCell {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {
-        return .zero
+        return CGSize(width: 0, height: 130)
     }
     
     override class var insets: UIEdgeInsets {
@@ -21,8 +21,13 @@ class MarvelCharacterGridViewCell: BaseCollectionViewCell<GridItemView>, Generic
     }
     
     func configure(with model: MarvelCharacter) {
+        view?.imageView.backgroundColor = UIColor.marvel.red
         view?.imageView.url = model.thumbnail?.imageUrl
         view?.titleLabel.text = model.name
+    }
+    
+    func showLineSeparator(_ show: Bool) {
+        lineSeparator?.isHidden = !show
     }
     
     override func prepareForReuse() {

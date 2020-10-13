@@ -18,9 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
-        let rootVC = DemoSelectionViewController()
+        let rootVC = MarvelDemoViewController()
         window?.rootViewController = UINavigationController(rootViewController: rootVC)
         
         return true
+    }
+}
+
+extension UIColor {
+    struct marvel {
+        static let red = UIColor(red: 0.77, green: 0.21, blue: 0.20, alpha: 1.0)
+        static let black = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        static let gray = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
     }
 }

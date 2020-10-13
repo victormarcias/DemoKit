@@ -20,7 +20,11 @@ struct MarvelCharacter: Decodable {
         
         var imageUrl: String? {
             if let img = path, let ext = `extension` {
-                return "\(img).\(ext)"
+                let url = "\(img).\(ext)"
+                if url.contains("4c002e0305708.gif") || url.contains("not_available") {
+                    return nil
+                }
+                return url
             }
             return nil
         }
