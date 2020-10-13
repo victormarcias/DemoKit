@@ -1,15 +1,15 @@
 //
-//  MarvelCharacterListViewCell.swift
-//  GenericKitDemo
+//  CharacterListViewCell.swift
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-23.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import UIKit
-import GenericKit
+import DemoKit
 
-class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, GenericListViewCell {
+class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, DemoListViewCell {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {

@@ -1,6 +1,6 @@
 //
-//  MarvelCharactersResponse.swift
-//  GenericKitDemo
+//  CharactersResponse.swift
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-23.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftyJSON
-import GenericKit
+import DemoKit
 
 class CharactersResponse: EndpointResponse {
     typealias Model = MarvelCharacter

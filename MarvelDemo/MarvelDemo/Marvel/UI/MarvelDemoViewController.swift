@@ -1,13 +1,13 @@
 //
 //  MarvelDemoViewController.swift
-//  GenericKitDemo
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-26.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import UIKit
-import GenericKit
+import DemoKit
 
 final class MarvelDemoViewController: SimpleTableViewController {
     

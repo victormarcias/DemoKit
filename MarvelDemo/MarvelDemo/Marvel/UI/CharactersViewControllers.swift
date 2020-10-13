@@ -1,17 +1,17 @@
 //
-//  MarvelCharactersViewController.swift
-//  GenericKitDemo
+//  CharactersViewController.swift
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-23.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import UIKit
-import GenericKit
+import DemoKit
 
 // MARK: - List
 
-class CharactersListViewController: GenericListViewController<
+class CharactersListViewController: DemoListViewController<
     CharacterListViewCell,
     CharactersViewModel,
     CenteredLoadingView,
@@ -28,7 +28,7 @@ class CharactersListViewController: GenericListViewController<
 
 // MARK: - Grid
 
-class CharactersGridViewController: GenericListViewController<
+class CharactersGridViewController: DemoListViewController<
     CharacterGridViewCell,
     CharactersViewModel,
     CenteredLoadingView,
@@ -45,7 +45,7 @@ class CharactersGridViewController: GenericListViewController<
 
 // MARK: - Mocked
 
-class CharactersMockViewController: GenericListViewController<
+class CharactersMockViewController: DemoListViewController<
     CharacterListViewCell,
     CharactersMockViewModel,
     CenteredLoadingView,

@@ -1,6 +1,6 @@
 //
 //  HeaderView.swift
-//  GenericKit
+//  DemoKit
 //
 //  Created by Victor Marcias on 2020-10-12.
 //

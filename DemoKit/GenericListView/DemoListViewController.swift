@@ -1,6 +1,6 @@
 //
-//  GenericListViewController.swift
-//  GenericKit
+//  DemoListViewController.swift
+//  DemoKit
 //
 //  Created by Victor Marcias on 2019-04-17.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-open class GenericListViewController<
-    C: GenericListViewCell,
-    M: GenericListViewModel,
+open class DemoListViewController<
+    C: DemoListViewCell,
+    M: DemoListViewModel,
     L: LoadingView,
     E: ErrorView
     >: UIViewController,
@@ -135,7 +135,7 @@ open class GenericListViewController<
         let height = cellSize.height > 0 ? cellSize.height : width
         itemSize = CGSize(width: width, height: height)
         
-        collectionView = GenericListCollectionView(frame: view.frame, itemSize: itemSize)
+        collectionView = DemoListCollectionView(frame: view.frame, itemSize: itemSize)
         collectionView?.register(HeaderView.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                  withReuseIdentifier: HeaderView.reuseId)

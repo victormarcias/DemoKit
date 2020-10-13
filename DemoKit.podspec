@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint GenericKit.podspec' to ensure this is a
+#  Be sure to run `pod spec lint DemoKit.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see https://docs.cocoapods.org/specification.html
@@ -15,18 +15,18 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "GenericKit"
-  spec.version      = "0.0.1"
-  spec.summary      = "Generic oriented classes for iOS."
+  spec.name         = "DemoKit"
+  spec.version      = "0.2.0"
+  spec.summary      = "Build demos fast and easy."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "Generic classes to build Code Tests / Demos faster."
+  spec.description  = "Basic classes to do code challenges and build Demo Apps faster."
 
-  spec.homepage     = "http://github.com/victormarcias/GenericKit"
+  spec.homepage     = "http://github.com/victormarcias/DemoKit"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -78,8 +78,8 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source = { :git => "https://github.com/victormarcias/GenericKit.git", :branch => "master" }
-#  spec.source = { :path => "/GenericKit/" }
+  spec.source = { :git => "https://github.com/victormarcias/DemoKit.git", :branch => "master" }
+#  spec.source = { :path => "/DemoKit/" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -89,7 +89,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "GenericKit/**/*.{swift}"
+  spec.source_files  = "DemoKit/**/*.{swift}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"

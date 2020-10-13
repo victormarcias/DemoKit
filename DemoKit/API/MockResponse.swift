@@ -1,6 +1,6 @@
 //
 //  MockResponse.swift
-//  GenericKit
+//  DemoKit
 //
 //  Created by Victor Marcias on 2019-05-06.
 //

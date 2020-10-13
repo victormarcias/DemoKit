@@ -1,6 +1,6 @@
 //
 //  Endpoint.swift
-//  GenericKit
+//  DemoKit
 //
 //  Created by Victor Marcias on 2019-02-18.
 //  Copyright © 2019 Victor Marcias. All rights reserved.

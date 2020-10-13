@@ -1,22 +1,22 @@
 //
-//  MarvelCharactersViewModel.swift
-//  GenericKitDemo
+//  CharactersViewModel.swift
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-23.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import Foundation
-import GenericKit
+import DemoKit
 
-class CharactersMockViewModel: GenericListViewModel {
+class CharactersMockViewModel: DemoListViewModel {
     typealias Model = MarvelCharacter
     
     required init() {}
     
-    func getItems(filter: GenericListFilter,
-                  success: @escaping GenericListResult,
-                  failure: @escaping GenericListError)
+    func getItems(filter: DemoListFilter,
+                  success: @escaping DemoListResult,
+                  failure: @escaping DemoListError)
     {
         MockResponse<MarvelCharacter>.readFile(
             "MarvelCharacters",

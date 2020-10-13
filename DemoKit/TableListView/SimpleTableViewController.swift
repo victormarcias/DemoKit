@@ -1,6 +1,6 @@
 //
 //  SimpleTableViewController.swift
-//  GenericKit
+//  DemoKit
 //
 //  Created by Victor Marcias on 2018-08-29.
 //  Renamed on 2019-04-26.

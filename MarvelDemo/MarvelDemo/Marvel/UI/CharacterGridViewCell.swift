@@ -1,15 +1,15 @@
 //
-//  MarvelCharacterGridViewCell.swift
-//  GenericKitDemo
+//  CharacterGridViewCell.swift
+//  MarvelDemo
 //
 //  Created by Victor Marcias on 2019-04-29.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
 //
 
 import UIKit
-import GenericKit
+import DemoKit
 
-class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListViewCell {
+class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, DemoListViewCell {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {

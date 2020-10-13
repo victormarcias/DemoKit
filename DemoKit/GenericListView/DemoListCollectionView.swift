@@ -1,6 +1,6 @@
 //
-//  GenericListCollectionView.swift
-//  GenericKit
+//  DemoListCollectionView.swift
+//  DemoKit
 //
 //  Created by Victor Marcias on 2019-04-17.
 //  Copyright © 2019 Victor Marcias. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericListCollectionView: UICollectionView {
+class DemoListCollectionView: UICollectionView {
     
     init(frame: CGRect, itemSize: CGSize = .zero) {
         let layout = UICollectionViewFlowLayout()
