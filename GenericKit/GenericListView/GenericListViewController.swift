@@ -288,14 +288,15 @@ open class GenericListViewController<
     open func collectionView(_ collectionView: UICollectionView,
                              layout collectionViewLayout: UICollectionViewLayout,
                              referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // headerSize
         let headerSize = CGSize(width: collectionView.frame.width, height: 30.0)
         return configuration.isGrouped ? headerSize : .zero
     }
     
     open func collectionView(_ collectionView: UICollectionView,
                              viewForSupplementaryElementOfKind kind: String,
-                             at indexPath: IndexPath) -> UICollectionReusableView
-    {
+                             at indexPath: IndexPath) -> UICollectionReusableView {
+        // header
         if kind == UICollectionView.elementKindSectionHeader,
             let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
@@ -314,7 +315,8 @@ open class GenericListViewController<
     //
     // MARK: - Items
     //
-    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView,
+                             numberOfItemsInSection section: Int) -> Int {
         return itemList[section].count
     }
     
@@ -326,18 +328,22 @@ open class GenericListViewController<
     
     open func collectionView(_ collectionView: UICollectionView,
                              cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // dequeue Cell view
         let cell: C = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellReuseId,
             for: indexPath) as! C
         
+        // configure Cell
         if let item = item(at: indexPath) {
             cell.configure(with: item)
+            cell.showLineSeparator(!isLastItem(at: indexPath))
         }
         return cell
     }
     
     open func collectionView(_ collectionView: UICollectionView,
                              didSelectItemAt indexPath: IndexPath) {
+        // Cell selection
         if let item = item(at: indexPath) {
             didSelect(item: item, at: indexPath)
         }
@@ -355,6 +361,10 @@ open class GenericListViewController<
             return nil
         }
         return itemList[section][item] as? C.Model
+    }
+    
+    func isLastItem(at path: IndexPath) -> Bool {
+        return path.item >= itemList[path.section].count
     }
     
     //

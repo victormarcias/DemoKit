@@ -31,11 +31,16 @@ class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, GenericListV
         view?.textLabel.text = model.description
     }
     
+    func showLineSeparator(_ show: Bool) {
+        lineSeparator?.isHidden = !show
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
         view?.imageView.image = nil
         view?.titleLabel.text = nil
         view?.textLabel.text = nil
+        lineSeparator?.isHidden = true
     }
 }

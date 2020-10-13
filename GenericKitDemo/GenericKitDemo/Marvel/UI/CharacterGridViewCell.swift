@@ -26,6 +26,10 @@ class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, GenericListVi
         view?.titleLabel.text = model.name
     }
     
+    func showLineSeparator(_ show: Bool) {
+        lineSeparator?.isHidden = !show
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         

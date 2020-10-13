@@ -65,11 +65,11 @@ open class BaseCollectionViewCell<T: UIView>: UICollectionViewCell {
             contentView.addSubview(line)
             
             line.isHidden = false
-            line.backgroundColor = UIColor.lightGray
+            line.backgroundColor = UIColor.lightGray.withAlphaComponent(0.30)
             line.frame = CGRect(x: lineInsets.left,
                                 y: bounds.height-1,
                                 width: bounds.width-lineInsets.left-lineInsets.right,
-                                height: 1/UIScreen.main.scale)
+                                height: 1)
             _lineSeparator = line
         }
     }

@@ -16,6 +16,7 @@ public protocol GenericListViewCell where Self: UICollectionViewCell {
     static var itemSize: CGSize { get }
     
     func configure(with model: Model)
+    func showLineSeparator(_ show: Bool)
 }
 
 public protocol GenericListViewModel {
