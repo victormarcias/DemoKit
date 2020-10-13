@@ -21,7 +21,7 @@ class CharactersListViewController: GenericListViewController<
         navigationItem.title = NSLocalizedString("List View", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 1
-        configuration.itemsPerPage = 100
+        configuration.itemsPerPage = 50
         configuration.isSearchable = true
     }
 }
@@ -38,7 +38,7 @@ class CharactersGridViewController: GenericListViewController<
         navigationItem.title = NSLocalizedString("Grid View", comment: "")
         configuration.isPaginated = true
         configuration.itemsPerRow = 3
-        configuration.itemsPerPage = 33
+        configuration.itemsPerPage = 39
         configuration.isSearchable = true
     }
 }
@@ -53,10 +53,9 @@ class CharactersMockViewController: GenericListViewController<
 {
     override func configure() {
         navigationItem.title = NSLocalizedString("Grouped List", comment: "")
-        configuration.isPaginated = false
+        configuration.isGrouped = true
         configuration.itemsPerRow = 1
         configuration.isSearchable = true
-        configuration.isGrouped = true
     }
     
     let alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z".components(separatedBy: ",")

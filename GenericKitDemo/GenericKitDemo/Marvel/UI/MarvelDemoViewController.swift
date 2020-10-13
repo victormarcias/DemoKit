@@ -9,7 +9,7 @@
 import UIKit
 import GenericKit
 
-class MarvelDemoViewController: SimpleTableViewController {
+final class MarvelDemoViewController: SimpleTableViewController {
     
     override func setup() {
         navigationItem.title = "Marvel's Demo"
