@@ -15,6 +15,7 @@ class DemoListCollectionView: UICollectionView {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.itemSize = itemSize
+        layout.sectionHeadersPinToVisibleBounds = true
         
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = .white
