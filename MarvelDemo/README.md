@@ -2,61 +2,32 @@
 # MARVEL's Demo
 Here's a quick demo of my DemoKit in action using different configurations for the main view controller using data from Marvel's API.
 
-> :warning: Not visible images don't exist in Marvel's API.
+> :warning: &nbsp; Not visible images don't exist in Marvel's API.
 
 <br />
 
 ---
 
-## List View
-
-> ViewModel fetches from API
-
-```swift
-configuration.isPaginated = true
-configuration.isSearchable = true
-configuration.itemsPerRow = 1
-configuration.itemsPerPage = 50 // per fetch request
-```
-
-![ListView](Files/ListView.gif)
-
 <br />
 
+## Configuration Examples
 
-## Grid View
-
-> ViewModel fetches from API
-
-```swift
-configuration.isPaginated = true
-configuration.isSearchable = true
-configuration.itemsPerRow = 3
-configuration.itemsPerPage = 39 // per fetch request
-```
-
-!["GridView"](Files/GridView.gif)
-
-<br />
+|               | List View | Grid View | Grouped View  |
+| :-:           | :-:       | :-:       | :-:           |
+| Preview       | ![](Files/ListView.gif)| ![](Files/GridView.gif) | ![](Files/GroupedList.gif) |
+| View Model    | API       | API       | Local Json file |
+| isPaginated   | true      | true      | false         |
+| isSearchable  | true      | true      | true          |
+| isGrouped     | false     | false     | true          |
+| itemsPerRow   | 1         | 3         | 1             |
+| itemsPerPage  | 50        | 39        | All*          |
 
 
-## Grouped List
-
-> ViewModel fetches from local json file
-
-```swift
-configuration.isGrouped = true
-configuration.isSearchable = true
-configuration.itemsPerRow = 1
-```
-!["GroupedList"](Files/GroupedList.gif)
-
-> :warning: &nbsp; Grouped List doesn't support pagination
-
-<br />
+> :warning: &nbsp; *Pagination is not supported when items are grouped.
 
 ---
 <br />
+
 
 ## More Parameters
 
