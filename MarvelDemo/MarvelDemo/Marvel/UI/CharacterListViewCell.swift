@@ -9,7 +9,7 @@
 import UIKit
 import DemoKit
 
-class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, DemoListViewCell {
+class CharacterListViewCell: BaseCollectionViewCell<TableItemView>, DemoListViewable {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {

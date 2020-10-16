@@ -9,7 +9,7 @@
 import UIKit
 import DemoKit
 
-class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, DemoListViewCell {
+class CharacterGridViewCell: BaseCollectionViewCell<GridItemView>, DemoListViewable {
     typealias Model = MarvelCharacter
     
     static var itemSize: CGSize {

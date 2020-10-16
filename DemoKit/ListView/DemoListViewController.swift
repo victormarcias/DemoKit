@@ -9,7 +9,7 @@
 import UIKit
 
 open class DemoListViewController<
-    C: DemoListViewCell,
+    C: DemoListViewable,
     M: DemoListViewModel,
     L: LoadingView,
     E: ErrorView

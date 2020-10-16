@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol DemoListViewCell where Self: UICollectionViewCell {
+public protocol DemoListViewable where Self: UICollectionViewCell {
     associatedtype Model
     
     // if width or height is zero, will be adjusted dynamically
@@ -17,18 +17,4 @@ public protocol DemoListViewCell where Self: UICollectionViewCell {
     
     func configure(with model: Model)
     func showLineSeparator(_ show: Bool)
-}
-
-public protocol DemoListViewModel {
-    associatedtype Model
-    
-    typealias DemoListFilter = (search: String?, offset: Int, count: Int)
-    typealias DemoListResult = (_ result: [[Model]]) -> Void
-    typealias DemoListError = (_ error: Error?) -> Void
-    
-    init()
-    
-    func getItems(filter: DemoListFilter,
-                  success: @escaping DemoListResult,
-                  failure: @escaping DemoListError)
 }
