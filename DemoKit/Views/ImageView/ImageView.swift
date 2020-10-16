@@ -12,6 +12,7 @@ open class ImageView: BaseView {
     
     public let placeholderImageView = UIImageView()
     public let imageView = UIImageView()
+    private var downloadTask: URLSessionDataTask? = nil
     
     var placeholderImage: UIImage? {
         didSet {
@@ -27,8 +28,11 @@ open class ImageView: BaseView {
     
     public var url: String? {
         didSet {
+            downloadTask?.cancel()
+            downloadTask = nil
+            
             if let urlString = url {
-                imageView.loadFrom(url: urlString)
+                downloadTask = imageView.loadFrom(url: urlString)
             }
         }
     }
