@@ -67,6 +67,9 @@ open class DemoListViewController<
         // Shows a loading view when fetching items
         public var shouldShowLoading: Bool = true
         
+        // Don't show headers for empty sections
+        public var shouldShowEmptySectionHeaders: Bool = false
+        
         // Distance to bottom to fetch more items
         public var contentLoadOffset: CGFloat = 0
     }
@@ -290,7 +293,14 @@ open class DemoListViewController<
                              referenceSizeForHeaderInSection section: Int) -> CGSize {
         // headerSize
         let headerSize = CGSize(width: collectionView.frame.width, height: 30.0)
-        return configuration.isGrouped ? headerSize : .zero
+        return shouldShowHeader(for: section) ? headerSize : .zero
+    }
+    
+    open func shouldShowHeader(for section: Int) -> Bool {
+        let showHeader = configuration.isGrouped &&
+            (configuration.shouldShowEmptySectionHeaders ||
+                item(at: IndexPath(item: 0, section: section)) != nil)
+        return showHeader
     }
     
     open func collectionView(_ collectionView: UICollectionView,
