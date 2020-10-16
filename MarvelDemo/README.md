@@ -4,11 +4,7 @@ Here's a quick demo of my DemoKit in action using different configurations for t
 
 > :warning: &nbsp; Not visible images don't exist in Marvel's API.
 
-<br />
-
 ---
-
-<br />
 
 ## Configuration Examples
 
@@ -26,26 +22,24 @@ Here's a quick demo of my DemoKit in action using different configurations for t
 > :warning: &nbsp; *Pagination is not supported when items are grouped.
 
 ---
-<br />
-
 
 ## More Parameters
 
 - Shows a loading view when fetching items
 
 ```swift
-shouldShowLoading: Bool = true
+var shouldShowLoading: Bool = true
 ```
 <br />
 
 - Shows/Hides headers for empty sections
 ```swift
-shouldShowEmptySectionHeaders: Bool = false
+var shouldShowEmptySectionHeaders: Bool = false
 ```
 <br />
 
 - Distance to bottom to fetch more items
 ```swift
-contentLoadOffset: CGFloat = 0
+var contentLoadOffset: CGFloat = 0
 ```
 <br />
