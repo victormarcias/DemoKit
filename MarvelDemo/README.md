@@ -21,10 +21,10 @@ configuration.itemsPerPage = 50 // per fetch request
 
 ![ListView](Files/ListView.gif)
 
----
 <br />
 
-### Grid View
+
+## Grid View
 
 > ViewModel fetches from API
 
@@ -37,10 +37,10 @@ configuration.itemsPerPage = 39 // per fetch request
 
 !["GridView"](Files/GridView.gif)
 
----
 <br />
 
-### Grouped List
+
+## Grouped List
 
 > ViewModel fetches from local json file
 
@@ -49,9 +49,9 @@ configuration.isGrouped = true
 configuration.isSearchable = true
 configuration.itemsPerRow = 1
 ```
-> :warning: Grouped List doesn't support pagination
-
 !["GroupedList"](Files/GroupedList.gif)
+
+> :warning: &nbsp; Grouped List doesn't support pagination
 
 <br />
 
