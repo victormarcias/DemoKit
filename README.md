@@ -8,7 +8,7 @@ There was a time in which every time I applied for a job I copied whatever I cou
 !["Architecture overview"](Files/DemoKitOverview.png)
 
 ## Usage examples
-Putting these pieces together, obviously.
+Putting these pieces together, obviously.\
 :warning: &nbsp; Might not be 100% accurate to the actual code due to updates.
 
 ### ViewController
@@ -88,6 +88,8 @@ class MyCell: BaseCollectionViewCell<MyCellView>, DemoListViewable {
         // ...
     }
 ```
+
+<br />
 
 ## MARVEL's Demo
 Check out my [MARVEL's Demo](/MarvelDemo) list of Characters to know more about the details of implementation. This Pod and the Demo are ready to download and build too.
