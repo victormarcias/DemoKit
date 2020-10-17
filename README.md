@@ -16,7 +16,7 @@ Putting these pieces together, obviously.\
 ```swift
 class MyViewController: DemoListViewController<MyCell, MyViewModel, MyLoadingView, MyErrorView> {
 
-    func configure() {
+    override func configure() {
         configuration.isPaginated = true
         configuration.itemsPerPage = 30
         configuration.itemsPerRow = 3
