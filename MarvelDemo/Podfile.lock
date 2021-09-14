@@ -1,0 +1,23 @@
+PODS:
+  - DemoKit (0.5.0)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - DemoKit (from `../DemoKit.podspec`)
+  - SwiftyJSON (~> 5)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  DemoKit:
+    :path: "../DemoKit.podspec"
+
+SPEC CHECKSUMS:
+  DemoKit: cfe5d6419fd619742002eec563fe435811e9ea49
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 6c0a35b88484cd812ac916ce911ab645a5c48e2f
+
+COCOAPODS: 1.10.1

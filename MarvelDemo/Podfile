@@ -1,11 +1,12 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
 project 'MarvelDemo.xcodeproj'
 
 def install_pods
     pod 'DemoKit', :path => '../DemoKit.podspec'
-    pod 'SwiftyJSON', '4.0'
+    pod 'SwiftyJSON', '~> 5'
 end
 
 target 'MarvelDemo' do
