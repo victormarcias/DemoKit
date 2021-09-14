@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "DemoKit"
-  spec.version      = "0.2.0"
+  spec.version      = "0.5.0"
   spec.summary      = "Build demos fast and easy."
 
   # This description is used to generate tags and improve search results.
@@ -37,17 +37,10 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # spec.license      = { :type => "MIT", :file => "LICENSE.md" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
   #
 
   spec.author             = { "Victor Marcias" => "victormarcias@gmail.com" }
@@ -61,9 +54,8 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  spec.platform     = :ios
-  spec.platform     = :ios, "9.0"
-  spec.swift_version = "4.2"
+  spec.platform 				= :ios, "10.0"
+  spec.swift_version		= "5.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -78,7 +70,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source = { :git => "https://github.com/victormarcias/DemoKit.git", :branch => "master" }
+  spec.source = { :git => "https://github.com/victormarcias/DemoKit.git", :branch => "0.5.0" }
 #  spec.source = { :path => "/DemoKit/" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "DemoKit/**/*.{swift}"
+  spec.source_files = "DemoKit/**/*.{swift}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
