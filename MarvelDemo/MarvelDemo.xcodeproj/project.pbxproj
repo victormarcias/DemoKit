@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04C3DC8626F15D25000E903B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 04C3DC8526F15D25000E903B /* Podfile */; };
+		04C3DCA926F1685A000E903B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C3DCA826F1685A000E903B /* Default-568h@2x.png */; };
 		04D471D925362FBE000015A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D471C725362FBD000015A2 /* Assets.xcassets */; };
-		04D471DA25362FBE000015A2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D471C825362FBD000015A2 /* Default-568h@2x.png */; };
 		04D471DC25362FBE000015A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D471CA25362FBE000015A2 /* AppDelegate.swift */; };
 		04D471DD25362FBE000015A2 /* CharacterGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D471CD25362FBE000015A2 /* CharacterGridViewCell.swift */; };
 		04D471DE25362FBE000015A2 /* CharacterListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D471CE25362FBE000015A2 /* CharacterListViewCell.swift */; };
@@ -47,9 +47,9 @@
 		04C3DCA226F15D82000E903B /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		04C3DCA426F15D82000E903B /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		04C3DCA526F15D82000E903B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		04C3DCA826F1685A000E903B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		04D471B125362C7A000015A2 /* MarvelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D471C725362FBD000015A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04D471C825362FBD000015A2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		04D471C925362FBD000015A2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D471CA25362FBE000015A2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D471CD25362FBE000015A2 /* CharacterGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterGridViewCell.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				04D471C725362FBD000015A2 /* Assets.xcassets */,
-				04D471C825362FBD000015A2 /* Default-568h@2x.png */,
+				04C3DCA826F1685A000E903B /* Default-568h@2x.png */,
 				04D471C925362FBD000015A2 /* Info.plist */,
 			);
 			path = Resources;
@@ -340,9 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D471E225362FBE000015A2 /* MarvelCharacters.json in Resources */,
+				04C3DCA926F1685A000E903B /* Default-568h@2x.png in Resources */,
 				04D471D925362FBE000015A2 /* Assets.xcassets in Resources */,
 				04C3DC8626F15D25000E903B /* Podfile in Resources */,
-				04D471DA25362FBE000015A2 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +529,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -548,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.victormarcias.MarvelDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
